@@ -7,7 +7,7 @@ module DeepSpace
          @uses = u
       end
 
-      def nexCopy (s)
+      def newCopy (s)
          @name = s.name()
          @boost = s.boost()
          @uses = s.uses()
