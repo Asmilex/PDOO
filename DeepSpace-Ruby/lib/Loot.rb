@@ -1,11 +1,13 @@
 # enconding:utf-8
 class Loot
-    def initialize (SuppliesValue, WeaponsValue, ShieldsValue, HangarsValue, MedalsValue)
-        @nSupplies = SuppliesValue
-        @nWeapons  = WeaponsVales
-        @nShields  = ShieldsValue
-        @nHangars  = HangarsValue
-        @nMedals   = MedalsValue
+    public
+
+    def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue)
+        @nSupplies = suppliesValue
+        @nWeapons  = weaponsVales
+        @nShields  = shieldsValue
+        @nHangars  = hangarsValue
+        @nMedals   = medalsValue
     end
 
     def nSupplies
