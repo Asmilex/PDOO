@@ -2,15 +2,15 @@
 module DeepSpace
    class ShieldBooster
       def initialize (n, b, u)
-         @name = n
+         @name  = n
          @boost = b
-         @uses = u
+         @uses  = u
       end
 
       def newCopy (s)
-         @name = s.name()
+         @name  = s.name()
          @boost = s.boost()
-         @uses = s.uses()
+         @uses  = s.uses()
       end
 
       def boost
