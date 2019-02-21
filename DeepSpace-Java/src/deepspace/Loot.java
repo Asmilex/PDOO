@@ -7,11 +7,7 @@ class Loot {
     private int nHangars;
     private int nMedals;
 
-    Loot (  int SuppliesValue
-          , int WeaponsValue
-          , int ShieldsValue
-          , int HangarsValue
-          , int MedalsValue) {
+    Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue) {
 
         nSupplies = SuppliesValue;
         nWeapons  = WeaponsVales;

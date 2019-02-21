@@ -2,16 +2,16 @@
 
 module DeepSpace
    class SuppliesPackage
-      
-      def initialize(a,f,s)
-         @ammoPower = a
-         @fuelUnits = f
+
+      def initialize(a, f, s)
+         @ammoPower   = a
+         @fuelUnits   = f
          @shieldPower = s
       end
-   
+
       def newCopy(s)
-         @ammoPower = s.ammoPower()
-         @fuelUnits = s.fuelUnits()
+         @ammoPower   = s.ammoPower()
+         @fuelUnits   = s.fuelUnits()
          @shieldPower = s.shieldPower()
       end
 
@@ -29,5 +29,3 @@ module DeepSpace
 
    end
 end
-
-
