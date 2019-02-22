@@ -7,10 +7,10 @@ module DeepSpace
          @uses  = u
       end
 
-      def newCopy (s)
-         @name  = s.name()
-         @boost = s.boost()
-         @uses  = s.uses()
+      def self.newCopy (s)
+         t = ShieldBooster.new(s.name(), s.boost(), s.uses())
+         
+         return t
       end
 
       def boost

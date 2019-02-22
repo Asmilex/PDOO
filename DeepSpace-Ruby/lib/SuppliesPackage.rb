@@ -9,10 +9,10 @@ module DeepSpace
          @shieldPower = s
       end
 
-      def newCopy(s)
-         @ammoPower   = s.ammoPower()
-         @fuelUnits   = s.fuelUnits()
-         @shieldPower = s.shieldPower()
+      def self.newCopy(s)
+         t = SuppliesPackage.new(s.ammoPower(), s.fuelUnits(), s.shieldPower())
+
+         return t
       end
 
       def ammoPower
