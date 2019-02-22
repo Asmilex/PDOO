@@ -2,11 +2,11 @@
 module DeepSpace
    class Dice
       def initialize
-         @NHANGARSPROB = 0.25
-         @NSHIELDSPROB = 0.25
-         @NWEAPONSPROB = 0.33
+         @NHANGARSPROB  = 0.25
+         @NSHIELDSPROB  = 0.25
+         @NWEAPONSPROB  = 0.33
          @FIRSTSHOTPROB = 0.5
-         @generator = rand
+         @generator     = rand
       end
 
       def initWithNHangars
@@ -20,7 +20,7 @@ module DeepSpace
 
       def initWithNShields
          @generator = rand
-         if(@generator < NSHIELDSPROB)
+         if (@generator < NSHIELDSPROB)
             return 0
          else
             return 1
@@ -29,9 +29,9 @@ module DeepSpace
 
       def initWithNWeapons
          @generator = rand
-         if(@generator < @NWEAPONSPROB)
+         if (@generator < @NWEAPONSPROB)
             return 1
-         elsif(@generator < 2*@NWEAPONSPROB)
+         elsif (@generator < 2*@NWEAPONSPROB)
             return 2
          else
             return 3
@@ -44,7 +44,7 @@ module DeepSpace
 
       def firstShot
          @generator = rand
-         if(@generator < @FIRSTSHOTPROB)
+         if (@generator < @FIRSTSHOTPROB)
             return GameCharacter::SPACESTATION
          else
             return GameCharacter::ENEMYSTARSHIP
@@ -53,15 +53,13 @@ module DeepSpace
 
       def spaceStationMoves(speed)
          @generator = rand
-         if(@generator < speed)
+         if (@generator < speed)
             return true;
          else
             return false;
          end
       end
 
-      
-   
    end
 
 end
