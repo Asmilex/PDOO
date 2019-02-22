@@ -69,7 +69,7 @@ class Dice {
             return GameCharacter.ENEMYSTARSHIP;
     }
 
-    public boolean spaceStationMoves(float speed) {
+    boolean spaceStationMoves(float speed) {
         float randomNumber = generator.nextFloat();
 
         return randomNumber < speed;
