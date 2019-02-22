@@ -35,7 +35,7 @@ class Weapon {
             return this.power();
         }
         else {
-            return 1.0;
+            return 1.0f;
         }
     }
 }
