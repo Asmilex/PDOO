@@ -12,9 +12,9 @@ class SuppliesPackage {
    }
 
    SuppliesPackage(SuppliesPackage s) {
-      ammoPower   = s.getammoPower();
-      fuelUnits   = s.getfuelUnits();
-      shieldPower = s.getshieldPower();
+      ammoPower   = s.getAmmoPower();
+      fuelUnits   = s.getFuelUnits();
+      shieldPower = s.getShieldPower();
    }
 
    public float getAmmoPower() {

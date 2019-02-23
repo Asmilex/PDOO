@@ -10,7 +10,7 @@ class Loot {
     Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue) {
 
         nSupplies = SuppliesValue;
-        nWeapons  = WeaponsVales;
+        nWeapons  = WeaponsValue;
         nShields  = ShieldsValue;
         nHangars  = HangarsValue;
         nMedals   = MedalsValue;
