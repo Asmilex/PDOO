@@ -1,36 +1,42 @@
 package deepspace;
 
-class ShieldBooster{
-   private String name;
-   private float boost;
-   private int uses;
+//
+// ────────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: C L A S E   S H I E L D B O O S T E R : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────────
+//
 
-   ShieldBooster(String n, float b, int u) {
-      name = n;
-      boost = b;
-      uses = u;
-   }
+   class ShieldBooster{
+      private String name;
+      private float boost;
+      private int uses;
 
-   ShieldBooster(ShieldBooster s) {
-      name = s.name;
-      boost = s.boost;
-      uses = s.uses;
-   }
+      ShieldBooster(String n, float b, int u) {
+         name = n;
+         boost = b;
+         uses = u;
+      }
 
-   public float getBoost() {
-      return boost;
-   }
+      ShieldBooster(ShieldBooster s) {
+         name = s.name;
+         boost = s.boost;
+         uses = s.uses;
+      }
 
-   public int getUses() {
-      return uses;
-   }
-
-   public float uselt() {
-      if (uses > 0){
-         uses--;
+      public float getBoost() {
          return boost;
       }
-      else
-      return 1.0f;
+
+      public int getUses() {
+         return uses;
+      }
+
+      public float uselt() {
+         if (uses > 0){
+            uses--;
+            return boost;
+         }
+         else
+         return 1.0f;
+      }
    }
-}

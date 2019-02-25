@@ -1,38 +1,44 @@
 package deepspace;
 
-class Loot {
-    private int nSupplies;
-    private int nWeapons;
-    private int nShields;
-    private int nHangars;
-    private int nMedals;
+//
+// ──────────────────────────────────────────────────────────── I ──────────
+//   :::::: C L A S E   L O O T : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────
+//
 
-    Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue) {
+    class Loot {
+        private int nSupplies;
+        private int nWeapons;
+        private int nShields;
+        private int nHangars;
+        private int nMedals;
 
-        nSupplies = SuppliesValue;
-        nWeapons  = WeaponsValue;
-        nShields  = ShieldsValue;
-        nHangars  = HangarsValue;
-        nMedals   = MedalsValue;
+        Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue) {
+
+            nSupplies = SuppliesValue;
+            nWeapons  = WeaponsValue;
+            nShields  = ShieldsValue;
+            nHangars  = HangarsValue;
+            nMedals   = MedalsValue;
+        }
+
+        public int getNHangars() {
+            return nHangars;
+        }
+
+        public int getNMedals() {
+            return nMedals;
+        }
+
+        public int getNShields() {
+            return nShields;
+        }
+
+        public int getNSupplies() {
+            return nSupplies;
+        }
+
+        public int getNWeapons() {
+            return nWeapons;
+        }
     }
-
-    public int getNHangars() {
-        return nHangars;
-    }
-
-    public int getNMedals() {
-        return nMedals;
-    }
-
-    public int getNShields() {
-        return nShields;
-    }
-
-    public int getNSupplies() {
-        return nSupplies;
-    }
-
-    public int getNWeapons() {
-        return nWeapons;
-    }
-}
