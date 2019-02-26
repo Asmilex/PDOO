@@ -44,7 +44,7 @@ public class TestP1 {
         System.out.printf("-> Boosteo: " + escudo.getBoost() +
                         "\n-> Usos: "    + escudo.getUses());
 
-        escudo.uselt();
+        escudo.useIt();
         System.out.printf("Tras useIt(), tiene estos usos: " + escudo.getUses() + "\n\n");
 
     //

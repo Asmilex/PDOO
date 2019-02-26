@@ -31,7 +31,7 @@ package deepspace;
          return uses;
       }
 
-      public float uselt() {
+      public float useIt() {
          if (uses > 0){
             uses--;
             return boost;
