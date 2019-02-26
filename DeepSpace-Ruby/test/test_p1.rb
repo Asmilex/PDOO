@@ -1,14 +1,14 @@
 # encoding:utf-8
 
-   require '../lib/CombatResult.rb'
-   require '../lib/Dice.rb'
-   require '../lib/GameCharacter.rb'
-   require '../lib/Loot.rb'
-   require '../lib/ShieldBooster.rb'
-   require '../lib/ShotResult.rb'
-   require '../lib/SuppliesPackage.rb'
-   require '../lib/Weapon.rb'
-   require '../lib/WeaponType.rb'
+require '../lib/CombatResult.rb'
+require '../lib/Dice.rb'
+require '../lib/GameCharacter.rb'
+require '../lib/Loot.rb'
+require '../lib/ShieldBooster.rb'
+require '../lib/ShotResult.rb'
+require '../lib/SuppliesPackage.rb'
+require '../lib/Weapon.rb'
+require '../lib/WeaponType.rb'
 
 module DeepSpace
    class TestP1
@@ -17,7 +17,7 @@ module DeepSpace
       end
 
       def self.main
-      
+
          botin = Loot.new(1,2,3,4,5)
          puts "Prueba de interfaces de Loot:"
          puts "-> Supplies: #{botin.nSupplies}\n-> NWeapons: #{botin.nWeapons}\n-> NShields: #{botin.nShields}\n-> Hangars: #{botin.nHangars}\n-> Medals: #{botin.nMedals}\n\n"
@@ -43,13 +43,11 @@ module DeepSpace
          puts "Jugadores: #{jugadores}"
          puts "Primer disparo: #{dado.firstShot}"
          puts "Hacemos 5 iteraciones para ver la generación de números"
-         
-         i = 0
-         while i < 10
-            puts "-> Hangares: #{dado.initWithNHangars}\n-> Armas: #{dado.initWithNWeapons}\n-> Escudos: #{dado.initWithNShields}\n-> Mueve: #dado.spaceStationMoves(0.5)}\n-> Empieza: #{dado.whoStarts(jugadores)}\n\n"
-         i += 1
+
+         for i in 1..10
+            puts "-> Hangares: #{dado.initWithNHangars}\n-> Armas: #{dado.initWithNWeapons}\n-> Escudos: #{dado.initWithNShields}\n-> Mueve: #{dado.spaceStationMoves(0.5)}\n-> Empieza: #{dado.whoStarts(jugadores)}\n\n"
          end
-      
+
       end
    end
 
