@@ -20,7 +20,7 @@ module DeepSpace
 
       def initWithNShields
          @generator = rand
-         if (@generator < NSHIELDSPROB)
+         if (@generator < @NSHIELDSPROB)
             return 0
          else
             return 1
@@ -38,7 +38,7 @@ module DeepSpace
          end
       end
 
-      def WhoStarts(nPlayers)
+      def whoStarts(nPlayers)
          return rand(nPlayers)
       end
 

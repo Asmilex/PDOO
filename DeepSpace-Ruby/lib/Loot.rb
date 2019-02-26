@@ -3,14 +3,14 @@ module DeepSpace
     class Loot
         def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue)
             @nSupplies = suppliesValue
-            @nWeapons  = weaponsVales
+            @nWeapons  = weaponsValue
             @nShields  = shieldsValue
             @nHangars  = hangarsValue
             @nMedals   = medalsValue
         end
 
         def nSupplies
-            @nSupplies
+            return @nSupplies
         end
 
         def nWeapons
