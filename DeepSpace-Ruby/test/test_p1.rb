@@ -30,7 +30,7 @@ module DeepSpace
 
          escudo = ShieldBooster.new("Ligero", 3.5, 0)
          puts "Prueba de métodos de ShieldBooster:"
-         puts "-> Boost : #{escudo.boost}\n-> Usos: #{escudo.uses}\n\n"
+         puts "-> Boost: #{escudo.boost}\n-> Usos: #{escudo.uses}\n\n"
 
          suministros = SuppliesPackage.new(3.0,50,3.5)
          puts "Prueba de métodos de SuppliesPackage"
@@ -42,9 +42,10 @@ module DeepSpace
          puts "Prueba de métodos de Dice"
          puts "Jugadores: #{jugadores}"
          puts "Primer disparo: #{dado.firstShot}"
-         puts "Hacemos 5 iteraciones para ver la generación de números"
+         puts "Hacemos 5 iteraciones para ver la generación de números:"
 
-         for i in 1..10
+         for i in 1..5
+            puts "Iteración #{i}:"
             puts "-> Hangares: #{dado.initWithNHangars}\n-> Armas: #{dado.initWithNWeapons}\n-> Escudos: #{dado.initWithNShields}\n-> Mueve: #{dado.spaceStationMoves(0.5)}\n-> Empieza: #{dado.whoStarts(jugadores)}\n\n"
          end
 
