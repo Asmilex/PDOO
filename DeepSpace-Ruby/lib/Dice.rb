@@ -53,11 +53,7 @@ module DeepSpace
 
       def spaceStationMoves(speed)
          @generator = rand
-         if (@generator < speed)
-            return true;
-         else
-            return false;
-         end
+         return (@generator < speed)
       end
 
    end

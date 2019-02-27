@@ -12,15 +12,15 @@ package deepspace;
       private int uses;
 
       ShieldBooster(String n, float b, int u) {
-         name = n;
+         name  = n;
          boost = b;
-         uses = u;
+         uses  = u;
       }
 
       ShieldBooster(ShieldBooster s) {
-         name = s.name;
+         name  = s.name;
          boost = s.boost;
-         uses = s.uses;
+         uses  = s.uses;
       }
 
       public float getBoost() {
@@ -32,11 +32,11 @@ package deepspace;
       }
 
       public float useIt() {
-         if (uses > 0){
+         if (uses > 0) {
             uses--;
             return boost;
          }
          else
-         return 1.0f;
+            return 1.0f;
       }
    }

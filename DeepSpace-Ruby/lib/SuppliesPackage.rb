@@ -11,7 +11,6 @@ module DeepSpace
 
       def self.newCopy(s)
          t = SuppliesPackage.new(s.ammoPower(), s.fuelUnits(), s.shieldPower())
-
          return t
       end
 
