@@ -64,19 +64,52 @@ public class TestP1 {
 
         Dice dado = new Dice();
         int jugadores = 5;
+        float velocidad = 0.5f;
 
         System.out.print("Prueba de métodos de Dice\n");
         System.out.print("Jugadores: " + jugadores + "\n");
-        System.out.print("Primer disparo: " + dado.firstShot() + "\n");
+        System.out.print("Velocidad: " + velocidad + "\n");
 
-        System.out.print("Haremos 5 iteraciones para ver la generación de números\n");
+        System.out.print("Haremos 100 iteraciones para ver la distribución de números aleatorios\n");
 
-        for (int i=0; i < 10; i++) {
-            System.out.printf("-> Hangares: " + dado.initWithNHangars()      +
-                            "\n-> Armas: "    + dado.initWithNWeapons()      +
-                            "\n-> Escudos: "  + dado.initWithNShields()      +
-                            "\n-> Mueve: "    + dado.spaceStationMoves(0.5f) +
-                            "\n-> Empieza "   + dado.whoStarts(jugadores) + "\n\n");
+        int[] cuentaArmas        = {0, 0, 0};
+        int[] cuentaHangares     = {0, 0};
+        int[] cuentaEscudos      = {0, 0};
+        int[] cuentaQuienDispara = {0, 0};
+        int[] haMovido           = {0, 0};
+        int[] cuentaQuienEmpieza = new int [jugadores];
+
+        for (int i = 0; i < jugadores; i++) {
+            cuentaQuienEmpieza[i] = 0;
         }
+
+        for (int i=0; i < 100; i++) {
+            cuentaHangares[dado.initWithNHangars()]++;
+            cuentaEscudos[dado.initWithNShields()]++;
+            cuentaArmas[dado.initWithNWeapons() - 1]++;
+            cuentaQuienEmpieza[dado.whoStarts(jugadores)]++;
+
+            if (dado.spaceStationMoves(velocidad))
+                haMovido[1]++;
+            else
+                haMovido[0]++;
+
+            if (dado.firstShot() == GameCharacter.ENEMYSTARSHIP)
+                cuentaQuienDispara[0]++;
+            else
+                cuentaQuienDispara[1]++;
+        }
+
+        System.out.print("Hangares: 0 -> " + cuentaHangares[0] + ", 1 -> " + cuentaHangares[1] + "\n");
+        System.out.print("Escudos: 0 -> " + cuentaEscudos[0] + ", 1 -> " + cuentaEscudos[1] + "\n");
+        System.out.print("Armas: 1 -> " + cuentaArmas[0] + ", 2 -> " + cuentaArmas[1] + ", 3 -> " + cuentaArmas[2] + "\n");
+        System.out.print("Quién dispara: EnemyStarship -> " + cuentaQuienDispara[0] + ", SpaceStation -> " + cuentaQuienDispara[1] + "\n");
+        System.out.print("Ha conseguido mover: " + haMovido[1] + ". No lo ha conseguido: " + haMovido[0] + "\n");
+        System.out.print("Qué jugador empieza: \n");
+
+        for (int i = 0; i < jugadores; i++) {
+            System.out.print("Jugador " + (i+1) +": " + cuentaQuienEmpieza[i] + "\n");
+        }
+
     }
 }

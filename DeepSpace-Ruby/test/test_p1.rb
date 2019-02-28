@@ -38,15 +38,17 @@ module DeepSpace
 
             dado = Dice.new()
             jugadores = 5
+            velocidad = 0.5
 
             puts "Prueba de métodos de Dice"
             puts "Jugadores: #{jugadores}"
             puts "Hacemos 100 iteraciones para ver la generación de números aleatorios:"
 
-            cuenta_hangares      = [0,0]
-            cuenta_escudos       = [0,0]
-            cuenta_armas         = [0,0,0]
-            cuenta_quien_dispara = [0,0]
+            cuenta_armas         = [0, 0, 0]
+            cuenta_hangares      = [0, 0]
+            cuenta_escudos       = [0, 0]
+            cuenta_quien_dispara = [0, 0]
+            ha_movido            = [0, 0]
             cuenta_quien_empieza = Array.new(jugadores, 0)
 
             for i in 1..100
@@ -55,18 +57,24 @@ module DeepSpace
                 cuenta_armas[dado.initWithNWeapons - 1]  += 1
                 cuenta_quien_empieza[dado.whoStarts(jugadores) - 1] += 1
 
-                if dado.spaceStationMoves(0.5) == GameCharacter::ENEMYSTARSHIP
+                if dado.spaceStationMoves(velocidad)
+                    ha_movido[1] += 1
+                else
+                    ha_movido[0] += 1
+                end
+
+                if dado.firstShot() == GameCharacter::ENEMYSTARSHIP
                     cuenta_quien_dispara[0] += 1
                 else
                     cuenta_quien_dispara[1] += 1
                 end
-
             end
 
-            puts "Hangares: 0 -> #{cuenta_hangares[0]}, 0 -> #{cuenta_hangares[1]}"
-            puts "Escudos: 0 -> #{cuenta_escudos[0]}, 0 -> #{cuenta_escudos[1]}"
+            puts "Hangares: 0 -> #{cuenta_hangares[0]}, 1 -> #{cuenta_hangares[1]}"
+            puts "Escudos: 0 -> #{cuenta_escudos[0]}, 1 -> #{cuenta_escudos[1]}"
             puts "Armas: 1 -> #{cuenta_armas[0]}, 2 -> #{cuenta_armas[1]}, 3 -> #{cuenta_armas[2]}"
-            puts "Quién mueve: ENEMYSTARSHIP #{cuenta_quien_dispara[0]}, SPACESTATION #{cuenta_quien_dispara[1]}"
+            puts "Quién dispara: ENEMYSTARSHIP #{cuenta_quien_dispara[0]}, SPACESTATION #{cuenta_quien_dispara[1]}"
+            puts "Ha conseguido mover: #{ha_movido[1]}. No lo ha conseguido: #{ha_movido[0]}"
             puts "Qué jugador empieza:"
 
             for i in 0...jugadores
