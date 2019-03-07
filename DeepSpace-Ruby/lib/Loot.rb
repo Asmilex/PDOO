@@ -1,4 +1,6 @@
 # enconding:utf-8
+require_relative 'LootToUI.rb'
+
 module DeepSpace
     class Loot
         def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue)
@@ -8,7 +10,6 @@ module DeepSpace
             @nHangars  = hangarsValue
             @nMedals   = medalsValue
         end
-
 
         def nSupplies
             @nSupplies
@@ -29,6 +30,11 @@ module DeepSpace
         def nMedals
             @nMedals
         end
+
+        def getUIversion
+            t = LootToUI.new(self)
+        end
+
 
     end
 end

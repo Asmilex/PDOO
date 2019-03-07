@@ -29,7 +29,8 @@ module DeepSpace
             return 1.0
          end
       end
-
+      l = ShieldBooster.new("a",1,1)
+      s = ShieldBooster.newCopy(l)
    end
 
 end
