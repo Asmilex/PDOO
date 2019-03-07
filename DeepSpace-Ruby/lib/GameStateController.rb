@@ -6,17 +6,17 @@ module Deepspace
 
 # 7.4.17 - Translation from Java
 # @author Profe
-    
-class GameStateController 
+
+class GameStateController
 
     attr_reader :state
-    
-    def initialize () 
-        @state=GameState::CANNOTPLAY;        
+
+    def initialize ()
+        @state = GameState::CANNOTPLAY;
     end
 
-    
-    def next(turn,nPlayers) 
+
+    def next(turn,nPlayers)
         case @state
             when GameState::CANNOTPLAY
                 @state=GameState::INIT

@@ -17,12 +17,12 @@ public class LootToUI {
     private final int nMedals;
 
     LootToUI(Loot l) {
-        nSupplies=l.getNSupplies();
-        nWeapons=l.getNWeapons();
-        nShields=l.getNShields();
-        nHangars=l.getNHangars();
-        nMedals=l.getNMedals();
-    }  
+        nSupplies = l.getNSupplies();
+        nWeapons  = l.getNWeapons();
+        nShields  = l.getNShields();
+        nHangars  = l.getNHangars();
+        nMedals   = l.getNMedals();
+    }
 
     public int getnSupplies() {
         return nSupplies;
@@ -43,6 +43,6 @@ public class LootToUI {
     public int getnMedals() {
         return nMedals;
     }
-    
-    
+
+
 }

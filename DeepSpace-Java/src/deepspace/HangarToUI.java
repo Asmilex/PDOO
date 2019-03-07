@@ -14,18 +14,18 @@ import java.util.ArrayList;
 public class HangarToUI {
     private int maxElements;
     private ArrayList<WeaponToUI> weapons;
-    private ArrayList<ShieldToUI> shieldBoosters;    
-    
+    private ArrayList<ShieldToUI> shieldBoosters;
+
     HangarToUI(Hangar h) {
-        weapons=new ArrayList<>();
-        shieldBoosters=new ArrayList<>(); 
-    
-        maxElements=h.getMaxElements();
-        
-        for (Weapon w:h.getWeapons()) {
+        weapons        = new ArrayList<>();
+        shieldBoosters = new ArrayList<>();
+
+        maxElements = h.getMaxElements();
+
+        for (Weapon w: h.getWeapons()) {
             weapons.add(w.getUIversion());
         }
-        
+
         for(ShieldBooster s:h.getShieldBoosters()) {
             shieldBoosters.add(s.getUIversion());
         }
@@ -42,6 +42,6 @@ public class HangarToUI {
     public ArrayList<ShieldToUI> getShieldBoosters() {
         return shieldBoosters;
     }
-    
-    
+
+
 }

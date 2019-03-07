@@ -12,13 +12,13 @@ package deepspace;
 public class WeaponToUI {
     private WeaponType type;
     private float power;
-    private int uses;  
-    
+    private int uses;
+
     WeaponToUI(Weapon w) {
-        type=w.getType();
-        power=w.power();
-        uses=w.getUses();
-    }  
+        type  = w.getType();
+        power = w.power();
+        uses  = w.getUses();
+    }
 
     public WeaponType getType() {
         return type;
@@ -31,5 +31,5 @@ public class WeaponToUI {
     public int getUses() {
         return uses;
     }
-    
+
 }

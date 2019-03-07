@@ -13,16 +13,16 @@ public class EnemyToUI {
     private final String name;
     private final float ammoPower;
     private final float shieldPower;
-    
+
     private LootToUI loot;
-    private DamageToUI damage;   
-    
+    private DamageToUI damage;
+
     EnemyToUI(EnemyStarShip enemy) {
-        name=enemy.getName();
-        ammoPower=enemy.getAmmoPower();
-        shieldPower=enemy.getShieldPower();
-    
-        loot=enemy.getLoot().getUIversion();
+        name        = enemy.getName();
+        ammoPower   = enemy.getAmmoPower();
+        shieldPower = enemy.getShieldPower();
+
+        loot   = enemy.getLoot().getUIversion();
         damage = enemy.getDamage().getUIversion();
     }
 
@@ -45,6 +45,6 @@ public class EnemyToUI {
     public DamageToUI getDamage() {
         return damage;
     }
-    
-    
+
+
 }

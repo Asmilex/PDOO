@@ -3,27 +3,28 @@ module Deepspace
 
 # 2.3.17 - Translation from Java
 # @author Profe
-    
+
 class DamageToUI
-  
+
   attr_reader :nWeapons, :weapons, :nShields
-  
-  def initialize (d) 
-    @nWeapons=d.nWeapons
-    @nShields=d.nShields
-    tmp=d.weapons
-    if (tmp!=nil) then
-      @weapons=Array.new(tmp)
+
+  def initialize (d)
+    @nWeapons = d.nWeapons
+    @nShields = d.nShields
+    tmp       = d.weapons
+
+    if (tmp != nil) then
+      @weapons = Array.new(tmp)
     else
-      @weapons=nil
+      @weapons = nil
     end
   end
-    
+
   public
-  
-  def getWeaponInfo() 
+
+  def getWeaponInfo()
     out = "";
-    
+
     if (nWeapons == -1) then
       out += "[" + @weapons.join(", ") + "]"
     else
@@ -31,11 +32,11 @@ class DamageToUI
     end
     return out
   end
-    
+
   def to_s
     out = "Weapons: " + getWeaponInfo() + ", Shields: #{@nShields}"
   end
-  
+
 end # class
 
 end # module

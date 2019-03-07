@@ -14,43 +14,43 @@ import java.util.ArrayList;
 public class SpaceStationToUI {
     private String name;
     private int nMedals;
-    
-    private float ammoPower=1.0f;
-    private float fuelUnits=1.0f;
-    private float shieldPower=1.0f;
-    
+
+    private float ammoPower   = 1.0f;
+    private float fuelUnits   = 1.0f;
+    private float shieldPower = 1.0f;
+
     private ArrayList<WeaponToUI> weapons;
     private ArrayList<ShieldToUI> shieldBoosters;
-    private HangarToUI hangar;   
+    private HangarToUI hangar;
     private DamageToUI pendingDamage;
-    
+
     SpaceStationToUI(SpaceStation station) {
         weapons=new ArrayList<>();
-        shieldBoosters=new ArrayList<>(); 
-        
-        name=station.getName();
-        nMedals=station.getNMedals();
-        
-        ammoPower=station.getAmmoPower();
-        fuelUnits=station.getFuelUnits();
-        shieldPower=station.getShieldPower();
-        
+        shieldBoosters=new ArrayList<>();
+
+        name    = station.getName();
+        nMedals = station.getNMedals();
+
+        ammoPower   = station.getAmmoPower();
+        fuelUnits   = station.getFuelUnits();
+        shieldPower = station.getShieldPower();
+
         for (Weapon w:station.getWeapons()) {
             weapons.add(w.getUIversion());
         }
-        
+
         for(ShieldBooster s:station.getShieldBoosters()) {
             shieldBoosters.add(s.getUIversion());
         }
-        
-        Hangar h=station.getHangar();
-        if (h!=null) {
-            hangar=h.getUIversion();
+
+        Hangar h = station.getHangar();
+        if (h != null) {
+            hangar = h.getUIversion();
         }
         else {
-            hangar=null;
+            hangar = null;
         }
-            
+
         Damage d = station.getPendingDamage();
         if (d != null) {
           pendingDamage = d.getUIversion();
@@ -90,10 +90,10 @@ public class SpaceStationToUI {
     public HangarToUI getHangar() {
         return hangar;
     }
-    
+
     public DamageToUI getPendingDamage() {
         return pendingDamage;
     }
-    
-    
+
+
 }

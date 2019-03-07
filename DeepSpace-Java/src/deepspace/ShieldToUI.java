@@ -14,9 +14,9 @@ public class ShieldToUI {
     private int uses;
 
     ShieldToUI (ShieldBooster s) {
-        boost=s.getBoost();
-        uses=s.getUses();
-    }    
+        boost = s.getBoost();
+        uses  = s.getUses();
+    }
 
     public float getBoost() {
         return boost;
@@ -25,6 +25,6 @@ public class ShieldToUI {
     public int getUses() {
         return uses;
     }
-    
-    
+
+
 }

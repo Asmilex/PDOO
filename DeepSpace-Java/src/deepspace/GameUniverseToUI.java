@@ -12,10 +12,10 @@ package deepspace;
 public class GameUniverseToUI {
     SpaceStationToUI currentStation;
     EnemyToUI currentEnemy;
-    
+
     GameUniverseToUI(SpaceStation station,EnemyStarShip enemy) {
         currentStation = station.getUIversion();
-        currentEnemy= enemy.getUIversion();
+        currentEnemy   = enemy.getUIversion();
     }
 
     public SpaceStationToUI getCurrentStation() {
@@ -25,6 +25,6 @@ public class GameUniverseToUI {
     public EnemyToUI getCurrentEnemy() {
         return currentEnemy;
     }
-    
-    
+
+
 }
