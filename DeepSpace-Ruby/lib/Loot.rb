@@ -9,8 +9,9 @@ module DeepSpace
             @nMedals   = medalsValue
         end
 
+
         def nSupplies
-            return @nSupplies
+            @nSupplies
         end
 
         def nWeapons
