@@ -8,9 +8,9 @@ module Deepspace
         end
 
         def newCopy(s)
-            @name = s.name()
-            @type = s.type()
-            @uses = s.uses()
+            @name = s.name
+            @type = s.type
+            @uses = s.uses
         end
 
         def name
@@ -32,11 +32,15 @@ module Deepspace
         def useIt
             if @uses > 0
                 @uses -= 1
-                return @uses
             else
                 1.0
             end
         end
+      
+        def getUIversion
+            l = WeapontoUI.new(self)
+        end
+            
 
     end
 end

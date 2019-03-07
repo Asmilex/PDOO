@@ -1,4 +1,6 @@
 #encoding: UTF-8
+require_relative 'ShieldToUI.rb'
+
 module Deepspace
    class ShieldBooster
       def initialize (n, b, u)
@@ -32,6 +34,9 @@ module Deepspace
          end
       end
 
+      def getUIversion
+         t = ShieldToUI.new(self)
+      end
 
    end
 
