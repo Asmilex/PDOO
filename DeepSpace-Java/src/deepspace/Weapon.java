@@ -44,4 +44,9 @@ package deepspace;
                 return 1.0f;
             }
         }
+
+        WeaponToUI getUIversion () {
+            return new WeaponToUI(this);
+        }
+
     }

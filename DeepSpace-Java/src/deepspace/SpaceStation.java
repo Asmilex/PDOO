@@ -1,0 +1,5 @@
+package deepspace;
+
+class SpaceStation {
+    
+}

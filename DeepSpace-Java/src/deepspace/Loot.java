@@ -41,4 +41,8 @@ package deepspace;
         public int getNWeapons() {
             return nWeapons;
         }
+
+        LootToUI getUIversion() { // FIXME public o private?
+            return new LootToUI(this);
+        }
     }
