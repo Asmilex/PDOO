@@ -1,5 +1,5 @@
 # encoding:utf-8
-module DeepSpace
+module Deepspace
     class Weapon
         def initialize (nombre, tipo, usos)
             @name = nombre
@@ -11,6 +11,10 @@ module DeepSpace
             @name = s.name()
             @type = s.type()
             @uses = s.uses()
+        end
+
+        def name
+            @name
         end
 
         def type

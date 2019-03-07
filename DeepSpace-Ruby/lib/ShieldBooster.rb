@@ -1,5 +1,5 @@
 #encoding: UTF-8
-module DeepSpace
+module Deepspace
    class ShieldBooster
       def initialize (n, b, u)
          @name  = n
@@ -9,8 +9,10 @@ module DeepSpace
 
       def self.newCopy (s)
          t = ShieldBooster.new(s.name(), s.boost(), s.uses())
-         
-         return t
+      end
+
+      def name
+         @name
       end
 
       def boost
@@ -29,8 +31,9 @@ module DeepSpace
             return 1.0
          end
       end
-      l = ShieldBooster.new("a",1,1)
-      s = ShieldBooster.newCopy(l)
+
+
    end
 
 end
+

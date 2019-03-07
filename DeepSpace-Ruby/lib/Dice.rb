@@ -1,5 +1,5 @@
 #encoding: UTF-8
-module DeepSpace
+module Deepspace
    class Dice
       def initialize
          @NHANGARSPROB  = 0.25

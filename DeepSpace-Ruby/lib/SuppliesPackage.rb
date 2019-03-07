@@ -1,6 +1,6 @@
 #encoding: UTF-8
 
-module DeepSpace
+module Deepspace
    class SuppliesPackage
 
       def initialize(a, f, s)

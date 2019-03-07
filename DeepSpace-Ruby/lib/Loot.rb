@@ -1,7 +1,7 @@
 # enconding:utf-8
 require_relative 'LootToUI.rb'
 
-module DeepSpace
+module Deepspace
     class Loot
         def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue)
             @nSupplies = suppliesValue
