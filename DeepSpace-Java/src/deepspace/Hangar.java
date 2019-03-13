@@ -58,7 +58,7 @@ class Hangar {
     }
 
     private boolean SpaceAvailable () {
-        // NOTE se refiere al tamaño entre ambos o al individual?
+        return shields.size() + weapons.size() < maxElements;
     }
 
 //
@@ -72,7 +72,6 @@ class Hangar {
     public Weapon removeWeapon (int w) {
         return weapons.remove(w);
     }
-
 
     HangarToUI getUIversion () {
         return new HangarToUI(this);

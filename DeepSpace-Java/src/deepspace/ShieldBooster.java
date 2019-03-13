@@ -40,7 +40,7 @@ package deepspace;
                 return 1.0f;
         }
 
-        ShieldToUI getUIversion() { // FIXME
+        ShieldToUI getUIversion() {
             return new ShieldToUI(this);
         }
     }
