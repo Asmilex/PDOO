@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 class Damage {
     private int nShields;
+
     private int nWeapons;
+    // Complementarios
     private ArrayList<WeaponType> weapons = new ArrayList<>();
 
     Damage (int w, int s) {
@@ -38,9 +40,25 @@ class Damage {
         return -1;
     }
 
-
     public Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-        //TODO
+        // Descartar escudos
+        int nuevo_escudo = Math.min(s.size(), nShields);
+
+        // Descartar armas
+        if (weapons.size() == 0) {
+            int nuevo_dano = Math.min(w.size(), nWeapons);
+
+            return new Damage(nuevo_dano, nuevo_escudo);
+        }
+        else {
+            ArrayList<WeaponType> nuevos_tipos = new ArrayList<>();
+
+            for (Weapon arma: w)
+                if ( weapons.contains(arma.getType()) )
+                    nuevos_tipos.add(arma.getType());
+
+            return new Damage(nuevos_tipos, nuevo_escudo);
+        }
     }
 
     public void discardWeapon (Weapon w) {
@@ -58,7 +76,7 @@ class Damage {
     }
 
     public boolean hasNoEffect () {
-        // TODO
+        return nShields == 0 && nWeapons == 0 && weapons.size() == 0;
     }
 
 //

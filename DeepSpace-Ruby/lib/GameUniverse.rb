@@ -24,7 +24,7 @@ class GameUniverse
         # TODO siguiente práctica
     end
 
-    #
+#
 # ───────────────────────────────────────────────────────────────── DISCARDS ─────
 #
 
