@@ -1,5 +1,5 @@
 # encoding:utf-8
-
+module Deepspace
 class GameUniverse
     attr_reader :gameState,
 
@@ -102,4 +102,5 @@ class GameUniverse
     def nextTurn
         # TODO siguiente práctica
     end
+end
 end

@@ -1,9 +1,9 @@
 # encoding:utf-8
-
+module Deepspace
 class SpaceStation
    @@MAXFUEL = 100
    @@SHIELDLOSSPERUNITSHOT = 0.1
-   
+
    def initialize
       @ammoPower
       @fuelUnits
@@ -19,14 +19,15 @@ class SpaceStation
    def assignFuelValue (f)
       @fuelUnits = Math.max(@@MAXFUEL,f)
    end
-   
+
    def cleanPendingDamage()
       if(@pendingDamage.hasNoEffect)
          @pendingDamage = null
    end
 
    def receiveWeapon(Weapon w)
-   # ESTO FALTA POR HACERLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  
+   # ESTO FALTA POR HACERLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
    end
-      
+
+end
 end

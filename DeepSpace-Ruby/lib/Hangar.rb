@@ -1,5 +1,5 @@
 # encoding:utf-8
-
+module Deepspace
 class Hangar
     attr_reader :maxElements, :weapons, :shields
 
@@ -51,4 +51,5 @@ class Hangar
     def getUIversion
         HangarToUI.new(self)
     end
+end
 end

@@ -1,5 +1,5 @@
 # encoding:utf-8
-
+module Deepspace
 class EnemyStarShip
 
 #
@@ -44,4 +44,5 @@ class EnemyStarShip
     end
 
     attr_reader :name, :loot, :damgage, :ammoPower, :shieldPower
+end
 end
