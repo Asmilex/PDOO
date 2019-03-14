@@ -1,34 +1,16 @@
 # enconding:utf-8
-require_relative 'LootToUI.rb'
+require_relative 'LootToUI'
 
 module Deepspace
 class Loot
+    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals
+
     def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue)
         @nSupplies = suppliesValue
         @nWeapons  = weaponsValue
         @nShields  = shieldsValue
         @nHangars  = hangarsValue
         @nMedals   = medalsValue
-    end
-
-    def nSupplies
-        @nSupplies
-    end
-
-    def nWeapons
-        @nWeapons
-    end
-
-    def nShields
-        @nShields
-    end
-
-    def nHangars
-        @nHangars
-    end
-
-    def nMedals
-        @nMedals
     end
 
     def getUIversion

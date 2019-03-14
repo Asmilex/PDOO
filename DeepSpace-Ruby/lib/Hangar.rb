@@ -1,4 +1,7 @@
 # encoding:utf-8
+require_relative 'Weapon'
+require_relative 'ShieldBooster'
+
 module Deepspace
 class Hangar
     attr_reader :maxElements, :weapons, :shields

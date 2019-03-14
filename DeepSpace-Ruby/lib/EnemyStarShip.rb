@@ -1,4 +1,8 @@
 # encoding:utf-8
+require_relative 'Loot'
+require_relative 'Damage'
+require_relative 'ShotResult'
+
 module Deepspace
 class EnemyStarShip
 

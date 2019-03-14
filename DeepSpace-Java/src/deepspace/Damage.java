@@ -2,9 +2,6 @@ package deepspace;
 
 import java.util.ArrayList;
 
-// NOTE Convendría volver a repasar el código una vez sepamos qué tiene que hacer exactamente
-// Ahora mismo voy un poco a ciegas
-
 class Damage {
     private int nShields;
 

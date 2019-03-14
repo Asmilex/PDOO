@@ -1,4 +1,9 @@
 # encoding:utf-8
+
+require_relative 'WeaponType'
+require_relative 'Weapon'
+require_relative 'DamageToUI'
+
 module Deepspace
 class Damage
     attr_reader :nShields, :nWeapons, :weapons
@@ -57,6 +62,7 @@ class Damage
     end
 
     def hasNoEffect
+        # FIXME , creo?
         @nShields == 0 and @nWeapons == 0 and @weapons.size == 0
     end
 
