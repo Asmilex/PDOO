@@ -1,6 +1,7 @@
 # encoding:utf-8
 module Deepspace
 class Weapon
+    attr_reader :name, :type, :uses
     def initialize (nombre, tipo, usos)
         @name = nombre
         @type = tipo
@@ -11,18 +12,6 @@ class Weapon
         @name = s.name
         @type = s.type
         @uses = s.uses
-    end
-
-    def name
-        @name
-    end
-
-    def type
-        @type
-    end
-
-    def uses
-        @uses
     end
 
     def power
