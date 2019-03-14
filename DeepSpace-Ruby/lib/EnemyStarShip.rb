@@ -36,7 +36,7 @@ class EnemyStarShip
     end
 
     def receiveShot (shot)
-        if shot < @shieldPower
+        if shot >= @shieldPower
             ShotResult::DONOTRESIST
         else
             ShotResult::RESIST

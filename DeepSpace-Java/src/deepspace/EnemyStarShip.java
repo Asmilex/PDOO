@@ -68,7 +68,7 @@ class EnemyStarShip {
     public ShotResult receiveShot (float shot) {
         // FIXME hace falta reducir los escudos?
 
-        if (shot < shieldPower)
+        if (shot >= shieldPower)
             return ShotResult.DONOTRESIST;
         else
             return ShotResult.RESIST;

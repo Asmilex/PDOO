@@ -8,14 +8,14 @@ import java.util.ArrayList;
 class Damage {
     private int nShields;
     private int nWeapons;
-    private ArrayList<Weapon> weapons = new ArrayList<>();
+    private ArrayList<WeaponType> weapons = new ArrayList<>();
 
     Damage (int w, int s) {
-        nShields = s;
         nWeapons = w;
+        nShields = s;
     }
 
-    Damage (ArrayList<Weapon> wl, int s) {
+    Damage (ArrayList<WeaponType> wl, int s) {
         weapons = wl;
         nShields = s;
     }
@@ -45,7 +45,7 @@ class Damage {
 
     public void discardWeapon (Weapon w) {
         if (weapons.size() != 0) {
-            weapons.remove(w);
+            weapons.remove(w.getType());
         }
         else if (nWeapons > 0){
             nWeapons--;
@@ -60,6 +60,10 @@ class Damage {
     public boolean hasNoEffect () {
         // TODO
     }
+
+//
+// ─────────────────────────────────────────────────────────────── INTERFACES ─────
+//
 
     public int getNShields () {
         return nShields;
