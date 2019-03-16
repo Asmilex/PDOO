@@ -1,6 +1,6 @@
 package deepspace;
 
-class EnemyStarShip {
+class EnemyStarShip implements Copyable <> {
 
     private Loot loot;
     private Damage damage;

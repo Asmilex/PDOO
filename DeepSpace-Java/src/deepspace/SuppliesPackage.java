@@ -1,6 +1,6 @@
 package deepspace;
 
-class SuppliesPackage {
+class SuppliesPackage implements Copyable <> {
    private float ammoPower;
    private float fuelUnits;
    private float shieldPower;

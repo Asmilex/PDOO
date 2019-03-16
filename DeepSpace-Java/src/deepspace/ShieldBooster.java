@@ -6,41 +6,41 @@ package deepspace;
 // ────────────────────────────────────────────────────────────────────────────────────────
 //
 
-    class ShieldBooster{
-        private String name;
-        private float boost;
-        private int uses;
+class ShieldBooster implements Copyable <> {
+    private String name;
+    private float boost;
+    private int uses;
 
-        ShieldBooster(String n, float b, int u) {
-            name  = n;
-            boost = b;
-            uses  = u;
-        }
+    ShieldBooster(String n, float b, int u) {
+        name  = n;
+        boost = b;
+        uses  = u;
+    }
 
-        ShieldBooster(ShieldBooster s) {
-            name  = s.name;
-            boost = s.boost;
-            uses  = s.uses;
-        }
+    ShieldBooster(ShieldBooster s) {
+        name  = s.name;
+        boost = s.boost;
+        uses  = s.uses;
+    }
 
-        public float getBoost() {
+    public float getBoost() {
+        return boost;
+    }
+
+    public int getUses() {
+        return uses;
+    }
+
+    public float useIt() {
+        if (uses > 0) {
+            uses--;
             return boost;
         }
-
-        public int getUses() {
-            return uses;
-        }
-
-        public float useIt() {
-            if (uses > 0) {
-                uses--;
-                return boost;
-            }
-            else
-                return 1.0f;
-        }
-
-        ShieldToUI getUIversion() {
-            return new ShieldToUI(this);
-        }
+        else
+            return 1.0f;
     }
+
+    ShieldToUI getUIversion() {
+        return new ShieldToUI(this);
+    }
+}

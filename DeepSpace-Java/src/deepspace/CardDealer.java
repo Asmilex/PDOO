@@ -15,18 +15,18 @@ import java.util.Arrays;
 class CardDealer {
     private static final CardDealer instance = new CardDealer();
 
-    CardDeck<SuppliesPackage> suppliesPackages;
-    CardDeck<ShieldBooster> shieldBoosters;
     CardDeck<Weapon> weapons;
     CardDeck<Hangar> hangars;
     CardDeck<EnemyStarShip> enemies;
+    CardDeck<ShieldBooster> shieldBoosters;
+    CardDeck<SuppliesPackage> suppliesPackages;
 
     private CardDealer() {
         suppliesPackages = new CardDeck<>();
-        shieldBoosters = new CardDeck<>();
-        weapons = new CardDeck<>();
-        hangars = new CardDeck<>();
-        enemies = new CardDeck<>();
+        shieldBoosters   = new CardDeck<>();
+        weapons          = new CardDeck<>();
+        hangars          = new CardDeck<>();
+        enemies          = new CardDeck<>();
 
         initCards();
     };
