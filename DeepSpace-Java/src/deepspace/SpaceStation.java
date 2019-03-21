@@ -26,7 +26,7 @@ class SpaceStation {
         fuelUnits = Math.min(f, MAXFUEL);
     }
 
-    private cleanPendingDamage () {
+    private void cleanPendingDamage () {
         if (pendingDamage.hasNoEffect())
             pendingDamage = null;
     }
@@ -113,7 +113,7 @@ class SpaceStation {
     }
 
     public SpaceStationToUI getUIversion () {
-        return new SpaceStationUI(this);
+        return new SpaceStationToUI(this);
     }
 
 
@@ -128,7 +128,7 @@ class SpaceStation {
 
     public boolean receiveShieldBooster (ShieldBooster s) {
         if (hangar != null)
-            return hangar.addShieldBoosters(s);
+            return hangar.addShieldBooster(s);
 
         return false;
     }

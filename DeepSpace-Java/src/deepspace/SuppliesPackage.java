@@ -1,6 +1,6 @@
 package deepspace;
 
-class SuppliesPackage implements Copyable <> {
+class SuppliesPackage implements Copyable <SuppliesPackage> {
    private float ammoPower;
    private float fuelUnits;
    private float shieldPower;
@@ -15,6 +15,11 @@ class SuppliesPackage implements Copyable <> {
       ammoPower   = s.getAmmoPower();
       fuelUnits   = s.getFuelUnits();
       shieldPower = s.getShieldPower();
+   }
+
+   @Override
+   public SuppliesPackage copy() {
+      return new SuppliesPackage(this);
    }
 
    public float getAmmoPower() {

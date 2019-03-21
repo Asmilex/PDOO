@@ -6,7 +6,7 @@ package deepspace;
 // ──────────────────────────────────────────────────────────────────────────
 //
 
-class Weapon implements Copyable <> {
+class Weapon implements Copyable <Weapon> {
     private String name;
     private WeaponType type;
     private int uses;
@@ -21,6 +21,11 @@ class Weapon implements Copyable <> {
         name = otro.name;
         type = otro.type;
         uses = otro.uses;
+    }
+
+    @Override
+    public Weapon copy() {
+        return new Weapon(this);
     }
 
     public WeaponType getType () {
@@ -48,5 +53,4 @@ class Weapon implements Copyable <> {
     WeaponToUI getUIversion () {
         return new WeaponToUI(this);
     }
-
 }

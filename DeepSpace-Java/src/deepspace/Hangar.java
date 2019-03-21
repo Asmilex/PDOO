@@ -2,7 +2,7 @@ package deepspace;
 
 import java.util.ArrayList;
 
-class Hangar implements Copyable <> {
+class Hangar implements Copyable <Hangar> {
     private int maxElements;
     private ArrayList<Weapon> weapons        = new ArrayList<>();
     private ArrayList<ShieldBooster> shields = new ArrayList<>();
@@ -16,6 +16,11 @@ class Hangar implements Copyable <> {
         maxElements = h.maxElements;
         weapons     = h.weapons;
         shields     = h.shields;
+    }
+
+    @Override
+    public Hangar copy() {
+        return new Hangar(this);
     }
 
 //
@@ -33,7 +38,7 @@ class Hangar implements Copyable <> {
         }
     }
 
-    public boolean addShieldBoosters (ShieldBooster s) {
+    public boolean addShieldBooster (ShieldBooster s) {
         if (SpaceAvailable()) {
             shields.add(s);
             return true;

@@ -63,4 +63,4 @@ class SafeHangarCardDeck extends CardDeck<Hangar> {
         return new Hangar(h) ;
     }
 }
-*/x
+*/

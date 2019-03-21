@@ -1,6 +1,6 @@
 package deepspace;
 
-class EnemyStarShip implements Copyable <> {
+class EnemyStarShip implements Copyable <EnemyStarShip> {
 
     private Loot loot;
     private Damage damage;
@@ -28,6 +28,10 @@ class EnemyStarShip implements Copyable <> {
         shieldPower = s.shieldPower;
     }
 
+    @Override
+    public EnemyStarShip copy() {
+        return new EnemyStarShip(this);
+    }
 
     EnemyToUI getUIversion() {
         return new EnemyToUI(this);

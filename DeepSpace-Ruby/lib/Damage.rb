@@ -8,19 +8,20 @@ module Deepspace
 class Damage
     attr_reader :nShields, :nWeapons, :weapons
 
-    def initialize (s)
+    def initialize (s, w, wl)
         @nShields = s
+        @nWeapons = w
+
+        @weapons = Array.new
+        @weapons = wl
     end
 
     def self.newNumericWeapon(s, w)
-        new(s)
-        @nWeapons = w
+        new(s, w, nil)
     end
 
     def self.newSpecificWeapon(s, wl)
-        new(s)
-        @weapons = Array.new
-        @weapons = wl
+        new(s, 0, wl)
     end
 
     def getUIversion

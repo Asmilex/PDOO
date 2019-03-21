@@ -90,7 +90,7 @@ class Damage {
         return nWeapons;
     }
 
-    public ArrayList<Weapon> getWeapons () {
+    public ArrayList<WeaponType> getWeapons () {
         return weapons;
     }
 

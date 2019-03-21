@@ -6,7 +6,7 @@ package deepspace;
 // ────────────────────────────────────────────────────────────────────────────────────────
 //
 
-class ShieldBooster implements Copyable <> {
+class ShieldBooster implements Copyable <ShieldBooster> {
     private String name;
     private float boost;
     private int uses;
@@ -21,6 +21,11 @@ class ShieldBooster implements Copyable <> {
         name  = s.name;
         boost = s.boost;
         uses  = s.uses;
+    }
+
+    @Override
+    public ShieldBooster copy() {
+        return new ShieldBooster(this);
     }
 
     public float getBoost() {

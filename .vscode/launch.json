@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TestP2",
+            "request": "launch",
+            "mainClass": "deepspace.TestP2"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - TestP1",
             "request": "launch",
             "mainClass": "test.TestP1",
