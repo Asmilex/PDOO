@@ -15,13 +15,15 @@ class Damage {
     }
 
     Damage (ArrayList<WeaponType> wl, int s) {
-        weapons = wl;
+        weapons  = wl;
         nShields = s;
+        nWeapons = 0;
     }
 
     Damage (Damage d) {
         nShields = d.nShields;
         nWeapons = d.nWeapons;
+        weapons  = d.weapons;
     }
 
     DamageToUI getUIversion () {

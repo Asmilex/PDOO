@@ -13,7 +13,9 @@ class Hangar implements Copyable <> {
     }
 
     Hangar (Hangar h) {
-        maxElements = h;
+        maxElements = h.maxElements;
+        weapons     = h.weapons;
+        shields     = h.shields;
     }
 
 //

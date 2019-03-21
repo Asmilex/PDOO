@@ -66,8 +66,6 @@ class EnemyStarShip implements Copyable <> {
     }
 
     public ShotResult receiveShot (float shot) {
-        // FIXME hace falta reducir los escudos?
-
         if (shot >= shieldPower)
             return ShotResult.DONOTRESIST;
         else
