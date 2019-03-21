@@ -19,7 +19,7 @@ class EnemyStarShip
     end
 
     def self.newCopy(s)
-        new (s.name, s.loot, s.damage, s.ammoPower, s.shieldPower)
+        new(s.name, s.loot, s.damage, s.ammoPower, s.shieldPower)
     end
 
 
