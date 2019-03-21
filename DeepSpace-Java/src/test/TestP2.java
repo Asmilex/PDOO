@@ -11,7 +11,7 @@ public class TestP2 {
     // ─── HANGAR ─────────────────────────────────────────────────────────────────────
     //
 
-        System.out.format("\nPruebas de hangar\n");
+        System.out.format("\n\nPruebas de hangar\n");
 
         Hangar hangar1;
         hangar1 = new Hangar(5);
@@ -49,7 +49,7 @@ public class TestP2 {
     // ─── DAMAGE ─────────────────────────────────────────────────────────────────────
     //
 
-        System.out.format("\nPruebas de damage\n");
+        System.out.format("\n\nPruebas de damage\n");
 
         Damage damage1, damage2, damage3;
         ArrayList <WeaponType> wl=new ArrayList<>();
@@ -85,7 +85,7 @@ public class TestP2 {
         ArrayList<WeaponType> vacio = new ArrayList<>();
         Damage damagenull;
 
-        System.out.format("\nPrueba de hasNoEffect:");
+        System.out.format("\n\nPrueba de hasNoEffect:");
         damagenull = new Damage(vacio,0);
 
         if(damagenull.hasNoEffect())
@@ -107,7 +107,7 @@ public class TestP2 {
     // ─── ENEMYSTARSHIP ──────────────────────────────────────────────────────────────
     //
 
-        System.out.format("\nPrueba de EnemyStarShip\n");
+        System.out.format("\n\nPrueba de EnemyStarShip\n");
 
 
         Loot loot;
@@ -129,7 +129,7 @@ public class TestP2 {
     //
 
 
-        System.out.format("\n\nPrueba de SpaceStation\n");
+        System.out.format("\n\n\nPrueba de SpaceStation\n");
 
         SuppliesPackage suppliesPackage, suppliesPackage1;
         suppliesPackage  = new SuppliesPackage(30,150,25);
@@ -147,7 +147,7 @@ public class TestP2 {
         System.out.format("\n%s\n",spaceStation.toString());
 
         if(spaceStation.validState())
-            System.out.format("\nLa estacion esta bien\n");
+            System.out.format("\nLa estacion está bien\n");
 
         arma4        = new Weapon("Bazooka",WeaponType.MISSILE,5);
         potenciador3 = new ShieldBooster("CapaExtra",5,7);
@@ -169,34 +169,9 @@ public class TestP2 {
 
         spaceStation.getWeapons().get(0).useIt();
         spaceStation.getWeapons().get(0).useIt();
-        spaceStation.getShieldBoosters().get(0).useIt();
+
         spaceStation.cleanUpMountedItems();
         System.out.format("\n\nDespués de hacer unos usos y una limpieza: %s\n", spaceStation.toString());
 
-        System.out.format("\nPrueba de GameUniverse");
-
-        GameUniverse      gameUniverse = new GameUniverse();
-        ArrayList<String> nombres      = new ArrayList<>();
-
-        nombres.add("Andrés");
-        nombres.add("Mapachana");
-        nombres.add("Ana");
-        nombres.add("Asmilex");
-        nombres.add("Mupachana");
-
-        gameUniverse.init(nombres);
-        System.out.format("\n%s\n",gameUniverse.toString());
-
-        CombatResult combatresult;
-        EnemyStarShip enemystarship2 = new EnemyStarShip("HalconMilenario2", 1000, 1000, loot, damage2);
-
-        combatresult = gameUniverse.combat(spaceStation, enemystarship2);
-        System.out.format("\n%s\n",combatresult.toString());
-
-
-        if (gameUniverse.nextTurn())
-            System.out.format("TURNO SIGUIENTE");
-        else
-            System.out.format("MISMO TURNO");
     }
 }

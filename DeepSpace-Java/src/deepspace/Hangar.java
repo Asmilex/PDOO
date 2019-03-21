@@ -73,14 +73,26 @@ class Hangar implements Copyable <Hangar> {
 //
 
     public ShieldBooster removeShieldBooster (int s) {
-        return shields.remove(s);
+        if (s < shields.size())
+            return shields.remove(s);
+        else
+            return null;
     }
 
     public Weapon removeWeapon (int w) {
-        return weapons.remove(w);
+        if (w < weapons.size())
+            return weapons.remove(w);
+        else
+            return null;
     }
 
     HangarToUI getUIversion () {
         return new HangarToUI(this);
+    }
+
+    public String toString() {
+        return    "\t-> Elementos máximos: " + maxElements
+                + "\n\t-> Tamaño armas: " + weapons.size()
+                + "\n\t-> Tamaño escudos: " + shields.size();
     }
 }

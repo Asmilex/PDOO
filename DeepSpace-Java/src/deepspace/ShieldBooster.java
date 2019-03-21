@@ -48,4 +48,10 @@ class ShieldBooster implements Copyable <ShieldBooster> {
     ShieldToUI getUIversion() {
         return new ShieldToUI(this);
     }
+
+    public String toString() {
+        return    "-> Nombre: " + name
+                + "\n\t-> Boost: " + boost
+                + "\n\t-> Usos: " + uses;
+    }
 }

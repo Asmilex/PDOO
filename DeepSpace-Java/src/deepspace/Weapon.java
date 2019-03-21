@@ -53,4 +53,11 @@ class Weapon implements Copyable <Weapon> {
     WeaponToUI getUIversion () {
         return new WeaponToUI(this);
     }
+
+    @Override
+    public String toString() {
+        return    "-> Nombre: " + name
+                + "\n\t-> Tipo: " + type
+                + "\n\t-> Usos: " + uses;
+    }
 }

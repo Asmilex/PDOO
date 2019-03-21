@@ -45,4 +45,13 @@ package deepspace;
         LootToUI getUIversion() {
             return new LootToUI(this);
         }
+
+        @Override
+        public String toString() {
+            return    "-> Supplies: " + nSupplies
+                + "\n\t-> nWeapons: " + nWeapons
+                + "\n\t-> nShields: " + nShields
+                + "\n\t-> nHangars: " + nHangars
+                + "\n\t-> nMedals:" + nMedals;
+        }
     }

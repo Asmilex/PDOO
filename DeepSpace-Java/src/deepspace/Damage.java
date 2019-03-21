@@ -94,4 +94,7 @@ class Damage {
         return weapons;
     }
 
+    public String toString() {
+        return "Daño a escudos: " + nShields;
+    }
 }

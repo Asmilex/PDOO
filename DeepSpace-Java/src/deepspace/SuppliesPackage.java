@@ -34,4 +34,12 @@ class SuppliesPackage implements Copyable <SuppliesPackage> {
       return shieldPower;
    }
 
+   @Override
+   public String toString() {
+      return    "-> Gasolina: " + fuelUnits
+                + "\n\t-> Potencia: " + ammoPower
+                + "\n\t-> Escudos: " + shieldPower;
+
+   }
+
 }
