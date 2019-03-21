@@ -52,13 +52,13 @@ class Damage
         if @weapons.size != 0
             @weapons.add(w.type)
         elsif @nWeapons > 0
-            @nWeapons--
+            @nWeapons-=1
         end
     end
 
     def discardShieldBooster
         if @nShields > 0
-            @nShields--
+            @nShields-=1
         end
     end
 

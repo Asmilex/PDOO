@@ -206,5 +206,8 @@ class SpaceStation {
         for (Weapon arma: weapons)
             if (arma.getUses() == 0)
                 weapons.remove(arma);
+        for (ShieldBooster escudo: shieldBoosters)
+            if(escudo.getUses() == 0)
+                shieldBoosters.remove(escudo);
     }
 }
