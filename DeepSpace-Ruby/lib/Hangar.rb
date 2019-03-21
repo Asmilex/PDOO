@@ -15,7 +15,7 @@ class Hangar
     def self.newCopy (h)
         auxiliar = Hangar.new(h.maxElements)
 
-        h.shields.each { |escudos| auxiliar.addShieldBoosers(escudos) }
+        h.shields.each { |escudos| auxiliar.addShieldBoosters(escudos) }
         h.weapons.each { | armas | auxiliar.addWeapon(armas)}
 
         auxiliar

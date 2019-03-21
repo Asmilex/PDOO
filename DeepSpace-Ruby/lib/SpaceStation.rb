@@ -8,7 +8,7 @@ require_relative "Loot"
 require_relative "ShieldBooster"
 require_relative "CardDealer"
 require_relative "SpaceStationToUI"
-require_relative "Transformation"
+
 
 module Deepspace
 class SpaceStation
@@ -68,8 +68,8 @@ class SpaceStation
       @fuelUnits/@@MAXFUEL
    end
 
-   public SpaceStationToUI getUIversion
-      SpaceStationUI.new(self)
+   public def getUIversion
+      s = SpaceStationToUI.new(self)
    end
    
 

@@ -24,13 +24,14 @@ module Deepspace
       potenciador3=ShieldBooster.new("Hierro",2,4)
       
       hangar1.addWeapon(arma1)
-      hangar1.addShieldBooster(potenciador1)
+      hangar1.addShieldBoosters(potenciador1)
       hangar1.addWeapon(arma2)
-      hangar1.addShieldBooster(potenciador2)
+      hangar1.addShieldBoosters(potenciador2)
       hangar1.addWeapon(arma3)
-      hangar1.addShieldBooster(potenciador3)
+      hangar1.addShieldBoosters(potenciador3)
       
       puts hangar1.to_s
+      puts hangar1.inspect
       
       #puts"\n\nConstruimos una copia y le eliminamos algunos items:"
       
@@ -38,22 +39,27 @@ module Deepspace
       hangar2.removeShieldBooster(1)
       hangar2.removeWeapon(2)
       
-      #puts hangar2.to_s
+      puts hangar2.to_s
+      puts hangar2.inspect
       
       puts "\n\nPrueba de Damage\n"
-      damage1=Damage.newNumericWeapons(5,4)#0 armas y 4 escudos
+      damage1=Damage.newNumericWeapon(5,4)#0 armas y 4 escudos
       wl=[WeaponType::PLASMA,WeaponType::MISSILE,WeaponType::PLASMA]
-      damage2=Damage.newSpecificWeapons(wl,2)#Vector de tipos y 2 escudos
+      damage2=Damage.newSpecificWeapon(wl,2)#Vector de tipos y 2 escudos
       
       puts damage1.to_s
+      puts damage1.inspect
       puts damage2.to_s
+      puts damage2.inspect
 
-      damage3=damage1.adjust(hangar1.weapons, hangar1.shieldBoosters)
+      damage3=damage1.adjust(hangar1.weapons, hangar1.shields)
       puts "\ndamage1 ajustado:\n"
       puts damage3.to_s
+      puts damage3.inspect
       #damage3=damage2.adjust(hangar1.weapons, hangar1.shieldBoosters)
       puts "\ndamage2 ajustado:\n"
       puts damage3.to_s
+      puts damage3.inspect
       
       damage1.discardWeapon(arma1)
       #damage2.discardWeapon(arma1)#Si se cambia por arma3 no hace nada
@@ -84,6 +90,7 @@ module Deepspace
       loot=Loot.new(3,2,4,2,7) #3 suplementos, 2 armas, 4 escudos, 2 hangares, 7 medallas
       enemyStarShip=EnemyStarShip.new("HalconMilenario",30,25,loot,damage2)
       #puts enemyStarShip.to_s
+      #puts enemyStarShip.inspect
       
       #puts"Prueba de fire: #{enemyStarShip.fire}, Prueba de protection: #{enemyStarShip.protection}"
       #puts"\nPrueba de receiveShot"
@@ -103,10 +110,12 @@ module Deepspace
       spaceStation.setPendingDamage(damage1)
       spaceStation.receiveHangar(hangar1)
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       spaceStation.move
       spaceStation.receiveSupplies(suppliesPackage1)
       spaceStation.move
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       if(spaceStation.validState)
         #puts"\nLa estacion esta bien"
       end
@@ -123,13 +132,16 @@ module Deepspace
       spaceStation.mountShieldBooster(0)
       #puts"\n\nDespues de montarlo todo:\n"
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       if(spaceStation.receiveShieldBooster(potenciador3) && spaceStation.receiveWeapon(arma4))
         #puts"\n\nDespues de anadir un potenciador y un arma\n"
         #puts spaceStation.to_s
+        #inspect spaceStation.inspect
         spaceStation.discardWeaponInHangar(0)
         spaceStation.discardShieldBoosterInHangar(0)
         #puts"\n\nDespues de unos descartes en el hangar:\n"
         #puts spaceStation.to_s
+        #puts spaceStation.inspect
       end
       
       spaceStation.weapons.at(0).useIt
@@ -141,21 +153,26 @@ module Deepspace
       #spaceStation.discardHangar
       
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       
       loot=Loot.new(2,2,0,1,2)
       spaceStation.setLoot(loot)
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       puts "AmmoPower: #{spaceStation.ammoPower}"
       puts "\n FUEGOOOO #{spaceStation.fire}"
       puts "\n PROTECCIOOON #{spaceStation.protection}"
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       spaceStation.mountShieldBooster(0)
       spaceStation.mountWeapon(0)
       spaceStation.setPendingDamage(Damage.newSpecificWeapons([WeaponType::PLASMA, WeaponType::LASER, WeaponType::MISSILE], 3))
       #puts spaceStation.to_s
+      #puts spaceStation.inspect
       spaceStation.discardShieldBooster(0)
       spaceStation.discardWeapon(0)
       puts spaceStation.to_s
+      puts spaceStation.inspect
       puts spaceStation.receiveShot(10)
       
       
@@ -174,6 +191,7 @@ module Deepspace
       puts damage2.getUIversion.to_s
       puts "===================================================================="
       #puts gameUniverse.to_s
+      #puts gameUniverde.inspect
       if gameUniverse.nextTurn
         puts "TURNO SIGUIENTE"
       else
