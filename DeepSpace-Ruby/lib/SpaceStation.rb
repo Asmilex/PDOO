@@ -1,4 +1,15 @@
 # encoding:utf-8
+require_relative "SuppliesPackage"
+require_relative "Hangar"
+require_relative "Damage"
+require_relative "Weapon"
+require_relative "WeaponType"
+require_relative "Loot"
+require_relative "ShieldBooster"
+require_relative "CardDealer"
+require_relative "SpaceStationToUI"
+require_relative "Transformation"
+
 module Deepspace
 class SpaceStation
    @@MAXFUEL = 100
@@ -28,13 +39,14 @@ class SpaceStation
    private def cleanPendingDamage()
       if (@pendingDamage.hasNoEffect)
          @pendingDamage = nil
+      end
    end
 
 ################### discard
 
    def discardHangar()
          @hangar = nil
-      end
+   end
 
    def discardWeaponInHangar(i)
       if (@hangar != nil)
@@ -56,9 +68,10 @@ class SpaceStation
       @fuelUnits/@@MAXFUEL
    end
 
-   public SpaceStationToUI getUIversion () {
+   public SpaceStationToUI getUIversion
       SpaceStationUI.new(self)
-   }
+   end
+   
 
 ################### Receive
 
@@ -87,7 +100,7 @@ class SpaceStation
    def receiveSupplies(s)
       @ammoPower += s.ammoPower
       @shieldPower += s.shieldPower
-      @fuelUnits.assignFuelValue(s.guelUnits)
+      @fuelUnits.assignFuelValue(s.fuelUnits)
    end
 
 #################### Set
@@ -139,6 +152,7 @@ class SpaceStation
          end
       end
    end
+
    
       
 
