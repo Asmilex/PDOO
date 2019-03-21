@@ -34,7 +34,7 @@ class Hangar
         end
     end
 
-    def addShieldBoosers (s)
+    def addShieldBoosters (s)
         if self.SpaceAvaliable
             @shields.push(s)
             true
