@@ -8,7 +8,7 @@ module Deepspace
 class Damage
     attr_reader :nShields, :nWeapons, :weapons
 
-    def initialize (s, w, wl)
+    def initialize (w, s, wl)
         @nShields = s
         @nWeapons = w
 
@@ -16,12 +16,12 @@ class Damage
         @weapons = wl
     end
 
-    def self.newNumericWeapon(s, w)
-        new(s, w, nil)
+    def self.newNumericWeapons(w, s)
+        new(w, s, nil)
     end
 
-    def self.newSpecificWeapon(s, wl)
-        new(s, 0, wl)
+    def self.newSpecificWeapons(wl, s)
+        new(0, s, wl)
     end
 
     def getUIversion
@@ -37,22 +37,23 @@ class Damage
     end
 
     def adjust (w, s)
-        nuevo_escudo = [s.size, @nShields].min
+        nuevo_escudo = [s.length, @nShields].min
 
-        if @weapons.size == 0
-            nuevo_dano = [w.size, @nWeapons].min
 
-            return Damage.newNumericWeapon(nuevo_dano, nuevo_escudo)
+        if @weapons == nil
+            nuevo_dano = [w.length, @nWeapons].min
+
+            Damage.newNumericWeapons(nuevo_dano, nuevo_escudo)
         else
-            Damage.newSpecificWeapon(nuevo_escudo, @weapons & w)
+            Damage.newSpecificWeapons(nuevo_escudo, @weapons & w)
         end
     end
 
     def discardWeapon (w)
-        if @weapons.size != 0
-            @weapons.add(w.type)
+        if @weapons != nil
+            @weapons.delete(w.type)
         elsif @nWeapons > 0
-            @nWeapons-=1
+            @nWeapons -= 1
         end
     end
 
@@ -64,7 +65,7 @@ class Damage
 
     def hasNoEffect
         # FIXME , creo?
-        @nShields == 0 and @nWeapons == 0 and @weapons.size == 0
+        @nShields == 0 and @nWeapons == 0 and @weapons == nil
     end
 
     private_class_method :new

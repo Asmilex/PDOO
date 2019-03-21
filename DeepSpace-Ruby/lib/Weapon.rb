@@ -29,7 +29,5 @@ class Weapon
     def getUIversion
         l = WeapontoUI.new(self)
     end
-
-
 end
 end

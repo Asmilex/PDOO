@@ -17,23 +17,25 @@ class SpaceStation
 
 ##################### Constructor
 
-   def initialize
-      @ammoPower
-      @fuelUnits
-      @name
+   def initialize (n, supplies)
+      @name        = n
+      @ammoPower   = supplies.ammoPower
+      @fuelUnits   = supplies.fuelUnits
+      @shieldPower = supplies.shieldPower
+
       @nMedals
-      @shieldPower
-      @pendingDamage #array
-      @weapons #array
-      @shieldBoosters #array
       @hangar
+      @pendingDamage
+
+      @weapons        = Array.new
+      @shieldBoosters = Array.new
    end
 
 
 ################### Metodos privados
 
    private def assignFuelValue (f)
-      @fuelUnits = Math.max(@@MAXFUEL,f)
+      @fuelUnits = [@@MAXFUEL, f].max
    end
 
    private def cleanPendingDamage()
@@ -71,7 +73,7 @@ class SpaceStation
    public def getUIversion
       s = SpaceStationToUI.new(self)
    end
-   
+
 
 ################### Receive
 
@@ -100,7 +102,7 @@ class SpaceStation
    def receiveSupplies(s)
       @ammoPower += s.ammoPower
       @shieldPower += s.shieldPower
-      @fuelUnits.assignFuelValue(s.fuelUnits)
+      assignFuelValue(s.fuelUnits)
    end
 
 #################### Set
@@ -108,7 +110,7 @@ class SpaceStation
    def setPendingDamage(d)
       d.adjust(@weapons,@shieldBoosters)
    end
-   
+
    def mountWeapon(i)
       if (@hangar != nil)
          arma = @hangar.removeWeapon(i)
@@ -136,8 +138,7 @@ class SpaceStation
    end
 
    def validState
-      self.cleanPendingDamage
-      @pendingDamage == nil
+      @pendingDamage == nil or @pendingDamage.hasNoEffect
    end
 
    def cleanUpMountedItems
@@ -153,8 +154,8 @@ class SpaceStation
       end
    end
 
-   
-      
+
+
 
 end
 end
