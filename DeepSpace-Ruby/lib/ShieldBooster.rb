@@ -25,7 +25,7 @@ class ShieldBooster
       return @uses
    end
 
-   def uselt
+   def useIt
       if (@uses > 0)
          @uses -= 1
          return @boost

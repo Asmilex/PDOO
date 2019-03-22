@@ -15,7 +15,7 @@ class Hangar
     def self.newCopy (h)
         auxiliar = Hangar.new(h.maxElements)
 
-        h.shields.each { |escudos| auxiliar.addShieldBoosters(escudos) }
+        h.shields.each { |escudos| auxiliar.addShieldBooster(escudos) }
         h.weapons.each { | armas | auxiliar.addWeapon(armas)}
 
         auxiliar
@@ -34,7 +34,7 @@ class Hangar
         end
     end
 
-    def addShieldBoosters (s)
+    def addShieldBooster (s)
         if self.SpaceAvaliable
             @shields.push(s)
             true
@@ -44,11 +44,11 @@ class Hangar
     end
 
     def removeShieldBooster (s)
-        @shields.delete(s)
+        @shields.delete_at(s)
     end
 
     def removeWeapon (w)
-        @weapons.delete(w)
+        @weapons.delete_at(w)
     end
 
     def getUIversion

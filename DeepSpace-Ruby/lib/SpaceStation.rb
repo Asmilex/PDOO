@@ -50,10 +50,18 @@ class SpaceStation
          @hangar = nil
    end
 
+   def discardWeapon (i)
+      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+   end
+
    def discardWeaponInHangar(i)
       if (@hangar != nil)
          @hangar.removeWeapon(i)
       end
+   end
+
+   def discardShieldBooster (i)
+      puts "Siguiente práctica ¯\\_(ツ)_/¯"
    end
 
    def discardShieldBoosterInHangar(i)
@@ -80,6 +88,7 @@ class SpaceStation
    def receiveWeapon(w)
       if (@hangar != nil)
          @hangar.addWeapon(w)
+         true
       else
          false
       end
@@ -88,6 +97,7 @@ class SpaceStation
    def receiveShieldBooster(s)
       if (@hangar != nil)
          @hangar.addShieldBooster(s)
+         true
       else
          false
       end
@@ -105,17 +115,26 @@ class SpaceStation
       assignFuelValue(s.fuelUnits)
    end
 
+   def receiveShot (shot)
+      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+   end
+
 #################### Set
 
    def setPendingDamage(d)
       d.adjust(@weapons,@shieldBoosters)
    end
 
+   def setLoot (s)
+      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+   end
+
    def mountWeapon(i)
       if (@hangar != nil)
          arma = @hangar.removeWeapon(i)
+
          if (arma != nil)
-            @hangar.addWeapon(arma)
+            @weapons.push(arma)
          end
       end
    end
@@ -123,8 +142,9 @@ class SpaceStation
    def mountShieldBooster(i)
       if (@hangar != nil)
          escudo = @hangar.removeShieldBooster(i)
+
          if (escudo != nil)
-            @hangar.addShieldBoosters(escudo)
+            @shieldBoosters.push(escudo)
          end
       end
    end
@@ -135,6 +155,14 @@ class SpaceStation
 
    def move
       @fuelUnits -= self.getSpeed
+   end
+
+   def fire
+      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+   end
+
+   def protection
+      puts "Siguiente práctica ¯\\_(ツ)_/¯"
    end
 
    def validState
@@ -153,9 +181,5 @@ class SpaceStation
          end
       end
    end
-
-
-
-
 end
 end

@@ -24,11 +24,11 @@ module Deepspace
         potenciador3 = ShieldBooster.new("Hierro",2,4)
 
         hangar1.addWeapon(arma1)
-        hangar1.addShieldBoosters(potenciador1)
+        hangar1.addShieldBooster(potenciador1)
         hangar1.addWeapon(arma2)
-        hangar1.addShieldBoosters(potenciador2)
+        hangar1.addShieldBooster(potenciador2)
         hangar1.addWeapon(arma3)
-        hangar1.addShieldBoosters(potenciador3)
+        hangar1.addShieldBooster(potenciador3)
 
         puts hangar1.to_s
         puts hangar1.inspect
@@ -143,24 +143,27 @@ module Deepspace
             puts"Algo falla"
         end
 
-        spaceStation.mountWeapon(0)
-        spaceStation.mountWeapon(0)
-        spaceStation.mountWeapon(0)
-        spaceStation.mountShieldBooster(0)
-        spaceStation.mountShieldBooster(0)
-        #puts"\n\nDespues de montarlo todo:\n"
-        #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts "Antes de montarlo:\n"
+        puts spaceStation.inspect
 
-        if(spaceStation.receiveShieldBooster(potenciador3) && spaceStation.receiveWeapon(arma4))
-            #puts"\n\nDespues de anadir un potenciador y un arma\n"
-            #puts spaceStation.to_s
-            #inspect spaceStation.inspect
+        spaceStation.mountWeapon(0)
+        spaceStation.mountWeapon(0)
+        spaceStation.mountWeapon(0)
+        spaceStation.mountShieldBooster(0)
+        spaceStation.mountShieldBooster(0)
+        puts"\n\nDespues de montarlo todo:\n"
+        puts spaceStation.to_s
+        puts spaceStation.inspect
+
+        if spaceStation.receiveShieldBooster(potenciador3) && spaceStation.receiveWeapon(arma4)
+            puts"\n\nDespues de anadir un potenciador y un arma\n"
+            puts spaceStation.to_s
+            puts spaceStation.inspect
             spaceStation.discardWeaponInHangar(0)
             spaceStation.discardShieldBoosterInHangar(0)
-            #puts"\n\nDespues de unos descartes en el hangar:\n"
-            #puts spaceStation.to_s
-            #puts spaceStation.inspect
+            puts"\n\nDespues de unos descartes en el hangar:\n"
+            puts spaceStation.to_s
+            puts spaceStation.inspect
         end
 
         spaceStation.weapons.at(0).useIt
