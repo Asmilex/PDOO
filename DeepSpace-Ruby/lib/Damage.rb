@@ -42,7 +42,6 @@ class Damage
 
         if @weapons == nil
             nuevo_dano = [w.length, @nWeapons].min
-
             Damage.newNumericWeapons(nuevo_dano, nuevo_escudo)
         else
             Damage.newSpecificWeapons(nuevo_escudo, @weapons & w)

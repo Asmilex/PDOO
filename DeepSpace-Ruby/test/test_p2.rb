@@ -72,10 +72,12 @@ module Deepspace
         damage2.discardShieldBooster
         puts"damage1 y damage2 tras algunos descartes:"
         puts damage1.to_s
+        puts damage1.inspect
         puts damage2.to_s
+        puts damage2.inspect
 
         puts"\nPrueba de hasNoEffect:"
-        damagenull = Damage.newSpecificWeapons([],0)
+        damagenull = Damage.newSpecificWeapons(nil,0)
 
         if(damagenull.hasNoEffect)
             puts"Funciona"
@@ -101,16 +103,16 @@ module Deepspace
 
         loot          = Loot.new(3,2,4,2,7) #3 suplementos, 2 armas, 4 escudos, 2 hangares, 7 medallas
         enemyStarShip = EnemyStarShip.new("HalconMilenario",30,25,loot,damage2)
-        #puts enemyStarShip.to_s
-        #puts enemyStarShip.inspect
+        puts enemyStarShip.to_s
+        puts enemyStarShip.inspect
 
-        #puts"Prueba de fire: #{enemyStarShip.fire}, Prueba de protection: #{enemyStarShip.protection}"
-        #puts"\nPrueba de receiveShot"
+        puts"Prueba de fire: #{enemyStarShip.fire}, Prueba de protection: #{enemyStarShip.protection}"
+        puts"\nPrueba de receiveShot"
 
         if(enemyStarShip.receiveShot(30)==ShotResult::RESIST)
-            # puts"No funciona"
+             puts"No funciona"
         elsif (enemyStarShip.receiveShot(20)==ShotResult::RESIST && enemyStarShip.receiveShot(30)==ShotResult::DONOTRESIST)
-            # puts"Funciona"
+             puts"Funciona"
         end
 
 
@@ -125,15 +127,15 @@ module Deepspace
         spaceStation.setPendingDamage(damage1)
         spaceStation.receiveHangar(hangar1)
         #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts spaceStation.inspect
         spaceStation.move
         spaceStation.receiveSupplies(suppliesPackage1)
         spaceStation.move
         #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts spaceStation.inspect
 
         if(spaceStation.validState)
-            #puts"\nLa estacion esta bien"
+            puts"\nLa estacion esta bien"
         end
 
         arma4        = Weapon.new("Bazooka",WeaponType::MISSILE,5)
@@ -170,30 +172,30 @@ module Deepspace
         spaceStation.weapons.at(0).useIt
         spaceStation.shieldBoosters.at(0).useIt
         spaceStation.cleanUpMountedItems
-        #puts"\n\nDespues de unos usos y una limpieza:"
+        puts"\n\nDespues de unos usos y una limpieza:"
 
-        #spaceStation.discardHangar
+        spaceStation.discardHangar
 
-        #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts spaceStation.to_s
+        puts spaceStation.inspect
 
         loot = Loot.new(2,2,0,1,2)
         spaceStation.setLoot(loot)
 
-        #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts spaceStation.to_s
+        puts spaceStation.inspect
         puts "AmmoPower: #{spaceStation.ammoPower}"
         puts "\n FUEGOOOO #{spaceStation.fire}"
         puts "\n PROTECCIOOON #{spaceStation.protection}"
-        #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts spaceStation.to_s
+        puts spaceStation.inspect
 
         spaceStation.mountShieldBooster(0)
         spaceStation.mountWeapon(0)
         spaceStation.setPendingDamage(Damage.newSpecificWeapons([WeaponType::PLASMA, WeaponType::LASER, WeaponType::MISSILE], 3))
 
-        #puts spaceStation.to_s
-        #puts spaceStation.inspect
+        puts spaceStation.to_s
+        puts spaceStation.inspect
 
         spaceStation.discardShieldBooster(0)
         spaceStation.discardWeapon(0)
