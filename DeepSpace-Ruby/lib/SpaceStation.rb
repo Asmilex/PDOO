@@ -72,7 +72,7 @@ class SpaceStation
 
 ################### Interfaces
 
-   attr :nMedals, :name, :fuelUnits, :ammoPower, :hangar, :shieldBoosters, :weapons, :shieldPower
+   attr_reader :nMedals, :name, :fuelUnits, :ammoPower, :hangar, :shieldBoosters, :weapons, :shieldPower
 
    def getSpeed
       @fuelUnits/@@MAXFUEL
@@ -112,7 +112,7 @@ class SpaceStation
    def receiveSupplies(s)
       @ammoPower += s.ammoPower
       @shieldPower += s.shieldPower
-      assignFuelValue(s.fuelUnits)
+      assignFuelValue(s.fuelUnits + @fuelUnits)
    end
 
    def receiveShot (shot)
@@ -148,8 +148,6 @@ class SpaceStation
          end
       end
    end
-
-
 
 #################### Otros
 

@@ -20,7 +20,7 @@ class GameStateController {
         return state;
     }
 
-    public GameState next(int turn,int nPlayers) {
+    public GameState next (int turn, int nPlayers) {
         switch (state) {
             case CANNOTPLAY:
                 state = GameState.INIT;
@@ -32,7 +32,7 @@ class GameStateController {
                 state = GameState.AFTERCOMBAT;
                 break;
             case AFTERCOMBAT:
-                if (turn>=nPlayers)
+                if (turn >= nPlayers)
                     state = GameState.BEFORECOMBAT;
                 else
                     state = GameState.INIT;

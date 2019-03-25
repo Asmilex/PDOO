@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class TestP2 {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         System.out.format("\nPruebas de las clases implementadas en la segunda práctica\n");
 
     //

@@ -39,7 +39,8 @@ class GameUniverse {
 //
 
     public void discardHangar () {
-
+        if (gameState.getState() == GameState.INIT || gameState.getState() == GameState.AFTERCOMBAT)
+            currentStation.discardHangar();
     }
 
     public void discardShieldBooster(int i) {

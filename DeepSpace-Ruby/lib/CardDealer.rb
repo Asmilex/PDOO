@@ -187,7 +187,7 @@ end # class
 end # module
 
 if $0 == __FILE__
-   test=Deepspace::CardDealer.instance
+   test = Deepspace::CardDealer.instance
    puts test.nextSuppliesPackage().to_s
    puts test.nextShieldBooster().to_s
    puts test.nextWeapon().to_s
