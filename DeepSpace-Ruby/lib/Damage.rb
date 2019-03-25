@@ -39,14 +39,16 @@ class Damage
     def adjust (w, s)
         nuevo_escudo = [s.length, @nShields].min
 
-
-        if @weapons == nil
+        if @weapons == nil or @weapons.length == 0
             nuevo_dano = [w.length, @nWeapons].min
             Damage.newNumericWeapons(nuevo_dano, nuevo_escudo)
         else
-            Damage.newSpecificWeapons(nuevo_escudo, @weapons & w)
+
+            puts "hola"
+            Damage.newSpecificWeapons(@weapons & w, nuevo_escudo)
         end
     end
+
 
     def discardWeapon (w)
         if @weapons != nil
@@ -64,7 +66,7 @@ class Damage
 
     def hasNoEffect
         # FIXME , creo?
-        @nShields == 0 and @nWeapons == 0 and @weapons == nil
+        @nShields == 0 and @nWeapons == 0 and (@weapons == nil or @weapons.size == 0)
     end
 
     private_class_method :new

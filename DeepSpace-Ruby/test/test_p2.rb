@@ -61,7 +61,9 @@ module Deepspace
         puts "\ndamage1 ajustado:\n"
         puts damage3.to_s
         puts damage3.inspect
-        #damage3=damage2.adjust(hangar1.weapons, hangar1.shieldBoosters)
+
+        hangar1.addWeapon(arma1) #lo añado yo para ver si funciona
+        damage3=damage2.adjust(hangar1.weapons, hangar1.shields)
         puts "\ndamage2 ajustado:\n"
         puts damage3.to_s
         puts damage3.inspect
@@ -77,7 +79,7 @@ module Deepspace
         puts damage2.inspect
 
         puts"\nPrueba de hasNoEffect:"
-        damagenull = Damage.newSpecificWeapons(nil,0)
+        damagenull = Damage.newSpecificWeapons([],0)
 
         if(damagenull.hasNoEffect)
             puts"Funciona"
