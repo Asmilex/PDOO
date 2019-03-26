@@ -128,13 +128,13 @@ module Deepspace
 
         spaceStation.setPendingDamage(damage1)
         spaceStation.receiveHangar(hangar1)
-        #puts spaceStation.to_s
+        puts spaceStation.to_s
         puts spaceStation.inspect
         puts "\n"
         spaceStation.move
         spaceStation.receiveSupplies(suppliesPackage1)
         spaceStation.move
-        #puts spaceStation.to_s
+        puts spaceStation.to_s
         puts spaceStation.inspect
 
         if(spaceStation.validState)
@@ -149,6 +149,7 @@ module Deepspace
         end
 
         puts "Antes de montarlo:\n"
+        puts spaceStation.to_s
         puts spaceStation.inspect
 
         spaceStation.mountWeapon(0)
@@ -185,6 +186,8 @@ module Deepspace
         loot = Loot.new(2,2,0,1,2)
         spaceStation.setLoot(loot)
 
+
+        puts "\n\nMetiendole loot de 2 2 0 1 2"
         puts spaceStation.to_s
         puts spaceStation.inspect
         puts "AmmoPower: #{spaceStation.ammoPower}"
