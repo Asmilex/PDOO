@@ -20,7 +20,7 @@ class SpaceStation
    def initialize (n, supplies)
       @name        = n
       @ammoPower   = supplies.ammoPower
-      @fuelUnits   = supplies.fuelUnits
+      @fuelUnits   = assignFuelValue(supplies.fuelUnits)
       @shieldPower = supplies.shieldPower
 
       @nMedals
@@ -35,7 +35,7 @@ class SpaceStation
 ################### Metodos privados
 
    private def assignFuelValue (f)
-      @fuelUnits = [@@MAXFUEL, f].max
+      @fuelUnits = [@@MAXFUEL, f].min
    end
 
    private def cleanPendingDamage()
@@ -151,7 +151,7 @@ class SpaceStation
 #################### Otros
 
    def move
-      @fuelUnits -= self.getSpeed
+      @fuelUnits -= getSpeed
    end
 
    def fire

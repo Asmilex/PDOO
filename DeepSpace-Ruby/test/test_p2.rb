@@ -130,6 +130,7 @@ module Deepspace
         spaceStation.receiveHangar(hangar1)
         #puts spaceStation.to_s
         puts spaceStation.inspect
+        puts "\n"
         spaceStation.move
         spaceStation.receiveSupplies(suppliesPackage1)
         spaceStation.move
