@@ -2,6 +2,7 @@
 
 module Deepspace
 class SuppliesPackage
+   attr_reader :ammoPower, :fuelUnits, :shieldPower
 
    def initialize(a, f, s)
       @ammoPower   = a
@@ -14,17 +15,8 @@ class SuppliesPackage
       return t
    end
 
-   def ammoPower
-      return @ammoPower
+   def to_s
+      "\t-> Potencia: #{@ammoPower} \n\t-> Fuel: #{@fuelUnits} \n\t-> Potencia de escudo: #{@shieldPower}"
    end
-
-   def fuelUnits
-      return @fuelUnits
-   end
-
-   def shieldPower
-      return @shieldPower
-   end
-
 end
 end

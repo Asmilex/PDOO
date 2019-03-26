@@ -17,6 +17,9 @@ class Loot
         t = LootToUI.new(self)
     end
 
+    def to_s
+        "-> Supplies: #{@nSupplies} \n\t-> nWeapons: #{@nWeapons} \n\t-> nShields: #{@nShields} \n\t-> nHangars: #{@nHangars} \n\t-> nMedals: #{nMedals}"
+    end
 
 end
 end

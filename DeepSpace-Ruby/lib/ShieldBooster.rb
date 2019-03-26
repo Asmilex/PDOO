@@ -3,6 +3,8 @@ require_relative 'ShieldToUI.rb'
 
 module Deepspace
 class ShieldBooster
+   attr_reader :name, :boost, :uses
+
    def initialize (n, b, u)
       @name  = n
       @boost = b
@@ -11,18 +13,6 @@ class ShieldBooster
 
    def self.newCopy (s)
       t = ShieldBooster.new(s.name(), s.boost(), s.uses())
-   end
-
-   def name
-      @name
-   end
-
-   def boost
-      return @boost
-   end
-
-   def uses
-      return @uses
    end
 
    def useIt
@@ -38,6 +28,9 @@ class ShieldBooster
       t = ShieldToUI.new(self)
    end
 
+   def to_s
+      "-> Nombre: #{@name} \n\t-> Boost: #{@boost} \n\t-> Usos: #{@uses}"
+   end
 end
 end
 

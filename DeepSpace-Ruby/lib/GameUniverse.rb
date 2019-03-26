@@ -102,5 +102,9 @@ class GameUniverse
     def nextTurn
         # TODO siguiente práctica
     end
+
+    def to_s
+        "\t-> turnos: #{@turns} \n\t-> Dado: #{@dice.to_s} \n\t-> Estación actual: #{@currentStation.to_s} \n\t-> Enemigo actual: #{@currentEnemy.to_s} \n\t-> Estado: #{@gameState.to_s}"
+    end
 end
 end

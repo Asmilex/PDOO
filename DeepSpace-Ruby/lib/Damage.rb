@@ -84,6 +84,10 @@ class Damage
         @nShields == 0 and @nWeapons == 0 and (@weapons == nil or @weapons.size == 0)
     end
 
+    def to_s
+        "Daño a escudos: #{@nShields}"
+    end
+
     private_class_method :new
 end
 end

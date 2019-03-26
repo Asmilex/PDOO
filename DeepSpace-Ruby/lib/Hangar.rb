@@ -54,5 +54,11 @@ class Hangar
     def getUIversion
         HangarToUI.new(self)
     end
+
+    def to_s
+        "\t-> Elementos máximos: #{@maxElements} \n\t-> Tamaño armas: #{@weapons.size} \n\t-> Tamaño escudos: #{@shields.size}"
+    end
+
+
 end
 end

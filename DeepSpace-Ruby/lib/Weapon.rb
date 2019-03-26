@@ -2,6 +2,7 @@
 module Deepspace
 class Weapon
     attr_reader :name, :type, :uses
+
     def initialize (nombre, tipo, usos)
         @name = nombre
         @type = tipo
@@ -28,6 +29,10 @@ class Weapon
 
     def getUIversion
         l = WeapontoUI.new(self)
+    end
+
+    def to_s
+        "-> Nombre: #{@name} \n\t-> Tipo: #{@type} \n\t-> Usos: #{@uses}"
     end
 end
 end
