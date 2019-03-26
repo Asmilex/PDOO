@@ -43,9 +43,15 @@ class Damage
             nuevo_dano = [w.length, @nWeapons].min
             Damage.newNumericWeapons(nuevo_dano, nuevo_escudo)
         else
+            nuevos_tipos = Array.new
 
-            puts "hola"
-            Damage.newSpecificWeapons(@weapons & w, nuevo_escudo)
+            w.each { |arma|
+                if @weapons.include?(arma)
+                    nuevos_tipos.push(arma)
+                end
+            }
+
+            Damage.newSpecificWeapons(nuevos_tipos, nuevo_escudo)
         end
     end
 
