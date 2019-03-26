@@ -211,6 +211,10 @@ module Deepspace
         puts "===================================================================="
         puts "\nPrueba de GameUniverse"
 
+        universo = GameUniverse.new
+
+
+
     end
     end
 

@@ -97,6 +97,7 @@ class Damage
             "\n\t-> Daño a armas: #{@nWeapons}"
         else
             "\n\t-> Tamaño del array de armas: #{@weapons.length}"
+        end
     end
 
     private_class_method :new
