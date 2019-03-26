@@ -49,7 +49,7 @@ class Damage
         end
     end
 
-
+=begin
     def discardWeapon (w)
         if @weapons != nil
             @weapons.delete(w.type)
@@ -63,6 +63,21 @@ class Damage
             @nShields-=1
         end
     end
+=end
+
+        def discardWeapon(w) # discardWeapon (w: Weapon) : void
+            if @weapons != nil and @nWeapons == -1
+        		@weapons.delete_if {|x| x == w.type}
+        	elsif @weapons == nil and @nWeapons != -1
+        		@nWeapons = @nWeapons > 0 ? @nWeapons -= 1 : 0
+        	end
+        end
+
+        def discardShieldBooster
+            if(@nShields > 0)
+                @nShields -= 1
+            end
+        end
 
     def hasNoEffect
         # FIXME , creo?

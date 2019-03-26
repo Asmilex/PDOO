@@ -86,9 +86,8 @@ class SpaceStation
 ################### Receive
 
    def receiveWeapon(w)
-      if (@hangar != nil)
+      if @hangar != nil
          @hangar.addWeapon(w)
-         true
       else
          false
       end

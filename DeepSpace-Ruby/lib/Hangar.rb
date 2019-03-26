@@ -21,12 +21,12 @@ class Hangar
         auxiliar
     end
 
-    def SpaceAvaliable()
+    def spaceAvailable
         @shields.size + @weapons.size < @maxElements
     end
 
     def addWeapon (w)
-        if self.SpaceAvaliable
+        if spaceAvailable
             @weapons.push(w)
             true
         else
@@ -35,7 +35,7 @@ class Hangar
     end
 
     def addShieldBooster (s)
-        if self.SpaceAvaliable
+        if spaceAvailable
             @shields.push(s)
             true
         else
