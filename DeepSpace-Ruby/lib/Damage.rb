@@ -86,6 +86,11 @@ class Damage
 
     def to_s
         "Daño a escudos: #{@nShields}"
+
+        if @weapons == nil or @weapons.length == 0
+            "\n\t-> Daño a armas: #{@nWeapons}"
+        else
+            "\n\t-> Tamaño del array de armas: #{@weapons.length}"
     end
 
     private_class_method :new
