@@ -46,8 +46,8 @@ class Damage
             nuevos_tipos = Array.new
 
             w.each { |arma|
-                if @weapons.include?(arma)
-                    nuevos_tipos.push(arma)
+                if @weapons.include?(arma.type)
+                    nuevos_tipos.push(arma.type)
                 end
             }
 
