@@ -72,9 +72,9 @@ class Damage
 =end
 
         def discardWeapon(w) # discardWeapon (w: Weapon) : void
-            if @weapons != nil and @nWeapons == -1
+            if @weapons != nil and @nWeapons == 0
         		@weapons.delete_if {|x| x == w.type}
-        	elsif @weapons == nil and @nWeapons != -1
+        	elsif @weapons == nil and @nWeapons != 0
         		@nWeapons = @nWeapons > 0 ? @nWeapons -= 1 : 0
         	end
         end

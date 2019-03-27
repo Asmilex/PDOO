@@ -56,14 +56,14 @@ module Deepspace
         puts damage2.to_s
         puts damage2.inspect
 
-        damage3 = damage1.adjust(hangar1.weapons, hangar1.shields)
+        damage3 = damage1.adjust(hangar1.weapons, hangar1.shieldBoosters)
 
         puts "\ndamage1 ajustado:\n"
         puts damage3.to_s
         puts damage3.inspect
 
         hangar1.addWeapon(arma1) #lo añado yo para ver si funciona
-        damage3=damage2.adjust(hangar1.weapons, hangar1.shields)
+        damage3=damage2.adjust(hangar1.weapons, hangar1.shieldBoosters)
         puts "\ndamage2 ajustado:\n"
         puts damage3.to_s
         puts damage3.inspect
