@@ -7,9 +7,9 @@ class Hangar
     attr_reader :maxElements, :weapons, :shieldBoosters
 
     def initialize (capacity)
-        @maxElements = capacity
-        @weapons     = Array.new
-        @shieldBoosters     = Array.new
+        @maxElements    = capacity
+        @weapons        = Array.new
+        @shieldBoosters = Array.new
     end
 
     def self.newCopy (h)

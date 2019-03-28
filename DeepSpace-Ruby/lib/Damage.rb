@@ -91,12 +91,12 @@ class Damage
     end
 
     def to_s
-        "Daño a escudos: #{@nShields}"
+        ret = "Daño a escudos: #{@nShields}"
 
         if @weapons == nil or @weapons.length == 0
-            "\n\t-> Daño a armas: #{@nWeapons}"
+            ret + "\n\t-> Daño a armas: #{@nWeapons}"
         else
-            "\n\t-> Tamaño del array de armas: #{@weapons.length}"
+            ret + "\n\t-> Tamaño del array de armas: #{@weapons.length}"
         end
     end
 
