@@ -2,6 +2,8 @@ package deepspace;
 
 import java.util.ArrayList;
 
+import sun.security.jca.GetInstance;
+
 class SpaceStation {
     private static int MAXFUEL = 100;
     private static float SHIELDOSSPERUNITSHOT = 0.1f;
@@ -134,7 +136,19 @@ class SpaceStation {
     }
 
     public ShotResult receiveShot (float shot) {
-        throw new UnsupportedOperationException();
+        float myProtection = protection();
+
+        if (myProtection >= shot) {
+            shieldPower -= SHIELDOSSPERUNITSHOT * shot;
+            shieldPower = Max(0.0, shieldPower);
+
+            return ShotResult.RESIST;
+        }
+        else {
+            shieldPower = 0.0;
+
+            return ShotResult.DONOTRESIST;
+        }
     }
 
     public void receiveSupplies (SuppliesPackage s) {
@@ -156,7 +170,38 @@ class SpaceStation {
 //
 
     public void setLoot (Loot l) {
-        throw new UnsupportedOperationException();
+        CardDealer dealer = GetInstance();
+
+        int h = l.getNHangars();
+
+        if (h > 0) {
+            Hangar hangar = dealer.nextHangar();
+            receiveHangar(hangar);
+        }
+
+        int elements = l.getNSupplies();
+
+        for (int i = 0; i < elements; i++) {
+            SuppliesPackage sup = dealer.nextSuppliesPackage();
+            receiveSupplies(sup);
+        }
+
+        elements = l.getNWeapons();
+
+        for (int i = 0; i < elements; i++) {
+            Weapon weap = dealer.nextWeapon();
+            receiveWeapon(weap);
+        }
+
+        elements = l.getNShields();
+
+        for (int i = 0; i < elements; i++) {
+            ShieldBooster sh = dealer.nextShieldBooster();
+            receiveShieldBooster(sh);
+        }
+
+
+        nMedals += l.getNMedals();
     }
 
     public void setPendingDamage (Damage d) {
@@ -195,11 +240,23 @@ class SpaceStation {
     }
 
     public float protection () {
-        throw new UnsupportedOperationException();
+        int factor = 1;
+
+        for (ShieldBooster s : shieldBoosters) {
+            factor *= s.useIt();
+        }
+
+        return shieldPower * factor;
     }
 
     public float fire () {
-        throw new UnsupportedOperationException();
+        int factor = 1;
+
+        for (Weapon w : weapons) {
+            factor *= w.useIt();
+        }
+
+        return ammoPower * factor;
     }
 
     public void cleanUpMountedItems () {
