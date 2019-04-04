@@ -51,7 +51,15 @@ class SpaceStation
    end
 
    def discardWeapon (i)
-      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+        size = @weapons.size
+        indice = 0
+        while indice >= 0 and indice < size
+            w = @weapons.remove(indice)
+            if (@pendingDamage != null)
+                @pendingDamage.discardWeapon(w)
+                cleanPendingDamage
+            end
+        end
    end
 
    def discardWeaponInHangar(i)
@@ -61,8 +69,17 @@ class SpaceStation
    end
 
    def discardShieldBooster (i)
-      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+        size = @shieldBoosters.size
+        indice = 0
+        while indice >= 0 and indice < size
+            sh = @shieldBoosters.remove(indice)
+            if (@pendingDamage != null)
+                @pendingDamage.discardShieldBooster(sh)
+                cleanPendingDamage
+            end
+        end
    end
+
 
    def discardShieldBoosterInHangar(i)
       if(@hangar != nil)
@@ -115,7 +132,14 @@ class SpaceStation
    end
 
    def receiveShot (shot)
-      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+        myprotection = protection
+        @shieldPower -= @@SHIELDLOSSPERUNITSHOT*shot
+        @shieldPower = [@shieldPower, 0.0].max
+        if (shot <= myprotection)
+            ShotResult::RESIST
+        else
+            ShotResult::DONOTRESIST
+        end
    end
 
 #################### Set
@@ -125,7 +149,34 @@ class SpaceStation
    end
 
    def setLoot (s)
-      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+        dealer = CardDealer.instance
+        h = s.getNHangars
+        @hangar = dealer.nextHangar
+        if (h > 0)
+            receiveHangar(h)
+        end
+        indice = 0  
+        elements = s.getNSupplies
+        while indice < elements
+           sup = dealer.nextSuppliesPackage
+           receiveSupplies(sup)
+           indice += 1
+        end
+        indice = 0
+        elements = s.getNWeapons
+        while indice < elements
+           w = dealer.nextWeapon
+           receiveSupplies(w)
+           indice += 1
+        end
+        indice = 0
+        elements = s.getNShields
+        while indice < elements
+            sh = dealer.nextShielBooster
+            receiveShieldBooster(sh)
+           indice += 1
+        end
+        @nMedals += s.getNMedals
    end
 
    def mountWeapon(i)
@@ -155,11 +206,21 @@ class SpaceStation
    end
 
    def fire
-      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+        factor = 1
+        for w in @weapons
+            factor *=w.useIt
+        end
+        
+        @ammoPower*factor
    end
 
    def protection
-      puts "Siguiente práctica ¯\\_(ツ)_/¯"
+        factor = 1
+        for s in @shieldBoosters
+            factor *=s.useIt
+        end
+        
+        @shieldPower*factor
    end
 
    def validState
