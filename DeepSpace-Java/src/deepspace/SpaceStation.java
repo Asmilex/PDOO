@@ -49,7 +49,14 @@ class SpaceStation {
 //
 
     public void discardShieldBooster (int i) {
-        throw new UnsupportedOperationException();
+        if (i >= 0 && i < shieldBoosters.size()) {
+            ShieldBooster s = shieldBoosters.remove(i);
+
+            if (pendingDamage != null) {
+                pendingDamage.discardShieldBooster(); //FIXME me suena raro
+                cleanPendingDamage();
+            }
+        }
     }
 
     public void discardShieldBoosterInHangar (int i) {
@@ -58,7 +65,14 @@ class SpaceStation {
     }
 
     public void discardWeapon (int i) {
-        throw new UnsupportedOperationException();
+        if (i >= 0 && i < weapons.size()) {
+            Weapon w = weapons.remove(i);
+
+            if (pendingDamage != null) {
+                pendingDamage.discardWeapon(w);
+                cleanPendingDamage();
+            }
+        }
     }
 
     public void discardWeaponInHangar (int i) {
