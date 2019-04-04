@@ -81,6 +81,7 @@ class CardDealer {
         suppliesPackages.add(new SuppliesPackage(3,50,3));
         suppliesPackages.add(new SuppliesPackage(40,100,40));
         suppliesPackages.add(new SuppliesPackage(100,100,100));
+        suppliesPackages.add(new SuppliesPackage(100,100,100)); //Esta linea la he copiapegado yo :D
     }
 
     private void createWeapons() {
@@ -109,6 +110,7 @@ class CardDealer {
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1));
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1));
        weapons.add(new Weapon("Cañón mejorado",WeaponType.PLASMA,2));
+       weapons.add(new Weapon("Cañón mejorado",WeaponType.PLASMA,2)); //Esta linea la he copiapegado yo :D
 
     }
     private void createShieldBoosters() {
@@ -123,6 +125,7 @@ class CardDealer {
        shieldBoosters.add(new ShieldBooster("Escudo ACME",1.5f,2));
        shieldBoosters.add(new ShieldBooster("Escudo normal",3.0f,2));
        shieldBoosters.add(new ShieldBooster("Escudo normal",4.0f,2));
+       shieldBoosters.add(new ShieldBooster("Escudo normal",4.0f,2)); //Esta linea la he copiapegado yo :D
     }
 
     private void createHangars() {
@@ -135,6 +138,7 @@ class CardDealer {
         hangars.add(new Hangar(2));
         hangars.add(new Hangar(1));
         hangars.add(new Hangar(1));
+        hangars.add(new Hangar(1)); //Esta linea la he copiapegado yo :D
     }
 
     private void createEnemies() {
@@ -203,6 +207,7 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));
 
         enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));
+        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0)); //Esta linea la he copiapegado yo :D
     }
 }
 
