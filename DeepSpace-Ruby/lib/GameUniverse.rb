@@ -3,17 +3,17 @@ module Deepspace
 class GameUniverse
     attr_reader :gameState,
 
-    def initialize
-        @@WIN = 10
+    @@WIN = 10
 
+    def initialize
         @turns         = 0
         @dice          = Dice.new
-        @spaceStations = Array.new
         @gameState     = GameStateController.new
 
         @currentEnemy
+        @spaceStations
         @currentStation
-        @currentIndexStation
+        @currentStationIndex
     end
 
     def combat (station, enemy)
@@ -96,7 +96,36 @@ class GameUniverse
     end
 
     def init (names) #String[]
-        # TODO siguiente práctica
+        state = @gameState.state
+
+        if state == GameState::CANNOTPLAY
+            @spaceStations = Array.new
+
+            dealer = CardDealer.instance # Debería ser atributo de instancia?
+
+            for i in 1..names.size
+                # Crear y preparar naves para los jugadores
+                supplies = dealer.nextSuppliesPackage
+
+                station = SpaceStation.new(names[i], supplies)
+
+                @spaceStations.push(station)
+
+                nh = @dice.initWithNHangars
+                nw = @dice.initWithNWeapons
+                ns = @dice.initWithNShields
+
+                lo = Loot.new(0, nw, ns, nh, 0)
+
+                station.setLoot(lo)
+            end
+
+            @currentStationIndex = @dice.whoStarts(names.size)
+            @currentStation = @spaceStations.at(@currentStationIndex)
+            @currentEnemy = dealer.nextEnemy
+
+            @gameState.nextTurn(@turns, @spaceStations.size)
+        end
     end
 
     def nextTurn
