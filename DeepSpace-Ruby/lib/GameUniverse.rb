@@ -124,7 +124,7 @@ class GameUniverse
             @currentStation = @spaceStations.at(@currentStationIndex)
             @currentEnemy = dealer.nextEnemy
 
-            @gameState.nextTurn(@turns, @spaceStations.size)
+            @gameState.next(@turns, @spaceStations.size)
         end
     end
 
