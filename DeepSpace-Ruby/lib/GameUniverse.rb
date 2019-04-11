@@ -17,11 +17,65 @@ class GameUniverse
     end
 
     def combat (station, enemy)
-        # TODO siguiente práctica
+        ch = @dice.firstShot
+
+        # Determinar quién gana: si enemigo o estación. Depende de quién empiece
+        if ch == GameCharacter::ENEMYSTARSHIP
+            fire   = enemy.fire
+            result = station.receiveShot(fire)
+
+            if result == ShotResult::RESIST
+               fire      = station.fire
+               result    = enemy.receiveShot(fire)
+               enemyWins = (result == ShotResult::RESIST)
+            else
+                enemyWins = true
+            end
+        else
+            fire      = station.fire
+            result    = enemy.receiveShot(fire)
+            enemyWins = (result == ShotResult::RESIST)
+        end
+
+
+        if enemyWins
+            s     = station.getSpeed
+            moves = @dice.spaceStationMoves(s)
+
+            if moves
+                damage = enemy.damage
+
+                station.setPendingDamage( damage )
+
+                combatResult = CombatResult::ENEMYWINS
+            else
+                station.move
+
+                combatResult = CombatResult::STATIONESCAPES
+            end
+
+        else
+            aLoot = enemy.loot
+
+            station.setLoot( aLoot )
+
+            combatResult = CombatResult::STATIONWINS
+        end
+
+        @gameState.next(@turns, @spaceStations.size)
+
+        combatResult
     end
 
+
     def combatGO
-        # TODO siguiente práctica
+        state = @gameState.state
+
+        if state == GameState::BEFORECOMBAT or state == GameState::INIT
+            combat(@currentStation, @currentEnemy)
+        else
+            CombatResult::NOCOMBAT
+        end
     end
 
 #
@@ -129,7 +183,29 @@ class GameUniverse
     end
 
     def nextTurn
-        # TODO siguiente práctica
+        state = @gameState.state
+        return_value = false
+
+        if state == GameState::AFTERCOMBAT
+            if @currentStation.validState
+                @currentStationIndex = (@currentStationIndex + 1) % @spaceStations.size
+                @turns += 1
+
+                @currentStation = @spaceStations[@currentStationIndex]
+
+                @currentStation.cleanUpMountedItems
+
+                dealer = CardDealer.instance
+
+                @currentEnemy = dealer.nextEnemy
+
+                @gameState.next(@turns, @spaceStations.size)
+
+                return_value = true
+            end
+        end
+
+        return_value
     end
 
     def to_s

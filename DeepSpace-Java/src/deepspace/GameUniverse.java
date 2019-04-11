@@ -92,8 +92,6 @@ class GameUniverse {
         return currentStation.getNMedals() == WIN;
     }
 
-
-
     public CombatResult combat () {
         throw new UnsupportedOperationException();
     }

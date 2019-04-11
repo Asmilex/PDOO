@@ -86,7 +86,6 @@ class Damage
         end
 
     def hasNoEffect
-        # FIXME , creo?
         @nShields == 0 and @nWeapons == 0 and (@weapons == nil or @weapons.size == 0)
     end
 
