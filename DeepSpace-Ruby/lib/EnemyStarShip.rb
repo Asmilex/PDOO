@@ -51,6 +51,6 @@ class EnemyStarShip
         "-> Nombre: #{@name} \n\t -> Potencia: #{@ammoPower} \n\t-> Escudos: #{@shieldPower} \n\t-> #{@loot.to_s} \n\t-> Daño: #{@damage}"
     end
 
-    attr_reader :name, :loot, :damgage, :ammoPower, :shieldPower
+    attr_reader :name, :loot, :damage, :ammoPower, :shieldPower
 end
 end
