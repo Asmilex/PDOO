@@ -150,11 +150,13 @@ class SpaceStation
 
    def setLoot (s)
         dealer = CardDealer.instance
+
         h = s.getNHangars
         @hangar = dealer.nextHangar
         if (h > 0)
             receiveHangar(h)
         end
+
         indice = 0  
         elements = s.getNSupplies
         while indice < elements
@@ -162,6 +164,7 @@ class SpaceStation
            receiveSupplies(sup)
            indice += 1
         end
+
         indice = 0
         elements = s.getNWeapons
         while indice < elements
@@ -169,6 +172,7 @@ class SpaceStation
            receiveSupplies(w)
            indice += 1
         end
+
         indice = 0
         elements = s.getNShields
         while indice < elements
@@ -176,6 +180,7 @@ class SpaceStation
             receiveShieldBooster(sh)
            indice += 1
         end
+
         @nMedals += s.getNMedals
    end
 
