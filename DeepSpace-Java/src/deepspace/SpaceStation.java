@@ -154,12 +154,12 @@ class SpaceStation {
 
         if (myProtection >= shot) {
             shieldPower -= SHIELDOSSPERUNITSHOT * shot;
-            shieldPower = Max(0.0, shieldPower);
+            shieldPower = Math.max(0, shieldPower);
 
             return ShotResult.RESIST;
         }
         else {
-            shieldPower = 0.0;
+            shieldPower = 0;
 
             return ShotResult.DONOTRESIST;
         }
@@ -184,7 +184,7 @@ class SpaceStation {
 //
 
     public void setLoot (Loot l) {
-        CardDealer dealer = GetInstance();
+        CardDealer dealer = CardDealer.getInstance();
 
         int h = l.getNHangars();
 

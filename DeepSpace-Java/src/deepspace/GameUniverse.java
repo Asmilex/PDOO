@@ -1,7 +1,7 @@
 package deepspace;
 import java.util.ArrayList;
 
-class GameUniverse {
+public class GameUniverse {
     private static int WIN = 10;
 
     private int turns;
@@ -81,14 +81,14 @@ class GameUniverse {
 //
 
     public void init (ArrayList<String> names) {
-        state = gameState.getState();
+        GameState state = gameState.getState();
         if (state == GameState.CANNOTPLAY){
             spaceStations = new ArrayList<>();
             CardDealer dealer = CardDealer.getInstance();
 
             for (int i = 0; i < names.size(); ++i){
                 SuppliesPackage supplies = dealer.nextSuppliesPackage();
-                SpaceStation station = new SpaceStation(names[i], supplies);
+                SpaceStation station = new SpaceStation(names.get(i), supplies);
                 spaceStations.add(station);
 
                 int nh = dice.initWithNHangars();
@@ -100,7 +100,7 @@ class GameUniverse {
                 station.setLoot(lo);
             }
             
-            currentStationIndex = dice.whoStarts(names.size);
+            currentStationIndex = dice.whoStarts(names.size());
             currentStation = spaceStations.get(currentStationIndex);
             currentEnemy = dealer.nextEnemy();
 
@@ -111,14 +111,14 @@ class GameUniverse {
     public boolean nextTurn () {
         GameState state = gameState.getState();
         if (state == GameState.AFTERCOMBAT){
-            stationState = currentStation.validState();
+            Boolean stationState = currentStation.validState();
             if(stationState){
-               int  currentStationIndex=(currentStationIndex+1)%spaceStations.size();
+                currentStationIndex=(currentStationIndex+1)%spaceStations.size();
                 currentStation = spaceStations.get(currentStationIndex);
                 currentStation.cleanUpMountedItems();
                 CardDealer dealer = CardDealer.getInstance();
-                currentEnemy = currentEnemy.nextEnemy();
-                gameState.next(turns.spaceStations.size());
+                currentEnemy = dealer.nextEnemy();
+                gameState.next(turns,spaceStations.size());
                 return true;
             }
             return false;
@@ -131,7 +131,7 @@ class GameUniverse {
     }
 
     public CombatResult combat () {
-        state = gameState.getState();
+        GameState state = gameState.getState();
         if ((state == GameState.BEFORECOMBAT) || (state == GameState.INIT)){
             return combat(currentStation, currentEnemy);
         }    
@@ -139,6 +139,8 @@ class GameUniverse {
     }
 
     CombatResult combat (SpaceStation station, EnemyStarShip enemy) {
+        Boolean enemyWins;
+        CombatResult combatResult;
         GameCharacter ch = dice.firstShot();
         if (ch == GameCharacter.ENEMYSTARSHIP){
             float fire = enemy.fire();
@@ -146,7 +148,7 @@ class GameUniverse {
             if (result == ShotResult.RESIST){
                 fire = station.fire();
                 result = enemy.receiveShot(fire);
-                bool enemyWins = (result == ShotResult.RESIST);
+                enemyWins = (result == ShotResult.RESIST);
             }
             else{
                 enemyWins = true;
@@ -155,12 +157,12 @@ class GameUniverse {
         else{
             float fire = station.fire();
             ShotResult result = enemy.receiveShot(fire);
-            bool enemyWins = (result == ShotResult.RESIST);
+            enemyWins = (result == ShotResult.RESIST);
         }
 
         if (enemyWins){
             float s = station.getSpeed();
-            bool moves = dice.spaceStationMoves(s);
+            Boolean moves = dice.spaceStationMoves(s);
             if (!moves){
                 Damage damage = enemy.getDamage();
                 station.setPendingDamage(damage);
@@ -168,7 +170,7 @@ class GameUniverse {
             }
             else{
                 station.move();
-                combatresult = CombatResult.STATIONSCAPES;
+                combatResult = CombatResult.STATIONSCAPES;
             }
         }
         else{
@@ -177,7 +179,7 @@ class GameUniverse {
             combatResult = CombatResult.STATIONWINS;
         }
 
-        gameState.next(spaceStations.size());
+        gameState.next(turns, spaceStations.size());
         return combatResult;
     }
 

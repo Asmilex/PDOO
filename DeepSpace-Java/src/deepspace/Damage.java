@@ -97,7 +97,7 @@ class Damage {
     public String toString() {
         String return_value = "Daño a escudos: " + nShields;
 
-        if (weapons == null || weapons.length == 0)
+        if (weapons == null || weapons.size() == 0)
             return_value += "\n\t-> Daño a armas: " + nWeapons;
         else
             return_value += "\n\t-> Tamaño del array de armas: " + weapons.size();
