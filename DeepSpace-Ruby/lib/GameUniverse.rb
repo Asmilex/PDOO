@@ -42,23 +42,17 @@ class GameUniverse
             s     = station.getSpeed
             moves = @dice.spaceStationMoves(s)
 
-            if moves
+            if !moves
                 damage = enemy.damage
-
                 station.setPendingDamage( damage )
-
                 combatResult = CombatResult::ENEMYWINS
             else
                 station.move
-
                 combatResult = CombatResult::STATIONESCAPES
             end
-
         else
             aLoot = enemy.loot
-
             station.setLoot( aLoot )
-
             combatResult = CombatResult::STATIONWINS
         end
 
