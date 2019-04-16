@@ -1,6 +1,8 @@
 # encoding:utf-8
-require_relative 'Weapon'
-require_relative 'ShieldBooster'
+require_relative "WeaponType"
+require_relative "Weapon"
+require_relative "ShieldBooster"
+require_relative "HangarToUI"
 
 module Deepspace
 class Hangar
