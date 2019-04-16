@@ -19,11 +19,11 @@ class SpaceStation
 
    def initialize (n, supplies)
       @name        = n
+      @nMedals     = 0
       @ammoPower   = supplies.ammoPower
       @fuelUnits   = assignFuelValue(supplies.fuelUnits)
       @shieldPower = supplies.shieldPower
 
-      @nMedals
       @hangar
       @pendingDamage
 
@@ -89,14 +89,14 @@ class SpaceStation
 
 ################### Interfaces
 
-   attr_reader :nMedals, :name, :fuelUnits, :ammoPower, :hangar, :shieldBoosters, :weapons, :shieldPower
+   attr_reader :nMedals, :name, :fuelUnits, :ammoPower, :hangar, :shieldBoosters, :weapons, :shieldPower, :pendingDamage
 
    def getSpeed
       @fuelUnits/@@MAXFUEL
    end
 
-   public def getUIversion
-      s = SpaceStationToUI.new(self)
+   def getUIversion
+      SpaceStationToUI.new(self)
    end
 
 
@@ -126,7 +126,7 @@ class SpaceStation
    end
 
    def receiveSupplies(s)
-      @ammoPower += s.ammoPower
+      @ammoPower   += s.ammoPower
       @shieldPower += s.shieldPower
       assignFuelValue(s.fuelUnits + @fuelUnits)
    end
@@ -151,14 +151,14 @@ class SpaceStation
    def setLoot (s)
         dealer = CardDealer.instance
 
-        h = s.getNHangars
+        h = s.nHangars
         @hangar = dealer.nextHangar
         if (h > 0)
             receiveHangar(h)
         end
 
-        indice = 0  
-        elements = s.getNSupplies
+        indice = 0
+        elements = s.nSupplies
         while indice < elements
            sup = dealer.nextSuppliesPackage
            receiveSupplies(sup)
@@ -166,22 +166,23 @@ class SpaceStation
         end
 
         indice = 0
-        elements = s.getNWeapons
+        elements = s.nWeapons
         while indice < elements
            w = dealer.nextWeapon
-           receiveSupplies(w)
+           receiveWeapon(w)
            indice += 1
         end
 
         indice = 0
-        elements = s.getNShields
+        elements = s.nShields
+
         while indice < elements
-            sh = dealer.nextShielBooster
+            sh = dealer.nextShieldBooster
             receiveShieldBooster(sh)
            indice += 1
         end
 
-        @nMedals += s.getNMedals
+        @nMedals += s.nMedals
    end
 
    def mountWeapon(i)
@@ -215,7 +216,7 @@ class SpaceStation
         for w in @weapons
             factor *=w.useIt
         end
-        
+
         @ammoPower*factor
    end
 
@@ -224,7 +225,7 @@ class SpaceStation
         for s in @shieldBoosters
             factor *=s.useIt
         end
-        
+
         @shieldPower*factor
    end
 

@@ -14,7 +14,7 @@ class Loot
     end
 
     def getUIversion
-        t = LootToUI.new(self)
+        LootToUI.new(self)
     end
 
     def to_s
