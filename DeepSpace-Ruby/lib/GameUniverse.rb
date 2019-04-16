@@ -11,22 +11,21 @@ require_relative "EnemyStarShip"
 
 module Deepspace
 class GameUniverse
-    attr_reader :gameState
-
     @@WIN = 10
 
     def initialize
-        @turns         = 0
+        @turns               = 0
+        @currentStationIndex = -1
+
         @dice          = Dice.new
+        @spaceStations = Array.new
         @gameState     = GameStateController.new
 
         @currentEnemy
-        @spaceStations
         @currentStation
-        @currentStationIndex
     end
 
-    def combat (station, enemy)
+    def combatGo (station, enemy)
         ch = @dice.firstShot
 
         # Determinar quién gana: si enemigo o estación. Depende de quién empiece
@@ -66,17 +65,17 @@ class GameUniverse
             combatResult = CombatResult::STATIONWINS
         end
 
-        @gameState.next(@turns, @spaceStations.size)
+        @gameState.next(@turns, @spaceStations.length)
 
         combatResult
     end
 
 
-    def combatGO
+    def combat
         state = @gameState.state
 
-        if state == GameState::BEFORECOMBAT or state == GameState::INIT
-            combat(@currentStation, @currentEnemy)
+        if state == GameState::BEFORECOMBAT || state == GameState::INIT
+            combatGo(@currentStation, @currentEnemy)
         else
             CombatResult::NOCOMBAT
         end
@@ -137,7 +136,7 @@ class GameUniverse
 #
 
     def state
-        @gameState
+        @gameState.state
     end
 
     def getUIversion
@@ -145,41 +144,34 @@ class GameUniverse
     end
 
     def haveAWinner
-        if @currentStation.nMedals = 10
-            true
-        else
-            false
-        end
+        return @currentStation.nMedals >= @@WIN
     end
 
     def init (names) #String[]
         state = @gameState.state
 
         if state == GameState::CANNOTPLAY
-            @spaceStations = Array.new
-
             dealer = CardDealer.instance # Debería ser atributo de instancia?
 
-            for i in 1..names.size
+            for i in 0..names.size-1
                 # Crear y preparar naves para los jugadores
                 supplies = dealer.nextSuppliesPackage
 
                 station = SpaceStation.new(names[i], supplies)
-
-                @spaceStations.push(station)
 
                 nh = @dice.initWithNHangars
                 nw = @dice.initWithNWeapons
                 ns = @dice.initWithNShields
 
                 lo = Loot.new(0, nw, ns, nh, 0)
-
                 station.setLoot(lo)
+
+                @spaceStations.push(station)
             end
 
             @currentStationIndex = @dice.whoStarts(names.size)
-            @currentStation = @spaceStations.at(@currentStationIndex)
-            @currentEnemy = dealer.nextEnemy
+            @currentStation      = @spaceStations[@currentStationIndex]
+            @currentEnemy        = dealer.nextEnemy
 
             @gameState.next(@turns, @spaceStations.size)
         end
@@ -203,12 +195,10 @@ class GameUniverse
                 @currentEnemy = dealer.nextEnemy
 
                 @gameState.next(@turns, @spaceStations.size)
-
-                return_value = true
             end
         end
 
-        return_value
+
     end
 
     def to_s
