@@ -127,7 +127,6 @@ class TextMainView
           command = getCommandAfterCombat()
       end
 
-      puts self.inspect
       processCommand (command)
     end
   end
