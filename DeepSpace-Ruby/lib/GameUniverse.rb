@@ -1,7 +1,17 @@
 # encoding:utf-8
+require_relative "GameUniverseToUI"
+require_relative "GameStateController"
+require_relative "Dice"
+require_relative "CombatResult"
+require_relative "GameCharacter"
+require_relative "ShotResult"
+require_relative "SpaceStation"
+require_relative "CardDealer"
+require_relative "EnemyStarShip"
+
 module Deepspace
 class GameUniverse
-    attr_reader :gameState,
+    attr_reader :gameState
 
     @@WIN = 10
 
@@ -131,8 +141,7 @@ class GameUniverse
     end
 
     def getUIversion
-        # FIXME falta estacion y enemigo
-        GameUniverseToUI.new()
+        GameUniverseToUI.new(@currentStation, @currentEnemy)
     end
 
     def haveAWinner
