@@ -52,10 +52,10 @@ class SpaceStation
 
    def discardWeapon (i)
         size = @weapons.size
-        indice = 0
-        while indice >= 0 and indice < size
-            w = @weapons.remove(indice)
-            if (@pendingDamage != null)
+        #indice = 0
+        if i >= 0 and i < size
+            w = @weapons.delete_at(i)
+            if (@pendingDamage != nil)
                 @pendingDamage.discardWeapon(w)
                 cleanPendingDamage
             end
@@ -70,10 +70,10 @@ class SpaceStation
 
    def discardShieldBooster (i)
         size = @shieldBoosters.size
-        indice = 0
-        while indice >= 0 and indice < size
-            sh = @shieldBoosters.remove(indice)
-            if (@pendingDamage != null)
+        #indice = 0
+        if i >= 0 and i < size
+            sh = @shieldBoosters.delete_at(i)
+            if (@pendingDamage != nil)
                 @pendingDamage.discardShieldBooster(sh)
                 cleanPendingDamage
             end
@@ -186,23 +186,27 @@ class SpaceStation
    end
 
    def mountWeapon(i)
-      if (@hangar != nil)
-         arma = @hangar.removeWeapon(i)
+    if (i >= 0)
+          if (@hangar != nil)
+             arma = @hangar.removeWeapon(i)
 
-         if (arma != nil)
-            @weapons.push(arma)
-         end
-      end
+             if (arma != nil)
+                @weapons.push(arma)
+             end
+          end
+    end
    end
 
    def mountShieldBooster(i)
-      if (@hangar != nil)
-         escudo = @hangar.removeShieldBooster(i)
+        if (i >= 0)      
+            if (@hangar != nil)
+             escudo = @hangar.removeShieldBooster(i)
 
-         if (escudo != nil)
-            @shieldBoosters.push(escudo)
-         end
-      end
+             if (escudo != nil)
+                @shieldBoosters.push(escudo)
+             end
+          end
+        end
    end
 
 #################### Otros

@@ -27,6 +27,7 @@ class GameUniverse
 
     def combatGo (station, enemy)
         ch = @dice.firstShot
+        combatResult = CombatResult::ENEMYWINS
 
         # Determinar quién gana: si enemigo o estación. Depende de quién empiece
         if ch == GameCharacter::ENEMYSTARSHIP
@@ -86,31 +87,31 @@ class GameUniverse
 #
 
     def discardHangar
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.discardHangar
         end
     end
 
     def discardShieldBooster(i)
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.discardShieldBooster(i)
         end
     end
 
     def discardShieldBoosterInHangar(i)
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.discardShieldBoosterInHangar(i)
         end
     end
 
     def discardWeapon(i)
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.discardWeapon(i)
         end
     end
 
     def discardWeaponInHangar(i)
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.discardWeaponInHangar(i)
         end
     end
@@ -120,13 +121,13 @@ class GameUniverse
 #
 
     def mountShieldBooster(i)
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.mountShieldBooster(i)
         end
     end
 
     def mountWeapon(i)
-        if @gameState.state = GameState::INIT or @gameState.state = GameState::AFTERCOMBAT
+        if @gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT
             @currentStation.mountWeapon(i)
         end
     end
