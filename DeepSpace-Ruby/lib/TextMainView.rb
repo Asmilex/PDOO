@@ -6,44 +6,44 @@ require_relative 'Controller'
 require_relative 'Command'
 
 module View
-  
+
   class Value
     attr_reader :text
     def initialize(aText)
       @text = aText
     end
   end # class Option
-  
+
   module Element
     WEAPON = Value.new("Arma")
     SHIELD = Value.new("Escudo")
     HANGAR = Value.new("Hangar")
   end # Element
-  
+
   module Operation
     MOUNT = Value.new("Montar")
     DISCARD = Value.new("Descartar")
   end # Operation
-  
+
   DS=Deepspace
   CT=Controller
-  
+
 class TextMainView
-  
+
   include Singleton
-  
+
   @@mainSeparator = "\n ******* ******* ******* ******* ******* ******* ******* \n"
   @@separator = "\n ------- ------- ------- ------- ------- ------- ------- \n"
-  
-      
+
+
   def initialize()
     @gameUI = nil
     @state = nil
   end
-  
+
   private
-  
-  def pause(s) 
+
+  def pause(s)
     print @@mainSeparator
     print @@mainSeparator
     puts s
@@ -53,44 +53,44 @@ class TextMainView
     gets
   end
 
-  def processCommand(command) 
+  def processCommand(command)
     case command
-      when Command::EXIT 
+      when Command::EXIT
         CT::Controller.instance.finish(0)
-      when Command::SHOWSTATION 
+      when Command::SHOWSTATION
         puts showStation(@gameUI.currentStation)
       when Command::SHOWENEMY
         puts showEnemy(@gameUI.currentEnemy)
-      when Command::MOUNTWEAPONS 
+      when Command::MOUNTWEAPONS
         mountDiscardFromHangar(Operation::MOUNT, Element::WEAPON)
-      when Command::MOUNTSHIELDS 
+      when Command::MOUNTSHIELDS
         mountDiscardFromHangar(Operation::MOUNT, Element::SHIELD)
-      when Command::DISCARDWEAPONSINHANGAR 
+      when Command::DISCARDWEAPONSINHANGAR
         mountDiscardFromHangar(Operation::DISCARD, Element::WEAPON)
-      when Command::DISCARDSHIELDSINHANGAR 
+      when Command::DISCARDSHIELDSINHANGAR
         mountDiscardFromHangar(Operation::DISCARD, Element::SHIELD)
-      when Command::DISCARDHANGAR 
+      when Command::DISCARDHANGAR
         CT::Controller.instance.discardHangar()
         pause("\n ******* Hangar Completo Descartado ******* ")
-      when Command::DISCARDWEAPONS 
+      when Command::DISCARDWEAPONS
         discardMountedElements(Element::WEAPON)
-      when Command::DISCARDSHIELDS 
+      when Command::DISCARDSHIELDS
         discardMountedElements(Element::SHIELD)
-      when Command::COMBAT 
+      when Command::COMBAT
         puts "Combatiendo"
         CT::Controller.instance.combat()
-      when Command::NEXTTURN 
+      when Command::NEXTTURN
         CT::Controller.instance.nextTurn()
     end
   end
-  
-  def readInt (message, min, max) 
+
+  def readInt (message, min, max)
     number = -1
     begin
       valid = true
       print message
       input = gets.chomp
-      begin  
+      begin
         number = Integer(input)
         if (number<min || number>max)  # No es un entero entre los válidos
           puts "\nEl numero debe estar entre #{min} y #{max}\n"
@@ -98,7 +98,7 @@ class TextMainView
         end
       rescue Exception => e # No se ha introducido un entero
         puts "\nDebes introducir un numero.\n"
-        valid = false;  
+        valid = false;
       end
       if !valid
         puts "\n\nInténtalo de nuevo.\n\n"
@@ -106,31 +106,33 @@ class TextMainView
     end while !valid
     return number
   end
-  
+
   public
-  
+
   def updateView()
     @gameUI = CT::Controller.instance.getUIversion()
     @state = CT::Controller.instance.getState()
   end
-  
-  def showView() 
+
+  def showView()
     while true # Hasta que se elija en el menú  Salir
       updateView()
       command = Command::EXIT;
       case @state
         when DS::GameState::INIT
           command = getCommandInit()
-        when DS::GameState::BEFORECOMBAT 
+        when DS::GameState::BEFORECOMBAT
           command = getCommandBeforeCombat()
-        when DS::GameState::AFTERCOMBAT 
+        when DS::GameState::AFTERCOMBAT
           command = getCommandAfterCombat()
       end
+
+      puts self.inspect
       processCommand (command)
     end
   end
-  
-  def readNamePlayers() 
+
+  def readNamePlayers()
     names = Array.new
     nPlayers = readInt("\n¿Cuántos jugadores participan (2-4)? ",2,4)
     for i in 0...nPlayers
@@ -139,8 +141,8 @@ class TextMainView
     end
     return names
   end
-  
-  def confirmExitMessage() 
+
+  def confirmExitMessage()
     print "¿Estás segur@ que deseas salir [s/N]? "
     fullInput = gets.chomp
     if !fullInput.empty?
@@ -151,10 +153,10 @@ class TextMainView
     end
     return false;
   end
-  
+
   private
-  
-  def manageMenu(message, menu) 
+
+  def manageMenu(message, menu)
     menuCheck = Hash.new   # Para comprobar que se hace una selección válida
 
     for c in menu do
@@ -165,7 +167,7 @@ class TextMainView
       option = Command::GOBACK.menu;
       puts @@separator
       puts "**** " + message + " ****\n"
-      for c in menu do 
+      for c in menu do
         puts '%3d' % [c.menu] + " : " + c.text + "\n"
       end
       print "\n Elige una opción: "
@@ -182,14 +184,14 @@ class TextMainView
         inputErrorMessage()
       end
     end while(! validInput)
-    return(menuCheck[option])    
+    return(menuCheck[option])
   end
-  
-  def mountDiscardFromHangar(operation, element) 
+
+  def mountDiscardFromHangar(operation, element)
       option = Command::GOBACK.menu
       elements = Array.new
       noElements = Array.new
-      
+
       begin    # Choice and mount weapons or shields until go back
         howMany = showHangarToMountDiscard(operation, element)
         option = getChoice(howMany)
@@ -201,29 +203,29 @@ class TextMainView
         when Element::WEAPON
           if operation == Operation::MOUNT
             CT::Controller.instance.mount(elements,noElements)
-          else 
+          else
             CT::Controller.instance.discard(CT::Controller.HANGAR,elements,noElements)
           end
         when Element::SHIELD
           if operation == Operation::MOUNT
             CT::Controller.instance.mount(noElements,elements)
-          else 
+          else
             CT::Controller.instance.discard(CT::Controller.HANGAR,noElements,elements)
           end
         end
         updateView()
       end while(option != Command::GOBACK.menu)
   end
-  
-  public 
-  
-  def nextTurnNotAllowedMessage() 
+
+  public
+
+  def nextTurnNotAllowedMessage()
     puts "\n No puedes avanzar de turno, no has cumplido tu castigo"
   end
-  
+
   private
-  
-  def getChoice(howMany) 
+
+  def getChoice(howMany)
     validInput = true
     option = Command::GOBACK.menu
     print("\n Elige: ")
@@ -242,60 +244,60 @@ class TextMainView
     end
     return option;
   end
-  
-  def getCommandInit() 
+
+  def getCommandInit()
     commands = [Command::SHOWSTATION, Command::MOUNTWEAPONS, Command::MOUNTSHIELDS, Command::COMBAT, Command::EXIT]
     return manageMenu("Bienvenido  " + @gameUI.currentStation.name + \
              ",  es tu primera vez.\n Organiza tu Armamento para el Combate.\n --- Opciones disponibles", \
              commands)
   end
-  
-  def getCommandBeforeCombat() 
+
+  def getCommandBeforeCombat()
     commands = [Command::SHOWSTATION, Command::COMBAT, Command::EXIT]
     return manageMenu(@gameUI.currentStation.name + \
             ",  estás en un punto de no retorno.\n Solo te queda Combatir.", commands)
   end
 
   def getCommandAfterCombat()
-    commands = [ Command::SHOWSTATION, 
-          Command::MOUNTWEAPONS, Command::MOUNTSHIELDS, 
+    commands = [ Command::SHOWSTATION,
+          Command::MOUNTWEAPONS, Command::MOUNTSHIELDS,
           Command::DISCARDWEAPONS, Command::DISCARDSHIELDS,
           Command::DISCARDWEAPONSINHANGAR, Command::DISCARDSHIELDSINHANGAR,
-          Command::DISCARDHANGAR, 
+          Command::DISCARDHANGAR,
           Command::SHOWENEMY, Command::NEXTTURN, Command::EXIT ]
-      
+
       return manageMenu(@gameUI.currentStation.name + \
               ",  puedes Reorganizar tu Armamento antes de pasar de turno.\n Opciones disponibles", \
               commands)
   end
-  
+
   def inputErrorMessage()
     puts "\n\n ¡¡¡ E R R O R !!! \n\n Selección errónea. Inténtalo de nuevo.\n\n"
   end
-  
-  public 
-  
-  def lostCombatMessage() 
+
+  public
+
+  def lostCombatMessage()
     puts "Has PERDIDO el combate. \tCumple tu castigo."
   end
-  
-  private 
-  
-  def discardMountedElements(element) 
+
+  private
+
+  def discardMountedElements(element)
       howMany = 0
       option = Command::GOBACK.menu
       elements = Array.new
       noElements = Array.new
-      
+
       begin   # Choice and discard weapons or shields until go back
         puts @@separator
         puts "Elige un " + element.text + " para Descartar"
         puts "\n" + format("%3d",Command::GOBACK.menu) + " : " + Command::GOBACK.text + "\n"
         case element
-            when Element::WEAPON 
+            when Element::WEAPON
                 puts showWeapons(@gameUI.currentStation.weapons, true)
                 howMany = @gameUI.currentStation.weapons.size();
-            when Element::SHIELD 
+            when Element::SHIELD
                 puts showShields(@gameUI.currentStation.shieldBoosters, true)
                 howMany = @gameUI.currentStation.shieldBoosters.size()
         end
@@ -305,17 +307,17 @@ class TextMainView
           elements.push(option)
         end
         case element
-        when Element::WEAPON 
+        when Element::WEAPON
           CT::Controller.instance.discard(CT::Controller.WEAPON, elements, noElements)
-        when Element::SHIELD 
+        when Element::SHIELD
           CT::Controller.instance.discard(CT::Controller.SHIELD, noElements, elements)
         end
         updateView()
     end while(option != Command::GOBACK.menu)
   end
-  
+
   public
-  
+
   def escapeMessage()
     puts "Has logrado escapar. \tEres una Gallina Espacial."
   end
@@ -323,16 +325,16 @@ class TextMainView
   def wonCombatMessage()
     puts "Has GANADO el combate. \tDisfruta de tu botín."
   end
-  
-  def wonGameMessage() 
+
+  def wonGameMessage()
     puts "\n\tHAS GANADO LA PARTIDA"
   end
-    
+
   def noCombatMessage()
     puts "No puedes combatir en este momento"
   end
-  
-  def showStation(station) 
+
+  def showStation(station)
     out = ""
 
     out += @@mainSeparator + "\n"
@@ -361,8 +363,8 @@ class TextMainView
     out += showDamage(station.pendingDamage)
     return out
   end
-  
-  def showWeapons(someWeapons, menu) 
+
+  def showWeapons(someWeapons, menu)
     out = "";
 
     i = 0;
@@ -372,14 +374,14 @@ class TextMainView
     end
     return out
   end
-  
-  def showWeapon(aWeapon, tab) 
+
+  def showWeapon(aWeapon, tab)
     return(tab + aWeapon.type.to_s + " - Potencia: " + aWeapon.power.to_s + " - Usos: " + aWeapon.uses.to_s + "\n")
   end
 
-  def showShields(someShields, menu) 
+  def showShields(someShields, menu)
     out = ""
-    
+
     i = 0
     for aShield in someShields do
       out += showShield(aShield,(menu ?('%3d' % [i]) + " : " : " - "))
@@ -387,12 +389,12 @@ class TextMainView
     end
     return out
   end
-  
-  def showShield(aShield, tab) 
+
+  def showShield(aShield, tab)
       return(tab + "Escudo - Potencia: " + aShield.boost.to_s + " - Usos: " + aShield.uses.to_s + "\n");
   end
-  
-  def showHangar(aHangar) 
+
+  def showHangar(aHangar)
     String out = "";
     if(aHangar != nil) then
         slots = aHangar.maxElements
@@ -405,8 +407,8 @@ class TextMainView
     end
     return out
   end
-  
-  def showEnemy(anEnemy) 
+
+  def showEnemy(anEnemy)
     out = ""
     out += @@separator + "\n"
     out += " *** Información del Enemigo actual ***\n"
@@ -420,8 +422,8 @@ class TextMainView
     out += showDamage(anEnemy.damage)
     return out
   end
-  
-  def showLoot(aLoot) 
+
+  def showLoot(aLoot)
       out = ""
       out += " - Armas ..... : " + aLoot.nWeapons.to_s + "\n"
       out += " - Escudos ... : " + aLoot.nShields.to_s + "\n"
@@ -430,7 +432,7 @@ class TextMainView
       out += " - Medallas .. : " + aLoot.nMedals.to_s + "\n"
       return out
   end
-  
+
   def showDamage(aDamage)
       if (aDamage != nil) then
         out = "\n"
@@ -441,22 +443,22 @@ class TextMainView
       end
       return out
   end
-  
-  def showHangarToMountDiscard(operation, element) 
+
+  def showHangarToMountDiscard(operation, element)
       option = Command::GOBACK.menu
-      
+
       puts @@separator
       puts "Elige un " + element.text + " para " + operation.text
       puts "\n" + format("%3d",Command::GOBACK.menu) + " : " + Command::GOBACK.text + "\n"
       hangar = @gameUI.currentStation.hangar
       if (hangar != nil) then
-        case(element) 
-            when Element::WEAPON 
+        case(element)
+            when Element::WEAPON
                 for weapon in hangar.weapons do
                     option+=1
                     print showWeapon(weapon, format("%3d",option) + " : ")
                 end
-        when Element::SHIELD 
+        when Element::SHIELD
                 for shield in hangar.shieldBoosters do
                     option+=1
                     print showShield(shield, format("%3d",option) + " : ")
@@ -467,5 +469,5 @@ class TextMainView
   end
 
   end # class
-  
+
 end # module

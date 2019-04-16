@@ -1,4 +1,8 @@
 # encoding:utf-8
+
+require_relative "WeaponToUI"
+require_relative "WeaponType"
+
 module Deepspace
 class Weapon
     attr_reader :name, :type, :uses
@@ -9,10 +13,8 @@ class Weapon
         @uses = usos
     end
 
-    def newCopy(s)
-        @name = s.name
-        @type = s.type
-        @uses = s.uses
+    def self.newCopy(s)
+        new(s.name, s.type, s.uses)
     end
 
     def power
@@ -28,7 +30,7 @@ class Weapon
     end
 
     def getUIversion
-        l = WeapontoUI.new(self)
+        WeaponToUI.new(self)
     end
 
     def to_s
