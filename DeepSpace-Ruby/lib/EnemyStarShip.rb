@@ -2,6 +2,7 @@
 require_relative 'Loot'
 require_relative 'Damage'
 require_relative 'ShotResult'
+require_relative 'EnemyToUI'
 
 module Deepspace
 class EnemyStarShip
@@ -11,20 +12,20 @@ class EnemyStarShip
 #
 
     def initialize (n, a, s, l, d)
-        @name        = n;
-        @loot        = l;
-        @damage      = d;
-        @ammoPower   = a;
-        @shieldPower = s;
+        @name        = n
+        @ammoPower   = a
+        @shieldPower = s
+        @loot        = l
+        @damage      = d
     end
 
     def self.newCopy(s)
-        new(s.name, s.loot, s.damage, s.ammoPower, s.shieldPower)
+        new(s.name, s.ammoPower, s.shieldPower, s.loot, s.damage)
     end
 
 
     def getUIversion()
-        new EnemyToUI.new(self)
+        EnemyToUI.new(self)
     end
 
 #
