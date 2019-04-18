@@ -39,7 +39,7 @@ class SpaceStation
    end
 
    private def cleanPendingDamage()
-      if (@pendingDamage.hasNoEffect)
+      if (@pendingDamage != nil && @pendingDamage.hasNoEffect)
          @pendingDamage = nil
       end
    end
