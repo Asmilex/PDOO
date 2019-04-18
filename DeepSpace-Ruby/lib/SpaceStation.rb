@@ -24,8 +24,8 @@ class SpaceStation
       @fuelUnits   = assignFuelValue(supplies.fuelUnits)
       @shieldPower = supplies.shieldPower
 
-      @hangar
-      @pendingDamage
+      @hangar = nil
+      @pendingDamage = nil
 
       @weapons        = Array.new
       @shieldBoosters = Array.new
