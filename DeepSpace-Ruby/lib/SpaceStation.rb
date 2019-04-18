@@ -145,7 +145,7 @@ class SpaceStation
 #################### Set
 
    def setPendingDamage(d)
-      d.adjust(@weapons,@shieldBoosters)
+      @pendingDamage = d.adjust(@weapons,@shieldBoosters)
    end
 
    def setLoot (s)
