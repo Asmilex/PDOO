@@ -5,7 +5,9 @@ require_relative "WeaponType"
 
 module Deepspace
 class Weapon
-    attr_reader :name, :type, :uses
+#
+# ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
+#
 
     def initialize (nombre, tipo, usos)
         @name = nombre
@@ -16,6 +18,12 @@ class Weapon
     def self.newCopy(s)
         new(s.name, s.type, s.uses)
     end
+
+#
+# ─────────────────────────────────────────────────────────────── INTERFACES ─────
+#
+
+    attr_reader :name, :type, :uses
 
     def power
         @type.power

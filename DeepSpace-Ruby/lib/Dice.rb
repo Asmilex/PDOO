@@ -9,6 +9,10 @@ class Dice
       @generator     = rand
    end
 
+#
+# ─────────────────────────────────────────────────────────────────── INITS ─────
+#
+
    def initWithNHangars
       @generator = rand
       if (@generator < @NHANGARSPROB)
@@ -37,6 +41,10 @@ class Dice
          return 3
       end
    end
+
+#
+# ──────────────────────────────────────────────────────────────────── OTROS ─────
+#
 
    def whoStarts(nPlayers)
       return rand(nPlayers)

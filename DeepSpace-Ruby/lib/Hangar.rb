@@ -6,7 +6,10 @@ require_relative "HangarToUI"
 
 module Deepspace
 class Hangar
-    attr_reader :maxElements, :weapons, :shieldBoosters
+
+#
+# ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
+#
 
     def initialize (capacity)
         @maxElements    = capacity
@@ -22,6 +25,12 @@ class Hangar
 
         auxiliar
     end
+
+#
+# ─────────────────────────────────────────────────────────────── INTERFACES ─────
+#
+
+    attr_reader :maxElements, :weapons, :shieldBoosters
 
     def shields
         @shieldBoosters

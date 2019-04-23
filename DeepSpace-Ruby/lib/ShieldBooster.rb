@@ -3,7 +3,10 @@ require_relative 'ShieldToUI.rb'
 
 module Deepspace
 class ShieldBooster
-   attr_reader :name, :boost, :uses
+
+#
+# ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
+#
 
    def initialize (n, b, u)
       @name  = n
@@ -14,6 +17,12 @@ class ShieldBooster
    def self.newCopy (s)
       t = ShieldBooster.new(s.name(), s.boost(), s.uses())
    end
+
+#
+# ─────────────────────────────────────────────────────────────── INTERFACES ─────
+#
+
+   attr_reader :name, :boost, :uses
 
    def useIt
       if (@uses > 0)
