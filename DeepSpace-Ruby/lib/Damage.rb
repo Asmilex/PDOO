@@ -8,6 +8,10 @@ module Deepspace
 class Damage
     attr_reader :nShields, :nWeapons, :weapons
 
+#
+# ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
+#
+
     def initialize (w, s, wl)
         @nShields = s
         @nWeapons = w
@@ -24,6 +28,13 @@ class Damage
         new(0, s, wl)
     end
 
+
+    private_class_method :new
+
+#
+# ─────────────────────────────────────────────────────────────────── VARIOS ─────
+#
+
     def getUIversion
         DamageToUI.new(self)
     end
@@ -35,6 +46,20 @@ class Damage
             end
         end
     end
+
+    def to_s
+        ret = "Daño a escudos: #{@nShields}"
+
+        if @weapons == nil or @weapons.length == 0
+            ret + "\n\t-> Daño a armas: #{@nWeapons}"
+        else
+            ret + "\n\t-> Tamaño del array de armas: #{@weapons.length}"
+        end
+    end
+
+#
+# ─────────────────────────────────────────────────────────────────── AJUSTE ─────
+#
 
 
     def adjust(weapons, s)
@@ -72,17 +97,5 @@ class Damage
     def hasNoEffect
         @nShields == 0 and @nWeapons == 0 and (@weapons == nil or @weapons.size == 0)
     end
-
-    def to_s
-        ret = "Daño a escudos: #{@nShields}"
-
-        if @weapons == nil or @weapons.length == 0
-            ret + "\n\t-> Daño a armas: #{@nWeapons}"
-        else
-            ret + "\n\t-> Tamaño del array de armas: #{@weapons.length}"
-        end
-    end
-
-    private_class_method :new
 end
 end

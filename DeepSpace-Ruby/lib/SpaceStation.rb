@@ -15,7 +15,9 @@ class SpaceStation
    @@MAXFUEL = 100
    @@SHIELDLOSSPERUNITSHOT = 0.1
 
-##################### Constructor
+#
+# ────────────────────────────────────────────────────────────── CONSTRUCTOR ─────
+#
 
    def initialize (n, supplies)
       @name        = n
@@ -31,8 +33,9 @@ class SpaceStation
       @shieldBoosters = Array.new
    end
 
-
-################### Metodos privados
+#
+# ───────────────────────────────────────────────────────── METODOS PRIVADOS ─────
+#
 
    private def assignFuelValue (f)
       @fuelUnits = [@@MAXFUEL, f].min
@@ -44,7 +47,10 @@ class SpaceStation
       end
    end
 
-################### discard
+#
+# ───────────────────────────────────────────────────────────────── DISCARDS ─────
+#
+
 
    def discardHangar()
          @hangar = nil
@@ -87,7 +93,9 @@ class SpaceStation
       end
    end
 
-################### Interfaces
+#
+# ─────────────────────────────────────────────────────────────── INTERFACES ─────
+#
 
    attr_reader :nMedals, :name, :fuelUnits, :ammoPower, :hangar, :shieldBoosters, :weapons, :shieldPower, :pendingDamage
 
@@ -100,7 +108,9 @@ class SpaceStation
    end
 
 
-################### Receive
+#
+# ─────────────────────────────────────────────────────────────── RECEPTORES ─────
+#
 
    def receiveWeapon(w)
       if @hangar != nil
@@ -142,7 +152,9 @@ class SpaceStation
         end
    end
 
-#################### Set
+#
+# ────────────────────────────────────────────────────────────────── SETTERS ─────
+#
 
    def setPendingDamage(d)
       @pendingDamage = d.adjust(@weapons,@shieldBoosters)
@@ -185,6 +197,10 @@ class SpaceStation
         @nMedals += s.nMedals
    end
 
+#
+# ─────────────────────────────────────────────────────────────────── MOUNTS ─────
+#
+
    def mountWeapon(i)
     if (i >= 0)
           if (@hangar != nil)
@@ -198,7 +214,7 @@ class SpaceStation
    end
 
    def mountShieldBooster(i)
-        if (i >= 0)      
+        if (i >= 0)
             if (@hangar != nil)
              escudo = @hangar.removeShieldBooster(i)
 
@@ -209,7 +225,9 @@ class SpaceStation
         end
    end
 
-#################### Otros
+#
+# ──────────────────────────────────────────────────────────────────── OTROS ─────
+#
 
    def move
       @fuelUnits -= getSpeed

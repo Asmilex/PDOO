@@ -25,6 +25,11 @@ class GameUniverse
         @currentStation
     end
 
+
+#
+# ────────────────────────────────────────────────────────────────── COMBATS ─────
+#
+
     def combatGo (station, enemy)
         ch = @dice.firstShot
         combatResult = CombatResult::ENEMYWINS
