@@ -74,7 +74,7 @@ class SpaceStation
         if i >= 0 and i < size
             sh = @shieldBoosters.delete_at(i)
             if (@pendingDamage != nil)
-                @pendingDamage.discardShieldBooster(sh)
+                @pendingDamage.discardShieldBooster
                 cleanPendingDamage
             end
         end
