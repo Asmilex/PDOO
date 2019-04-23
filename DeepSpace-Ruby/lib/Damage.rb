@@ -36,54 +36,38 @@ class Damage
         end
     end
 
-    def adjust (w, s)
-        nuevo_escudo = [s.length, @nShields].min
 
-        if @weapons == nil or @weapons.length == 0
-            nuevo_dano = [w.length, @nWeapons].min
-            Damage.newNumericWeapons(nuevo_dano, nuevo_escudo)
+    def adjust(weapons, s)
+        nSh = [@nShields, s.length].min
+
+        if @nWeapons == -1
+            wCopy = @weapons.clone # Creamos copia para no modificar atributo
+
+            armas_ajustadas = weapons.map do |w|
+                wCopy.delete_at(wCopy.index(w.type) || wCopy.length)
+            end
+
+            armas_ajustadas.compact!
+
+            self.class.newSpecificWeapons(armas_ajustadas, nSh)
         else
-            nuevos_tipos = Array.new
-
-            w.each { |arma|
-                if @weapons.include?(arma.type)
-                    nuevos_tipos.push(arma.type)
-                end
-            }
-
-            Damage.newSpecificWeapons(nuevos_tipos, nuevo_escudo)
+            self.class.newNumericWeapons( [@nWeapons, weapons.length].min, nSh )
         end
     end
 
-=begin
-    def discardWeapon (w)
-        if @weapons != nil
-            @weapons.delete(w.type)
-        elsif @nWeapons > 0
-            @nWeapons -= 1
+    def discardWeapon(w) # discardWeapon (w: Weapon) : void
+        if @weapons != nil and @nWeapons == 0
+            @weapons.delete_if {|x| x == w.type}
+        elsif @weapons == nil and @nWeapons != 0
+            @nWeapons = @nWeapons > 0 ? @nWeapons -= 1 : 0
         end
     end
 
     def discardShieldBooster
-        if @nShields > 0
-            @nShields-=1
+        if(@nShields > 0)
+            @nShields -= 1
         end
     end
-=end
-
-        def discardWeapon(w) # discardWeapon (w: Weapon) : void
-            if @weapons != nil and @nWeapons == 0
-        		@weapons.delete_if {|x| x == w.type}
-        	elsif @weapons == nil and @nWeapons != 0
-        		@nWeapons = @nWeapons > 0 ? @nWeapons -= 1 : 0
-        	end
-        end
-
-        def discardShieldBooster
-            if(@nShields > 0)
-                @nShields -= 1
-            end
-        end
 
     def hasNoEffect
         @nShields == 0 and @nWeapons == 0 and (@weapons == nil or @weapons.size == 0)
