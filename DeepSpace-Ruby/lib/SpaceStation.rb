@@ -63,7 +63,7 @@ class SpaceStation
    end
 
    def discardWeaponInHangar(i)
-      if (@hangar != nil)
+      if (@hangar != nil && i >= 0)
          @hangar.removeWeapon(i)
       end
    end
@@ -82,7 +82,7 @@ class SpaceStation
 
 
    def discardShieldBoosterInHangar(i)
-      if(@hangar != nil)
+      if(@hangar != nil && i >= 0)
          @hangar.removeShieldBooster(i)
       end
    end
