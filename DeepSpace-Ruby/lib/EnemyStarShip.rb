@@ -49,7 +49,7 @@ class EnemyStarShip
     end
 
     def to_s
-        "-> Nombre: #{@name} \n\t -> Potencia: #{@ammoPower} \n\t-> Escudos: #{@shieldPower} \n\t-> #{@loot.to_s} \n\t-> Daño: #{@damage}"
+        getUIversion.to_s
     end
 
     attr_reader :name, :loot, :damage, :ammoPower, :shieldPower

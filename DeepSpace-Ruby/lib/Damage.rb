@@ -25,7 +25,7 @@ class Damage
     end
 
     def self.newSpecificWeapons(wl, s)
-        new(0, s, wl)
+        new(-1, s, wl)
     end
 
 
@@ -48,13 +48,7 @@ class Damage
     end
 
     def to_s
-        ret = "Daño a escudos: #{@nShields}"
-
-        if @weapons == nil or @weapons.length == 0
-            ret + "\n\t-> Daño a armas: #{@nWeapons}"
-        else
-            ret + "\n\t-> Tamaño del array de armas: #{@weapons.length}"
-        end
+        getUIversion.to_s
     end
 
 #
@@ -81,9 +75,9 @@ class Damage
     end
 
     def discardWeapon(w) # discardWeapon (w: Weapon) : void
-        if @weapons != nil and @nWeapons == 0
+        if @weapons != nil and @nWeapons == -1
             @weapons.delete_if {|x| x == w.type}
-        elsif @weapons == nil and @nWeapons != 0
+        elsif @weapons == nil and @nWeapons != -1
             @nWeapons = @nWeapons > 0 ? @nWeapons -= 1 : 0
         end
     end
@@ -95,7 +89,7 @@ class Damage
     end
 
     def hasNoEffect
-        @nShields == 0 and @nWeapons == 0 and (@weapons == nil or @weapons.size == 0)
+        @nShields == 0 and (@nWeapons == 0 or @nWeapons == -1) and (@weapons == nil or @weapons.size == 0)
     end
 end
 end

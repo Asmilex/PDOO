@@ -269,7 +269,7 @@ class SpaceStation
    end
 
    def to_s
-      "-> Nombre:#{@name} \n\t-> Potencia: #{@ammoPower} \n\t-> Escudos: #{@shieldPower} \n\t-> nMedals: #{@nMedals} \n\t-> Daño pendiente: #{@pendingDamage.to_s} \n\t-> Gasolina: #{@fuelUnits} \n\t-> Hangar: #{@hangar.to_s}"
+        getUIversion.to_s
    end
 end
 end

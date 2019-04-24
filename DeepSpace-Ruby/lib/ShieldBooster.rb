@@ -38,7 +38,7 @@ class ShieldBooster
    end
 
    def to_s
-      "-> Nombre: #{@name} \n\t-> Boost: #{@boost} \n\t-> Usos: #{@uses}"
+      getUIversion.to_s
    end
 end
 end

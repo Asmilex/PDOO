@@ -18,7 +18,7 @@ class Loot
     end
 
     def to_s
-        "-> Supplies: #{@nSupplies} \n\t-> nWeapons: #{@nWeapons} \n\t-> nShields: #{@nShields} \n\t-> nHangars: #{@nHangars} \n\t-> nMedals: #{nMedals}"
+        getUIversion.to_s
     end
 
 end

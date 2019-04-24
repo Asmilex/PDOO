@@ -42,7 +42,7 @@ class Weapon
     end
 
     def to_s
-        "-> Nombre: #{@name} \n\t-> Tipo: #{@type} \n\t-> Usos: #{@uses}"
+        getUIversion.to_s
     end
 end
 end
