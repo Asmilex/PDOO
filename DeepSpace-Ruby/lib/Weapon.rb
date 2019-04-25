@@ -32,6 +32,7 @@ class Weapon
     def useIt
         if @uses > 0
             @uses -= 1
+            power
         else
             1.0
         end
