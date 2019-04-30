@@ -11,14 +11,14 @@ class GameUniverseToUI
 
     def initialize (station,enemy)
         @currentStation = station.getUIversion()
-        @currentEnemy   = enemy.getUIversion()
+        @currentEnemy= enemy.getUIversion()
     end
 
     public
 
     def to_s
-      out = "Estación actual -> #{@currentStation}\n"
-      out +="Enemigo actual --> #{@currentEnemy}"
+      out  = "Estación actual -> #{@currentStation}\n"
+      out += "Enemigo actual --> #{@currentEnemy}"
       return out
     end
 
