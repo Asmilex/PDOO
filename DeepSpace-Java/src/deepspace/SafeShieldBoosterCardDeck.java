@@ -9,18 +9,10 @@ package deepspace;
  *
  * @author Profe
  */
-public abstract class DamageToUI {
-    private int nShields;
-
-    DamageToUI(Damage d) {
-        nShields = d.getNShields();
+class SafeShieldBoosterCardDeck extends CardDeck<ShieldBooster> {
+    @Override
+    public ShieldBooster next() {
+        ShieldBooster h = (ShieldBooster)(super.next());
+        return new ShieldBooster(h) ;
     }
-
-    public int getNShields() {
-        return nShields;
-    }
-
-    public abstract String getWeaponInfo();
-
-
 }

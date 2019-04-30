@@ -26,7 +26,7 @@ public class HangarToUI {
             weapons.add(w.getUIversion());
         }
 
-        for(ShieldBooster s:h.getShieldBoosters()) {
+        for(ShieldBooster s: h.getShieldBoosters()) {
             shieldBoosters.add(s.getUIversion());
         }
     }
@@ -42,6 +42,4 @@ public class HangarToUI {
     public ArrayList<ShieldToUI> getShieldBoosters() {
         return shieldBoosters;
     }
-
-
 }

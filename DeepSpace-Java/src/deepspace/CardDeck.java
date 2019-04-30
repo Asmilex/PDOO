@@ -7,16 +7,18 @@ package deepspace;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  *
  * @author Profe
  * @param <T>
  */
-class CardDeck<T extends Copyable<T>> {
+class CardDeck<T> {
     private ArrayList<T> cards=new ArrayList<>();
     private boolean ready;
     private int count;
+
 
     CardDeck() {
         ready = false;
@@ -34,16 +36,15 @@ class CardDeck<T extends Copyable<T>> {
             shuffle();
         }
 
-        T card = cards.remove(0);
+        T card=cards.remove(0);
         cards.add(card);
 
         count++;
         if (count == cards.size()) {
             shuffle();
-            count = 0;
+            count=0;
         }
-
-        return card.copy();
+        return card;
     }
 
     private void shuffle() {
@@ -55,12 +56,3 @@ class CardDeck<T extends Copyable<T>> {
     }
 }
 
-/*
-class SafeHangarCardDeck extends CardDeck<Hangar> {
-    @Override
-    public Hangar next() {
-        Hangar h=(Hangar)(super.next());
-        return new Hangar(h) ;
-    }
-}
-*/

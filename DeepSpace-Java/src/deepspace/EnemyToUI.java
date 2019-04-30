@@ -45,6 +45,4 @@ public class EnemyToUI {
     public DamageToUI getDamage() {
         return damage;
     }
-
-
 }
