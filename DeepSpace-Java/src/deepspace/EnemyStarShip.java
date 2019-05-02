@@ -1,6 +1,6 @@
 package deepspace;
 
-class EnemyStarShip implements Copyable <EnemyStarShip> {
+class EnemyStarShip implements Copyable <EnemyStarShip>, SpaceFighter {
 
     private Loot loot;
     private Damage damage;

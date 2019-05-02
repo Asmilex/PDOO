@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import sun.security.jca.GetInstance;
 
-class SpaceStation {
+class SpaceStation implements SpaceFighter{
     private static int MAXFUEL = 100;
     private static float SHIELDOSSPERUNITSHOT = 0.1f;
 

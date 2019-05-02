@@ -6,7 +6,7 @@ package deepspace;
 // ──────────────────────────────────────────────────────────────────────────
 //
 
-class Weapon implements Copyable <Weapon> {
+class Weapon implements Copyable <Weapon>, CombatElement {
     private String name;
     private WeaponType type;
     private int uses;

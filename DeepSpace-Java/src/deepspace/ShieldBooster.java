@@ -6,7 +6,7 @@ package deepspace;
 // ────────────────────────────────────────────────────────────────────────────────────────
 //
 
-class ShieldBooster implements Copyable <ShieldBooster> {
+class ShieldBooster implements Copyable <ShieldBooster>, CombatElement {
     private String name;
     private float boost;
     private int uses;
