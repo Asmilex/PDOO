@@ -2,9 +2,8 @@ package deepspace;
 
 import java.util.ArrayList;
 
-// FIXME hace falta declararla como abstracta?
-class Damage {
-    private int nShields;
+abstract class Damage {
+    protected int nShields;
 
 //
 // ────────────────────────────────────────────────────────────── CONSTRUCTOR ─────
