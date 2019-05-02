@@ -3,14 +3,16 @@ require_relative 'LootToUI'
 
 module Deepspace
 class Loot
-    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals
+    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :getEfficient, :spaceCity
 
-    def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue)
-        @nSupplies = suppliesValue
-        @nWeapons  = weaponsValue
-        @nShields  = shieldsValue
-        @nHangars  = hangarsValue
-        @nMedals   = medalsValue
+    def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue, ef = false, city = nil)
+        @nSupplies    = suppliesValue
+        @nWeapons     = weaponsValue
+        @nShields     = shieldsValue
+        @nHangars     = hangarsValue
+        @nMedals      = medalsValue
+        @getEfficient = ef
+        @spaceCity    = city
     end
 
     def getUIversion
@@ -20,6 +22,5 @@ class Loot
     def to_s
         getUIversion.to_s
     end
-
 end
 end
