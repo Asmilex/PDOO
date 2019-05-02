@@ -10,7 +10,7 @@ require '../lib/SuppliesPackage.rb'
 require '../lib/Weapon.rb'
 require '../lib/WeaponType.rb'
 
-module DeepSpace
+module Deepspace
     class TestP1
         def initialize
 
