@@ -12,6 +12,7 @@ public class GameUniverse {
     private GameStateController gameState;
     private ArrayList<SpaceStation> spaceStations = new ArrayList<>();
 
+    private Boolean haveSpaceCity = false;
 
     GameUniverse() {
         gameState = new GameStateController();
@@ -19,6 +20,17 @@ public class GameUniverse {
         turns     = 0;
     }
 
+//
+// ───────────────────────────────────────────────────────── METODOS PRIVADOS ─────
+//
+
+    private void createSpaceCity() {
+
+    }
+
+    private void makeStationEfficient () {
+
+    }
 
 //
 // ──────────────────────────────────────────────────────────────────── MOUNTS ─────
@@ -86,7 +98,7 @@ public class GameUniverse {
             spaceStations = new ArrayList<>();
             CardDealer dealer = CardDealer.getInstance();
 
-            for (int i = 0; i < names.size(); ++i){
+            for (int i = 0; i < names.size(); ++i) {
                 SuppliesPackage supplies = dealer.nextSuppliesPackage();
                 SpaceStation station = new SpaceStation(names.get(i), supplies);
                 spaceStations.add(station);
@@ -99,7 +111,7 @@ public class GameUniverse {
 
                 station.setLoot(lo);
             }
-            
+
             currentStationIndex = dice.whoStarts(names.size());
             currentStation = spaceStations.get(currentStationIndex);
             currentEnemy = dealer.nextEnemy();
@@ -134,7 +146,7 @@ public class GameUniverse {
         GameState state = gameState.getState();
         if ((state == GameState.BEFORECOMBAT) || (state == GameState.INIT)){
             return combat(currentStation, currentEnemy);
-        }    
+        }
         return CombatResult.NOCOMBAT;
     }
 
