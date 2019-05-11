@@ -38,12 +38,11 @@ public class SpaceCity extends SpaceStation {
         return muralla;
     }
 
-    public Trasnformation setLoot (Loot loot) {
+    public Transformation setLoot (Loot loot) {
         base.setLoot(loot);
         return Transformation.NOTRANSFORM;
     }
 
-    @Override
     public String toString() {
         return SpaceCityToUI(this);
     }
