@@ -27,6 +27,7 @@ class GameUniverse
 
         @currentEnemy
         @currentStation
+        @haveSpaceCity = false
     end
 
 
@@ -71,8 +72,16 @@ class GameUniverse
             end
         else
             aLoot = enemy.loot
-            station.setLoot( aLoot )
-            combatResult = CombatResult::STATIONWINS
+            setransforma = station.setLoot( aLoot )
+            if setransforma == Transformation::GETEFFICIENT
+                makeStationEfficient
+                combatResult = CombatResult::STATIONWINSANDCONVERTS
+            elsif setransforma == Transformacion::SPACECITY
+                createSpaceCity
+                combatResult = CombatResult::STATIONWINSANDCONVERTS
+            else
+                combatResult = CombatResult::STATIONWINS
+            end
         end
 
         @gameState.next(@turns, @spaceStations.length)
@@ -210,6 +219,30 @@ class GameUniverse
 
 
     end
+
+    def createSpaceCity
+        if @haveSpaceCity == false
+            vector = Arrayn.new
+            @spaceStations.each{ |station| 
+                if station != @currentStation
+                    vector << station
+                 end
+            }
+
+            @currentStation = SpaceCity.new(@currentStation, vector)
+            @spaceStations[@currentStationIndex] = @currentStation
+            @haveSpaceCity = true
+        end
+    end
+
+    def makeStationEfficient
+        @currentStation = PowerEfficientSpaceStation.new(@currentStation)
+        if @dice.extraEfficiency
+            @currentStation = BetaPowerEfficientSpaceStation.new(@currentStation)
+        end
+
+        @spaceStations[@currentStationIndex] = @currentStation
+    end            
 
     def to_s
         getUIversion.to_s
