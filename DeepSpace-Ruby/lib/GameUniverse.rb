@@ -220,6 +220,8 @@ class GameUniverse
 
     end
 
+private
+
     def createSpaceCity
         if @haveSpaceCity == false
             vector = Arrayn.new
@@ -243,6 +245,8 @@ class GameUniverse
 
         @spaceStations[@currentStationIndex] = @currentStation
     end            
+
+public    
 
     def to_s
         getUIversion.to_s
