@@ -183,7 +183,7 @@ class SpaceStation implements SpaceFighter{
 // ────────────────────────────────────────────────────────────────── SETTERS ─────
 //
 
-    public void setLoot (Loot l) {
+    public Transformation setLoot (Loot l) {
         CardDealer dealer = CardDealer.getInstance();
 
         int h = l.getNHangars();
@@ -214,8 +214,18 @@ class SpaceStation implements SpaceFighter{
             receiveShieldBooster(sh);
         }
 
-
         nMedals += l.getNMedals();
+
+
+        if ( l.getEfficient() ) {
+            return Transformation.GETEFFICIENT;
+        }
+        else if (l.spaceCity()) {
+            return Transformation.SPACECITY;
+        }
+        else {
+            return Transformation.NOTRANSFORM;
+        }
     }
 
     public void setPendingDamage (Damage d) {
