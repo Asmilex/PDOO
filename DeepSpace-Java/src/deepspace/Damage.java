@@ -2,8 +2,9 @@ package deepspace;
 
 import java.util.ArrayList;
 
+
 abstract class Damage {
-    protected int nShields;
+    private int nShields;
 
 //
 // ────────────────────────────────────────────────────────────── CONSTRUCTOR ─────
@@ -47,10 +48,9 @@ abstract class Damage {
         return nShields;
     }
 
-    DamageToUI getUIversion () {
-        return new DamageToUI(this);
-    }
+    abstract DamageToUI getUIversion ();
 
+    @Override
     public String toString() {
         return getUIversion().toString();
     }

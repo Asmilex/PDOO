@@ -12,6 +12,8 @@ package deepspace;
         private int nShields;
         private int nHangars;
         private int nMedals;
+        private boolean getEfficient;
+        private boolean spaceCity;
 
         Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue) {
 
@@ -20,6 +22,18 @@ package deepspace;
             nShields  = ShieldsValue;
             nHangars  = HangarsValue;
             nMedals   = MedalsValue;
+            getEfficient = false;
+            spaceCity = false;
+        }
+        
+        Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue, boolean efficient, boolean spcity){
+            nSupplies = SuppliesValue;
+            nWeapons  = WeaponsValue;
+            nShields  = ShieldsValue;
+            nHangars  = HangarsValue;
+            nMedals   = MedalsValue;
+            getEfficient = efficient;
+            spaceCity = spcity;
         }
 
         public int getNHangars() {
@@ -41,10 +55,19 @@ package deepspace;
         public int getNWeapons() {
             return nWeapons;
         }
+        
+        public boolean getEfficient() {
+            return getEfficient;
+        }
+        
+        public boolean spaceCity() {
+            return spaceCity;
+        }
 
         LootToUI getUIversion() {
             return new LootToUI(this);
         }
+        
 
         @Override
         public String toString() {

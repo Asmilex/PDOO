@@ -170,7 +170,7 @@ public class GameUniverse {
             }
             else{
                 station.move();
-                combatResult = CombatResult.STATIONSCAPES;
+                combatResult = CombatResult.STATIONESCAPES;
             }
         }
         else{
