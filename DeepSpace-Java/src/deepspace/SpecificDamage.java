@@ -59,4 +59,9 @@ class SpecificDamage extends Damage {
     public String toString () {
         return super.toString() + "\n\t-> Tamaño del array de armas: " + weapons.size();
     }
+    
+    @Override
+    DamageToUI getUIversion() {
+        return new SpecificDamageToUI(this);  
+    }
 }

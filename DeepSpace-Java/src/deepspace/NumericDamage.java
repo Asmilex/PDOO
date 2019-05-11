@@ -16,7 +16,7 @@ class NumericDamage extends Damage {
 
     NumericDamage (NumericDamage dano) {
         super(dano.getNShields());
-        nWeapons = dano.getWeapons();
+        nWeapons = dano.getNWeapons();
     }
 
 //
@@ -49,5 +49,10 @@ class NumericDamage extends Damage {
 
     public String toString() {
         return super.toString() + "\n\t-> Daño a armas: " + nWeapons;
+    }
+
+    @Override
+    DamageToUI getUIversion() {
+        return new NumericDamageToUI(this);  
     }
 }
