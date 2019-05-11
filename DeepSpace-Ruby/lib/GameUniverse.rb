@@ -8,6 +8,10 @@ require_relative "ShotResult"
 require_relative "SpaceStation"
 require_relative "CardDealer"
 require_relative "EnemyStarShip"
+require_relative "PowerEfficientSpaceStation"
+require_relative "BetaPowerEfficientSpaceStation"
+require_relative "SpaceCity"
+require_relative "Transformation"
 
 module Deepspace
 class GameUniverse
