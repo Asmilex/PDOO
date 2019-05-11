@@ -224,7 +224,7 @@ private
 
     def createSpaceCity
         if @haveSpaceCity == false
-            vector = Arrayn.new
+            vector = Array.new
             @spaceStations.each{ |station| 
                 if station != @currentStation
                     vector << station
