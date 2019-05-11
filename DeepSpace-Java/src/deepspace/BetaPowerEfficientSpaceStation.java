@@ -19,6 +19,6 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
 
     @Override
     public String toString() {
-        return "Beta :\n" + super.toString();
+        return BetaPowerEfficientSpaceStationToUI(this);
     }
 }
