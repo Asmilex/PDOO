@@ -24,7 +24,6 @@ public class SpecificDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── UTILIDADES ─────
 //
 
-    @Override
     public void discardWeapon (Weapon w) {
         weapons.remove( w.getType() );
     }
@@ -35,7 +34,6 @@ public class SpecificDamage extends Damage {
         return nShields == 0 && weapons.isEmpty();
     }
 
-    @Override
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
         // FIXME esto hay que comprobar que funciona
 
@@ -59,10 +57,9 @@ public class SpecificDamage extends Damage {
 
     @Override
     public String toString () {
-        return SpecificDamageToUI(this);
+        return super.toString() + "Tamaño del array de armas: " + weapons.size() + "\n";
     }
 
-    @Override
     DamageToUI getUIversion() {
         return new SpecificDamageToUI(this);
     }

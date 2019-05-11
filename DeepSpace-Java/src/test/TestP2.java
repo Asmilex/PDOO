@@ -53,8 +53,8 @@ public class TestP2 {
 
         Damage damage1, damage2, damage3;
         ArrayList <WeaponType> wl=new ArrayList<>();
-        damage1 = new Damage(5,4);
-        damage2 = new Damage(wl, 2);
+        damage1 = new NumericDamage(5,4);
+        damage2 = new SpecificDamage(wl, 2);
         wl.add(WeaponType.LASER);
         wl.add(WeaponType.MISSILE);
         wl.add(WeaponType.PLASMA);
@@ -62,13 +62,13 @@ public class TestP2 {
         System.out.format("\n%s\n",damage1.toString());
         System.out.format("\n%s\n",damage2.toString());
 
-        damage3 = damage1.adjust(hangar1.getWeapons(), hangar1.getShieldBoosters());
-        System.out.format("\n%s\n",damage3.toString());
-        damage3 = damage2.adjust(hangar1.getWeapons(), hangar1.getShieldBoosters());
-        System.out.format("\n%s\n",damage3.toString());
+        //damage3 = damage1.adjust(hangar1.getWeapons(), hangar1.getShieldBoosters());
+        //System.out.format("\n%s\n",damage3.toString());
+        //damage3 = damage2.adjust(hangar1.getWeapons(), hangar1.getShieldBoosters());
+        //System.out.format("\n%s\n",damage3.toString());
 
-        damage1.discardWeapon(arma1);
-        damage2.discardWeapon(arma3);
+        //damage1.discardWeapon(arma1);
+        //damage2.discardWeapon(arma3);
         damage1.discardShieldBooster();
         damage2.discardShieldBooster();
 
@@ -86,12 +86,12 @@ public class TestP2 {
         Damage damagenull;
 
         System.out.format("\n\nPrueba de hasNoEffect:");
-        damagenull = new Damage(vacio,0);
+        damagenull = new SpecificDamage(vacio,0);
 
         if(damagenull.hasNoEffect())
             System.out.format("\nFunciona\n");
 
-        damagenull = new Damage(0,0);
+        damagenull = new NumericDamage(0,0);
 
         if(damagenull.hasNoEffect())
             System.out.format("\nTambien Funciona\n");

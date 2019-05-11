@@ -23,7 +23,6 @@ public class NumericDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── UTILIDADES ─────
 //
 
-    @Override
     public void discardWeapon () {
         if (nWeapons > 0)
             nWeapons--;
@@ -34,7 +33,6 @@ public class NumericDamage extends Damage {
         return nShields == 0 && nWeapons == 0;
     }
 
-    @Override
     public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
         int min_escudos = Math.min(nShields, s.size());
         int min_dano    = Math.min(nWeapons, w.size());

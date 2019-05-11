@@ -15,7 +15,7 @@ class SpaceStation implements SpaceFighter{
     private float shieldPower;
 
     private Hangar hangar;
-    private Damage pendingDamage = new Damage(0, 0);
+    private Damage pendingDamage = new NumericDamage(0, 0);
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<ShieldBooster> shieldBoosters = new ArrayList<>();
 
@@ -44,16 +44,28 @@ class SpaceStation implements SpaceFighter{
         shieldPower = supplies.getShieldPower();
     }
 
+    SpaceStation (SpaceStation estacion) {
+        name           = estacion.name;
+        ammoPower      = estacion.ammoPower;
+        fuelUnits      = estacion.fuelUnits;
+        shieldPower    = estacion.shieldPower;
+        nMedals        = estacion.nMedals;
+        pendingDamage  = estacion.pendingDamage;
+        weapons        = estacion.weapons;
+        shieldBoosters = estacion.shieldBoosters;
+        hangar         = estacion.hangar;
+    }
+
 //
 // ───────────────────────────────────────────────────────────────── DISCARDS ─────
 //
 
     public void discardShieldBooster (int i) {
         if (i >= 0 && i < shieldBoosters.size()) {
-            ShieldBooster s = shieldBoosters.remove(i);
+            shieldBoosters.remove(i);
 
             if (pendingDamage != null) {
-                pendingDamage.discardShieldBooster(); //FIXME me suena raro
+                pendingDamage.discardShieldBooster();
                 cleanPendingDamage();
             }
         }
@@ -69,7 +81,7 @@ class SpaceStation implements SpaceFighter{
             Weapon w = weapons.remove(i);
 
             if (pendingDamage != null) {
-                pendingDamage.discardWeapon(w);
+                pendingDamage.discardWeapon(w); // FIXME
                 cleanPendingDamage();
             }
         }
@@ -255,7 +267,7 @@ class SpaceStation implements SpaceFighter{
 //
 
     public boolean validState () {
-        return (pendingDamage == null || pendingDamage.hasNoEffect());
+        return ( pendingDamage == null || pendingDamage.hasNoEffect() );
     }
 
     public void move () {

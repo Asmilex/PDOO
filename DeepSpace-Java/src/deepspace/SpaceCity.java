@@ -44,6 +44,6 @@ public class SpaceCity extends SpaceStation {
     }
 
     public String toString() {
-        return SpaceCityToUI(this);
+        return "Ciudad espacial: \n" + super.toString();
     }
 }
