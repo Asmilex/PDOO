@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 abstract class Damage {
-    private int nShields;
+    protected int nShields;
 
 //
 // ────────────────────────────────────────────────────────────── CONSTRUCTOR ─────
@@ -39,6 +39,8 @@ abstract class Damage {
         if (nShields > 0)
             nShields--;
     }
+
+    abstract public Boolean hasNoEffect();
 
 //
 // ─────────────────────────────────────────────────────────────── INTERFACES ─────

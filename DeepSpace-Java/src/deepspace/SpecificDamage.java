@@ -17,7 +17,7 @@ class SpecificDamage extends Damage {
 
     SpecificDamage (SpecificDamage dano) {
         super (dano.getNShields());
-        weapons = dano.getWeapons();
+        weapons = dano.weapons;
     }
 
 //
@@ -30,7 +30,7 @@ class SpecificDamage extends Damage {
 
 
     public boolean hasNoEffect() {
-        return  == 0 && weapons.size() == 0;
+        return nShields == 0 && weapons.isEmpty();
     }
 
 
@@ -59,9 +59,9 @@ class SpecificDamage extends Damage {
     public String toString () {
         return super.toString() + "\n\t-> Tamaño del array de armas: " + weapons.size();
     }
-    
+
     @Override
     DamageToUI getUIversion() {
-        return new SpecificDamageToUI(this);  
+        return new SpecificDamageToUI(this);
     }
 }
