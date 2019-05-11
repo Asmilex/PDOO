@@ -1,6 +1,6 @@
 package deepspace;
 
-class PowerEfficientSpaceStation extends SpaceStation {
+public class PowerEfficientSpaceStation extends SpaceStation {
     private float EFFICIENCYFACTOR = 1.10f;
 
     PowerEfficientSpaceStation (SpaceStation estacion) {
