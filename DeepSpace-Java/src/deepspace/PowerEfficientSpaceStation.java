@@ -27,6 +27,6 @@ public class PowerEfficientSpaceStation extends SpaceStation {
 
     @Override
     public String toString() {
-        return PowerEfficientSpaceStationToUI(this);
+        return "Power efficient Space Station:\n" + super.toString();
     }
 }
