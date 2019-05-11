@@ -2,7 +2,7 @@ package deepspace;
 
 import java.util.ArrayList;
 
-class SpecificDamage extends Damage {
+public class SpecificDamage extends Damage {
     private ArrayList<WeaponType> weapons = new ArrayList<>();
 
 //
@@ -24,16 +24,18 @@ class SpecificDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── UTILIDADES ─────
 //
 
+    @Override
     public void discardWeapon (Weapon w) {
         weapons.remove( w.getType() );
     }
 
 
-    public boolean hasNoEffect() {
+    @Override
+    public Boolean hasNoEffect() {
         return nShields == 0 && weapons.isEmpty();
     }
 
-
+    @Override
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
         // FIXME esto hay que comprobar que funciona
 
@@ -55,9 +57,9 @@ class SpecificDamage extends Damage {
         return weapons;
     }
 
-
+    @Override
     public String toString () {
-        return super.toString() + "\n\t-> Tamaño del array de armas: " + weapons.size();
+        return SpecificDamageToUI(this);
     }
 
     @Override

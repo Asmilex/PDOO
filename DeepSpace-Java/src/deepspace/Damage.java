@@ -2,8 +2,7 @@ package deepspace;
 
 import java.util.ArrayList;
 
-
-abstract class Damage {
+public abstract class Damage {
     protected int nShields;
 
 //
@@ -12,6 +11,10 @@ abstract class Damage {
 
     Damage (int s) {
         nShields = s;
+    }
+
+    Damage (Damage d) {
+        nShields = d.nShields;
     }
 
 //

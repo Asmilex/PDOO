@@ -2,7 +2,7 @@ package deepspace;
 
 import java.util.ArrayList;
 
-class NumericDamage extends Damage {
+public class NumericDamage extends Damage {
     private int nWeapons;
 
 //
@@ -15,7 +15,7 @@ class NumericDamage extends Damage {
     }
 
     NumericDamage (NumericDamage dano) {
-        super(dano.getNShields());
+        super( dano.getNShields() );
         nWeapons = dano.getNWeapons();
     }
 
@@ -23,15 +23,18 @@ class NumericDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── UTILIDADES ─────
 //
 
+    @Override
     public void discardWeapon () {
         if (nWeapons > 0)
             nWeapons--;
     }
 
-    public boolean hasNoEffect () {
+    @Override
+    public Boolean hasNoEffect () {
         return nShields == 0 && nWeapons == 0;
     }
 
+    @Override
     public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
         int min_escudos = Math.min(nShields, s.size());
         int min_dano    = Math.min(nWeapons, w.size());
@@ -47,12 +50,13 @@ class NumericDamage extends Damage {
         return nWeapons;
     }
 
+    @Override
     public String toString() {
         return super.toString() + "\n\t-> Daño a armas: " + nWeapons;
     }
 
     @Override
     DamageToUI getUIversion() {
-        return new NumericDamageToUI(this);  
+        return new NumericDamageToUI(this);
     }
 }
