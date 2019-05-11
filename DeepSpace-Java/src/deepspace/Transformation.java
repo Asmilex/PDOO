@@ -1,6 +1,6 @@
 package deepspace;
 
-public enum Trasnformation {
+public enum Transformation {
     NOTRANSFORM,
     GETEFFICIENT,
     SPACECITY
