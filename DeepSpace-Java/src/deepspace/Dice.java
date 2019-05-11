@@ -8,31 +8,31 @@ import java.util.Random;
 //
 
     class Dice {
-        private final float NHANGARPROB;
-        private final float NSHIELDPROB;
-        private final float NWEAPONPROB;
-        private final float FIRSTSHOTPROB;
+
+        private final float NHANGARPROB         = 0.25f;
+        private final float NSHIELDPROB         = 0.25f;
+        private final float NWEAPONPROB         = 0.33f;
+        private final float FIRSTSHOTPROB       = 0.5f;
+        private final float EXTRAEFFICIENCYPROB = 0.8f;
 
         private Random generator;
 
-        Dice() {
-            NHANGARPROB   = 0.25f;
-            NSHIELDPROB   = 0.25f;
-            NWEAPONPROB   = 0.33f;
-            FIRSTSHOTPROB = 0.5f;
+    //
+    // ────────────────────────────────────────────────────────────────── METODOS ─────
+    //
 
+        Dice() {
             generator = new Random();
         }
+
+
         /*
             @return 0 con probabilidad NHANGARSPROB. 1 de lo contrario
         */
         public int initWithNHangars() {
-            float randomNumber = generator.nextFloat();
-
-            if (randomNumber <= NHANGARPROB)
-                return 0;
-            else
-                return 1;
+            return generator.nextFloat() <= NHANGARPROB
+                ?   0
+                :   1;
         }
 
         /*
@@ -54,12 +54,9 @@ import java.util.Random;
             @return 0 con probabilidad NSHIELDPROB. 1 de lo contrario
         */
         public int initWithNShields() {
-            float randomNumber = generator.nextFloat();
-
-            if (randomNumber <= NSHIELDPROB)
-                return 0;
-            else
-                return 1;
+            return generator.nextFloat() <= NSHIELDPROB
+                ?   0
+                :   1;
         }
 
         public int whoStarts(int nPlayers) {
@@ -67,17 +64,18 @@ import java.util.Random;
         }
 
         public GameCharacter firstShot() {
-            float randomNumber = generator.nextFloat();
-
-            if (randomNumber < FIRSTSHOTPROB)
-                return GameCharacter.SPACESTATION;
-            else
-                return GameCharacter.ENEMYSTARSHIP;
+            return generator.nextFloat() < FIRSTSHOTPROB
+                ?   GameCharacter.SPACESTATION
+                :   GameCharacter.ENEMYSTARSHIP;
         }
 
         boolean spaceStationMoves(float speed) {
-            float randomNumber = generator.nextFloat();
+            return generator.nextFloat() < speed;
+        }
 
-            return randomNumber < speed;
+        public Boolean extraEfficiency () {
+            return generator.nextFloat() <= EXTRAEFFICIENCYPROB
+                ?   true
+                :   false;
         }
     }
