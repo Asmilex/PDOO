@@ -25,7 +25,18 @@ public class GameUniverse {
 //
 
     private void createSpaceCity() {
+        if (!haveSpaceCity) {
+            ArrayList<SpaceStation> vector = new ArrayList<>();
 
+            for (SpaceStation estacion: spaceStations)
+                if (estacion != currentStation)
+                    vector.add(estacion);
+
+            currentStation = new SpaceCity(currentStation, vector); // FIXME polimorfismo?
+            spaceStations.set(currentStationIndex, currentStation);
+
+            haveSpaceCity = true;
+        }
     }
 
     private void makeStationEfficient () {
