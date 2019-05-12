@@ -32,15 +32,25 @@ public class GameUniverse {
                 if (estacion != currentStation)
                     vector.add(estacion);
 
-            currentStation = new SpaceCity(currentStation, vector); // FIXME polimorfismo?
-            spaceStations.set(currentStationIndex, currentStation);
+            currentStation = new SpaceCity(currentStation, vector);
+
+            // Actualizar referencia
+            spaceStations.remove(currentStationIndex);
+            spaceStations.add(currentStationIndex, currentStation);
 
             haveSpaceCity = true;
         }
     }
 
     private void makeStationEfficient () {
+        if (dice.extraEfficiency())
+            currentStation = new BetaPowerEfficientSpaceStation( currentStation );
+        else
+            currentStation = new PowerEfficientSpaceStation( currentStation );
 
+        // Actualizar referencia
+        spaceStations.remove(currentStationIndex);
+        spaceStations.add(currentStationIndex, currentStation);
     }
 
 //
