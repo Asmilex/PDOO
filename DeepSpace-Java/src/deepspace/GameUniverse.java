@@ -175,6 +175,7 @@ public class GameUniverse {
         Boolean enemyWins;
         CombatResult combatResult;
         GameCharacter ch = dice.firstShot();
+
         if (ch == GameCharacter.ENEMYSTARSHIP){
             float fire = enemy.fire();
             ShotResult result = station.receiveShot(fire);
@@ -193,23 +194,38 @@ public class GameUniverse {
             enemyWins = (result == ShotResult.RESIST);
         }
 
-        if (enemyWins){
+        if (enemyWins) {
             float s = station.getSpeed();
             Boolean moves = dice.spaceStationMoves(s);
-            if (!moves){
+            if (!moves) {
                 Damage damage = enemy.getDamage();
                 station.setPendingDamage(damage);
                 combatResult = CombatResult.ENEMYWINS;
             }
-            else{
+            else {
                 station.move();
                 combatResult = CombatResult.STATIONESCAPES;
             }
         }
-        else{
+        else {
             Loot aLoot = enemy.getLoot();
-            station.setLoot(aLoot);
-            combatResult = CombatResult.STATIONWINS;
+            Transformation morph = station.setLoot(aLoot);
+
+            switch (morph) {
+                case GETEFFICIENT:
+                    makeStationEfficient();
+                    combatResult = CombatResult.STATIONWINSANDCONVERTS;
+                    break;
+
+                case SPACECITY:
+                    createSpaceCity();
+                    combatResult = CombatResult.STATIONWINSANDCONVERTS;
+                    break;
+
+                default:
+                    combatResult = CombatResult.STATIONWINS;
+                    break;
+            }
         }
 
         gameState.next(turns, spaceStations.size());
