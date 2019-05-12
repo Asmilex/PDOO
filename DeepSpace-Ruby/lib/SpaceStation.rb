@@ -33,6 +33,18 @@ class SpaceStation
       @shieldBoosters = Array.new
    end
 
+     def createStation(station)
+      @name=station.name
+      @ammoPower=station.ammoPower
+      @nMedals=station.nMedals
+      @shieldPower=station.shieldPower
+      @pendingDamage=station.pendingDamage
+      @weapons=station.weapons
+      @shieldBoosters=station.shieldBoosters
+      @hangar=station.hangar
+      assignFuelValue(station.fuelUnits)
+    end
+
 #
 # ───────────────────────────────────────────────────────── METODOS PRIVADOS ─────
 #
@@ -195,6 +207,14 @@ class SpaceStation
         end
 
         @nMedals += s.nMedals
+
+        if s.getefficient
+            Transformation::GETEFFICIENT
+        elsif loot.spaceCity
+            Transformation::SPACECITY
+        else
+            Transformation::NOTRANSFORM
+end
    end
 
 #
