@@ -57,4 +57,10 @@ public class NumericDamage extends Damage {
     DamageToUI getUIversion() {
         return new NumericDamageToUI(this);
     }
+
+    @Override
+    public void discardWeapon(Weapon w) {
+        if(nWeapons>0)
+            nWeapons--;
+    }
 }

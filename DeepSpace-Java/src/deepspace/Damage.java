@@ -38,12 +38,16 @@ public abstract class Damage {
         return -1;
     }
 
+    abstract public void discardWeapon(Weapon w);
+    
     public void discardShieldBooster () {
         if (nShields > 0)
             nShields--;
     }
 
     abstract public Boolean hasNoEffect();
+    
+    abstract public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s);
 
 //
 // ─────────────────────────────────────────────────────────────── INTERFACES ─────

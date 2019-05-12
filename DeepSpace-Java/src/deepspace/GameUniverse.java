@@ -14,7 +14,7 @@ public class GameUniverse {
 
     private Boolean haveSpaceCity = false;
 
-    GameUniverse() {
+    public GameUniverse() {
         gameState = new GameStateController();
         dice      = new Dice();
         turns     = 0;

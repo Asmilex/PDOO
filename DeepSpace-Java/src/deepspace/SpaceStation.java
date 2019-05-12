@@ -2,7 +2,7 @@ package deepspace;
 
 import java.util.ArrayList;
 
-import sun.security.jca.GetInstance;
+// import sun.security.jca.GetInstance;
 
 class SpaceStation implements SpaceFighter{
     private static int MAXFUEL = 100;
