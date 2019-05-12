@@ -1,6 +1,7 @@
 # encoding:utf-8
 
 require_relative "Dice"
+require_relative "BetaPowerEfficientSpaceStationToUI"
 
 module Deepspace
     class BetaPowerEfficientSpaceStation < PowerEfficientSpaceStation
