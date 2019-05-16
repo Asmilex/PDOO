@@ -8,10 +8,8 @@ public class SpaceCity extends SpaceStation {
 
     public SpaceCity (SpaceStation basico, ArrayList<SpaceStation> resto) {
         super(basico);
-        this.base = basico;
-
-        for (SpaceStation estacion : resto)
-            collaborators.add(estacion);
+        base          = basico;
+        collaborators = resto;
     }
 
     public ArrayList<SpaceStation> getCollaborators () {

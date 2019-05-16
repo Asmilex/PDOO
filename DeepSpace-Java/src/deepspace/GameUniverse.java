@@ -28,9 +28,10 @@ public class GameUniverse {
         if (!haveSpaceCity) {
             ArrayList<SpaceStation> vector = new ArrayList<>();
 
-            for (SpaceStation estacion: spaceStations)
-                if (estacion != currentStation)
-                    vector.add(estacion);
+            for (int i = 0; i < spaceStations.size(); i++) {
+                if (i != currentStationIndex)
+                    vector.add(spaceStations.get(i));
+            }
 
             currentStation = new SpaceCity(currentStation, vector);
 
