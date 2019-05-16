@@ -73,6 +73,12 @@ class Controller
             @view.wonGameMessage()
             exit(0)
           end
+        when DS::CombatResult::STATIONWINSANDCONVERTS #Añadido por mi
+          @view.wonCombatAndConvertMessage()
+            if(@controller.haveAWinner()) then
+              pause("\n\n **** **** ****  HAS GANADO LA PARTIDA  **** **** ****\n")
+              exit(0)
+            end
         when DS::CombatResult::NOCOMBAT
           @view.noCombatMessage()
         end

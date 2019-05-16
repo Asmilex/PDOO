@@ -6,8 +6,10 @@ require_relative "NumericDamageToUI"
 module Deepspace
     class NumericDamage < Damage
         
+        public_class_method :new
+        
         def initialize(w,s)
-            super(s)
+            super(w,s,[])
             @nWeapons = w
         end
 
@@ -32,6 +34,7 @@ module Deepspace
                 super
             else
                 false
+            end
         end
 
         def getUIversion
@@ -41,10 +44,6 @@ module Deepspace
         def to_s
             getUIversion.to_s
         end
-        
-        
-
-
     end
 
 end

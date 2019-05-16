@@ -12,7 +12,7 @@ package deepspace;
         private int nShields;
         private int nHangars;
         private int nMedals;
-        private boolean getEfficient;
+        private boolean efficient;
         private boolean spaceCity;
 
         Loot (int SuppliesValue, int WeaponsValue, int ShieldsValue, int HangarsValue, int MedalsValue) {

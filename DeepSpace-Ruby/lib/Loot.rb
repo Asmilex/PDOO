@@ -3,7 +3,7 @@ require_relative 'LootToUI'
 
 module Deepspace
 class Loot
-    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :getEfficient, :spaceCity
+    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :efficient, :spaceCity
 
     def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue, ef = false, city = nil)
         @nSupplies    = suppliesValue
@@ -11,7 +11,7 @@ class Loot
         @nShields     = shieldsValue
         @nHangars     = hangarsValue
         @nMedals      = medalsValue
-        @getEfficient = ef
+        @efficient = ef
         @spaceCity    = city
     end
 

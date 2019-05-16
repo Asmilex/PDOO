@@ -208,9 +208,9 @@ class SpaceStation
 
         @nMedals += s.nMedals
 
-        if s.getefficient
+        if s.efficient
             Transformation::GETEFFICIENT
-        elsif loot.spaceCity
+        elsif s.spaceCity
             Transformation::SPACECITY
         else
             Transformation::NOTRANSFORM

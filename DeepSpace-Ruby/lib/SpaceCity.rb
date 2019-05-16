@@ -34,5 +34,6 @@ class SpaceCity < SpaceStation
 
     def to_s
         getUIversion.to_s
+    end
 end
 end

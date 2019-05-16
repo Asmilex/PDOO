@@ -6,8 +6,10 @@ require_relative "SpecificDamageToUI"
 module Deepspace
     class SpecificDamage < Damage
         
+        public_class_method :new
+        
         def initialize(w,s)
-            super(s)
+            super(-1,s,w)
             @weapons = w
         end
 
@@ -42,6 +44,7 @@ module Deepspace
                 super
             else
                 false
+            end
         end
 
         def getUIversion
@@ -51,9 +54,6 @@ module Deepspace
         def to_s
             getUIversion.to_s
         end
-        
-        
-
 
     end
 

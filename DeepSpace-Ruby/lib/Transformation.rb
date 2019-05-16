@@ -5,7 +5,7 @@
 module Deepspace
   module Transformation
       NOTRANSFORM=:notransform
-      GETEFFICIENT=:getefficience
+      GETEFFICIENT=:getefficient
       SPACECITY=:spacecity
   end
 end
