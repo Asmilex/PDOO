@@ -214,7 +214,7 @@ class SpaceStation
             Transformation::SPACECITY
         else
             Transformation::NOTRANSFORM
-end
+        end
    end
 
 #
@@ -222,27 +222,27 @@ end
 #
 
    def mountWeapon(i)
-    if (i >= 0)
-          if (@hangar != nil)
-             arma = @hangar.removeWeapon(i)
+      if (i >= 0)
+         if (@hangar != nil)
+            arma = @hangar.removeWeapon(i)
 
-             if (arma != nil)
-                @weapons.push(arma)
-             end
-          end
-    end
+            if (arma != nil)
+               @weapons.push(arma)
+            end
+         end
+      end
    end
 
    def mountShieldBooster(i)
-        if (i >= 0)
-            if (@hangar != nil)
-             escudo = @hangar.removeShieldBooster(i)
+      if (i >= 0)
+         if (@hangar != nil)
+            escudo = @hangar.removeShieldBooster(i)
 
-             if (escudo != nil)
-                @shieldBoosters.push(escudo)
-             end
-          end
-        end
+            if (escudo != nil)
+               @shieldBoosters.push(escudo)
+            end
+         end
+      end
    end
 
 #

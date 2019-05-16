@@ -245,20 +245,24 @@ class SpaceStation implements SpaceFighter{
     }
 
     public void mountShieldBooster (int i) {
-        if (hangar != null) {
-            ShieldBooster aMontar = hangar.removeShieldBooster(i);
+        if (i >= 0) {
+            if (hangar != null) {
+                ShieldBooster aMontar = hangar.removeShieldBooster(i);
 
-            if (aMontar != null)
-                shieldBoosters.add(aMontar);
+                if (aMontar != null)
+                    shieldBoosters.add(aMontar);
+            }
         }
     }
 
     public void mountWeapon (int i) {
-        if (hangar != null) {
-            Weapon aMontar = hangar.removeWeapon(i);
+        if (i >= 0 ) {
+            if (hangar != null) {
+                Weapon aMontar = hangar.removeWeapon(i);
 
-            if (aMontar != null)
-                weapons.add(aMontar);
+                if (aMontar != null)
+                    weapons.add(aMontar);
+            }
         }
     }
 

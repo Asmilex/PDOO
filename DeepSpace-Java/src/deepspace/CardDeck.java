@@ -15,7 +15,7 @@ import java.util.Random;
  * @param <T>
  */
 class CardDeck<T> {
-    private ArrayList<T> cards=new ArrayList<>();
+    private ArrayList<T> cards = new ArrayList<>();
     private boolean ready;
     private int count;
 
