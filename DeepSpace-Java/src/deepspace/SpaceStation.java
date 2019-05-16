@@ -300,13 +300,19 @@ class SpaceStation implements SpaceFighter{
     }
 
     public void cleanUpMountedItems () {
+        ArrayList<Weapon>        armas_provisionales   = new ArrayList<>();
+        ArrayList<ShieldBooster> escudos_provisionales = new ArrayList<>();
+
         for (Weapon arma: weapons)
-            if (arma.getUses() == 0)
-                weapons.remove(arma);
+            if (arma.getUses() != 0)
+                armas_provisionales.add(arma);
 
         for (ShieldBooster escudo: shieldBoosters)
-            if (escudo.getUses() == 0)
-                shieldBoosters.remove(escudo);
+            if (escudo.getUses() != 0)
+                escudos_provisionales.add(escudo);
+
+        weapons        = armas_provisionales;
+        shieldBoosters = escudos_provisionales;
     }
 
     @Override
