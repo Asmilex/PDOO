@@ -19,36 +19,36 @@ import java.util.Collections;
  */
 public class Controller {
     private static final Controller instance = new Controller();
-    
+
     public static final int WEAPON = 0x1;
     public static final int SHIELD = 0x2;
     public static final int HANGAR = 0x4;
     private GameUniverse game;
     private DeepSpaceView view;
-    
+
     private Controller () {}
-    
+
     public static Controller getInstance () {
       return instance;
     }
-    
+
     public void setModelView (GameUniverse aGame, DeepSpaceView aView) {
       game = aGame;
       view = aView;
     }
-    
+
     public void start() {
         game.init(view.readNamePlayers());
         view.updateView();
         view.showView();
     }
-    
+
     public void finish (int i) {
         if (view.confirmExitMessage()) {
           System.exit(i);
         }
     }
-      
+
     public boolean nextTurn () {
       boolean nextTurnAllowed = game.nextTurn();
       if (!nextTurnAllowed) {
@@ -56,7 +56,7 @@ public class Controller {
       }
       return nextTurnAllowed;
     }
-    
+
     public void combat () {
         CombatResult result = game.combat();
         switch (result) {
@@ -74,7 +74,7 @@ public class Controller {
               }
               break;
             case STATIONWINSANDCONVERTS  :
-              view.wonCOmbatAndCOnvertMessage();
+              view.wonCombatAndConvertMessage();
               if (game.haveAWinner()) {
                   view.wonGameMessage();
                   System.exit (0);
@@ -85,27 +85,27 @@ public class Controller {
               break;
         }
     }
-    
+
     public GameState getState() {
       return game.getState();
     }
-    
+
     public GameUniverseToUI getUIversion() {
       return game.getUIversion();
     }
-    
+
     private void invertArray (ArrayList<Integer> array) {
       int i, n;
-      
+
       n = array.size();
       for (i = 0; i < n/2; i++)
         Collections.swap(array, i, n-i-1);
     }
-    
+
     public void mount (ArrayList<Integer> weapons, ArrayList<Integer> shields) {
       invertArray (weapons);
       invertArray (shields);
-      
+
       for (int i : weapons) {
         game.mountWeapon(i);
       }
@@ -113,11 +113,11 @@ public class Controller {
         game.mountShieldBooster(i);
       }
     }
-    
+
     public void discard (int places, ArrayList<Integer> weapons, ArrayList<Integer> shields) {
       invertArray(weapons);
       invertArray(shields);
-      
+
       if ((places & WEAPON) == WEAPON) {
         for (int i : weapons) {
           game.discardWeapon(i);
@@ -135,7 +135,7 @@ public class Controller {
         }
       }
     }
-    
+
     public void discardHangar () {
         game.discardHangar();
     }
