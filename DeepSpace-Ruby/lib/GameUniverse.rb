@@ -76,7 +76,7 @@ class GameUniverse
             if setransforma == Transformation::GETEFFICIENT
                 makeStationEfficient
                 combatResult = CombatResult::STATIONWINSANDCONVERTS
-            elsif setransforma == Transformacion::SPACECITY
+            elsif setransforma == Transformation::SPACECITY
                 createSpaceCity
                 combatResult = CombatResult::STATIONWINSANDCONVERTS
             else

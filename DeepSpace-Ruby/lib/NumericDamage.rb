@@ -20,7 +20,7 @@ module Deepspace
         attr_reader :nWeapons
 
         def adjust(w,s)
-            NumericDamage.new([@nWeapons,w.length].min, super(s))
+            NumericDamage.new([@nWeapons,w.length].min, adjustShields(s))
         end
 
         def discardWeapon(w)

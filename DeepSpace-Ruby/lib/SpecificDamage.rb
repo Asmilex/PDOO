@@ -22,14 +22,13 @@ module Deepspace
         def adjust(w,s)
             wCopy = @weapons.clone # Creamos copia para no modificar atributo
 
-            armas_ajustadas = weapons.map do |w|
-                wCopy.delete_at(wCopy.index(w.type) || wCopy.length)
+            armas_ajustadas = w.map do |weap|
+                wCopy.delete_at(wCopy.index(weap.type) || wCopy.length)
             end
 
             armas_ajustadas.compact!
 
-            self.class.newSpecificWeapons(armas_ajustadas, nSh)
-            SpecificDamage.new(armas_ajustadas, super(s))
+            SpecificDamage.new(armas_ajustadas, adjustShields(s))
         end
 
         def discardWeapon(w)

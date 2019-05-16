@@ -43,7 +43,10 @@ class Damage
 #
 
 
-    def adjust(weapons, s)
+    def adjust(weapons, s) 
+    end
+
+    def adjustShields(s)
         [@nShields, s.length].min
     end
 
