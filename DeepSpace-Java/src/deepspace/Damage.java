@@ -39,14 +39,20 @@ public abstract class Damage {
     }
 
     abstract public void discardWeapon(Weapon w);
-    
+
     public void discardShieldBooster () {
         if (nShields > 0)
             nShields--;
     }
 
-    abstract public Boolean hasNoEffect();
-    
+    public Boolean hasNoEffect() {
+        return nShields == 0;
+    }
+
+    protected int adjust_shields (ArrayList<ShieldBooster> s) {
+        return Math.min(nShields, s.size());
+    }
+
     abstract public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s);
 
 //

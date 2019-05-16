@@ -31,20 +31,17 @@ public class SpecificDamage extends Damage {
 
     @Override
     public Boolean hasNoEffect() {
-        return nShields == 0 && weapons.isEmpty();
+        return super.hasNoEffect() && weapons.isEmpty();
     }
 
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-        // FIXME esto hay que comprobar que funciona
-
-        int min_escudos = Math.min(nShields, s.size());
         ArrayList<WeaponType> armas_ajustadas = new ArrayList<>();
 
         for (Weapon arma: w)
             if (weapons.contains(arma.getType()))
                 armas_ajustadas.add(arma.getType());
 
-        return new SpecificDamage(armas_ajustadas, min_escudos);
+        return new SpecificDamage(armas_ajustadas, super.adjust_shields(s));
     }
 
 //

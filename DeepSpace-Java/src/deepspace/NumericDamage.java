@@ -30,14 +30,13 @@ public class NumericDamage extends Damage {
 
     @Override
     public Boolean hasNoEffect () {
-        return nShields == 0 && nWeapons == 0;
+        return super.hasNoEffect() && nWeapons == 0;
     }
 
     public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-        int min_escudos = Math.min(nShields, s.size());
-        int min_dano    = Math.min(nWeapons, w.size());
+        int min_dano = Math.min(nWeapons, w.size());
 
-        return new NumericDamage(min_dano, min_escudos);
+        return new NumericDamage(min_dano, super.adjust_shields(s));
     }
 
 //
