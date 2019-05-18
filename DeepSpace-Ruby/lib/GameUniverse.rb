@@ -18,7 +18,7 @@ class GameUniverse
     @@WIN = 10
 
     def initialize
-        @turns               = 0
+        @turns = 0
         @currentStationIndex = -1
 
         @dice          = Dice.new
@@ -225,7 +225,7 @@ private
     def createSpaceCity
         if @haveSpaceCity == false
             vector = Array.new
-            @spaceStations.each{ |station| 
+            @spaceStations.each{ |station|
                 if station != @currentStation
                     vector << station
                  end
@@ -244,9 +244,9 @@ private
         end
 
         @spaceStations[@currentStationIndex] = @currentStation
-    end            
+    end
 
-public    
+public
 
     def to_s
         getUIversion.to_s

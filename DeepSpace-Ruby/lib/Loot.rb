@@ -6,13 +6,13 @@ class Loot
     attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :efficient, :spaceCity
 
     def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue, ef = false, city = false)
-        @nSupplies    = suppliesValue
-        @nWeapons     = weaponsValue
-        @nShields     = shieldsValue
-        @nHangars     = hangarsValue
-        @nMedals      = medalsValue
+        @nSupplies = suppliesValue
+        @nWeapons  = weaponsValue
+        @nShields  = shieldsValue
+        @nHangars  = hangarsValue
+        @nMedals   = medalsValue
         @efficient = ef
-        @spaceCity    = city
+        @spaceCity = city
     end
 
     def getUIversion

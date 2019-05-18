@@ -5,15 +5,14 @@ class SpaceCity < SpaceStation
     attr_reader :base, :collaborators
 
     def initialize (base, rest) # base: SpaceStation, rest: Array<SpaceStation>
-        # FIXME I have no idea what I'm doing
         super
         @collaborators = rest
-        @base = base
+        @base          = base
     end
 
     def fire
         disparo = super
-        @collaborators.each{ |station|
+        @collaborators.each { |station|
             disparo += station.fire
         }
         disparo
@@ -21,7 +20,7 @@ class SpaceCity < SpaceStation
 
     def protection
         proteccion = super
-        @collaboratos.each{ |station|
+        @collaboratos.each { |station|
             proteccion += station.protection
         }
         proteccion

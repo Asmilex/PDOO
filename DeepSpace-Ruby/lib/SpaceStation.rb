@@ -26,7 +26,7 @@ class SpaceStation
       @fuelUnits   = assignFuelValue(supplies.fuelUnits)
       @shieldPower = supplies.shieldPower
 
-      @hangar = nil
+      @hangar        = nil
       @pendingDamage = nil
 
       @weapons        = Array.new
@@ -34,14 +34,14 @@ class SpaceStation
    end
 
      def createStation(station)
-      @name=station.name
-      @ammoPower=station.ammoPower
-      @nMedals=station.nMedals
-      @shieldPower=station.shieldPower
-      @pendingDamage=station.pendingDamage
-      @weapons=station.weapons
-      @shieldBoosters=station.shieldBoosters
-      @hangar=station.hangar
+      @name           = station.name
+      @ammoPower      = station.ammoPower
+      @nMedals        = station.nMedals
+      @shieldPower    = station.shieldPower
+      @pendingDamage  = station.pendingDamage
+      @weapons        = station.weapons
+      @shieldBoosters = station.shieldBoosters
+      @hangar         = station.hangar
       assignFuelValue(station.fuelUnits)
     end
 
