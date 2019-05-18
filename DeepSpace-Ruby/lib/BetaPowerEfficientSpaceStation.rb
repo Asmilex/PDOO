@@ -20,6 +20,10 @@ module Deepspace
             end
         end
 
+        def getUIversion
+            BetaPowerEfficientSpaceStationToUI.new(self)
+        end
+
         def to_s
             getUIversion.to_s
         end

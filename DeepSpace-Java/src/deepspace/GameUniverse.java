@@ -234,10 +234,6 @@ public class GameUniverse {
     }
 
     public String toString () {
-        return      "\t-> turnos: " + turns
-                + "\n\t-> Dado: " + dice.toString()
-                + "\n\t-> Estación actual: " + currentStation.toString()
-                + "\n\t-> Enemigo actual: " + currentEnemy.toString()
-                + "\n\t-> Estado:" + gameState.toString();
+        return getUIversion.toString;
     }
 }

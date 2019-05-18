@@ -317,12 +317,6 @@ class SpaceStation implements SpaceFighter{
 
     @Override
     public String toString() {
-        return    "-> Nombre: " + name
-                + "\n\t-> Potencia: " + ammoPower
-                + "\n\t-> Escudos: " + shieldPower
-                + "\n\t-> nMedals: " + nMedals
-                + "\n\t-> Daño pendiente:" + pendingDamage.toString()
-                + "\n\t-> Gasolina: " + fuelUnits
-                + "\n\t-> Hangar: " + hangar.toString();
+        return getUIversion.toString;
     }
 }

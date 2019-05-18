@@ -67,6 +67,6 @@ public abstract class Damage {
 
     @Override
     public String toString() {
-        return getUIversion().toString();
+        return "El numero de escudos eliminados ha sido "+nShields;
     }
 }

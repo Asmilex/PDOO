@@ -25,8 +25,12 @@ public class PowerEfficientSpaceStation extends SpaceStation {
             :   Transformation.NOTRANSFORM;
     }
 
+    public PowerSpaceStationToUI getUIversion () {
+        return new PowerSpaceStationToUI(this);
+    }
+    
     @Override
     public String toString() {
-        return "Power efficient Space Station:\n" + super.toString();
+        return getUIversion.toString;
     }
 }

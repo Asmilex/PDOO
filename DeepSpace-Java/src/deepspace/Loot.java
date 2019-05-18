@@ -71,10 +71,6 @@ package deepspace;
 
         @Override
         public String toString() {
-            return    "-> Supplies: " + nSupplies
-                + "\n\t-> nWeapons: " + nWeapons
-                + "\n\t-> nShields: " + nShields
-                + "\n\t-> nHangars: " + nHangars
-                + "\n\t-> nMedals:" + nMedals;
+            return getUIversion.toString;
         }
     }

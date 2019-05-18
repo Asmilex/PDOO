@@ -5,7 +5,7 @@ module Deepspace
 class Loot
     attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :efficient, :spaceCity
 
-    def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue, ef = false, city = nil)
+    def initialize (suppliesValue, weaponsValue, shieldsValue, hangarsValue, medalsValue, ef = false, city = false)
         @nSupplies    = suppliesValue
         @nWeapons     = weaponsValue
         @nShields     = shieldsValue

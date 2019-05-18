@@ -91,8 +91,6 @@ class Hangar implements Copyable <Hangar> {
     }
 
     public String toString() {
-        return    "\t-> Elementos máximos: " + maxElements
-                + "\n\t-> Tamaño armas: " + weapons.size()
-                + "\n\t-> Tamaño escudos: " + shields.size();
+        return getUIversion.toString;;
     }
 }

@@ -17,7 +17,11 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
             :   super.fire();
     }
 
+    public BetaPowerSpaceStationToUI getUIversion () {
+        return new BetaPowerSpaceStationToUI(this);
+    }
+
     public String toString() {
-        return "Beta :\n" + super.toString();
+        return getUIversion.toString;
     }
 }

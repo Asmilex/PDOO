@@ -77,11 +77,7 @@ class EnemyStarShip implements Copyable <EnemyStarShip>, SpaceFighter {
     }
 
     public String toString () {
-        return    "-> Nombre: " + name
-                + "\n\t-> Potencia: " + ammoPower
-                + "\n\t-> Escudos: " + shieldPower
-                + "\n\t-> Loot: " + loot.toString()
-                + "\n\t-> Daño:" + damage.toString();
+        return getUIversion(this).toString;
 
     }
 }
