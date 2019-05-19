@@ -21,22 +21,7 @@ public abstract class Damage {
 // ─────────────────────────────────────────────────────────────────── UTILES ─────
 //
 
-    SpecificDamage copy (SpecificDamage dano) {
-        return new SpecificDamage(dano);
-    }
-
-    NumericDamage copy (NumericDamage dano) {
-        return new NumericDamage(dano);
-    }
-
-    private int arrayContainsType (ArrayList<Weapon> w, WeaponType t) {
-        for (int i = 0; i < w.size(); i++) {
-            if (w.get(i).getType() == t)
-                return i;
-        }
-
-        return -1;
-    }
+    abstract Damage copy();
 
     abstract public void discardWeapon(Weapon w);
 

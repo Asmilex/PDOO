@@ -12,7 +12,7 @@ class Damage
 # ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
 #
 
-    def initialize (w, s, wl)
+    def initialize (s)
         @nShields = s
     end
 

@@ -70,7 +70,7 @@ class EnemyStarShip implements Copyable <EnemyStarShip>, SpaceFighter {
     }
 
     public ShotResult receiveShot (float shot) {
-        if (shot >= shieldPower)
+        if (shot > shieldPower)
             return ShotResult.DONOTRESIST;
         else
             return ShotResult.RESIST;

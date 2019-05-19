@@ -9,12 +9,13 @@ public class SpecificDamage extends Damage {
 // ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
 //
 
+    @Override
     SpecificDamage (ArrayList<WeaponType> wl, int s) {
         super(s);
         weapons = wl;
     }
 
-
+    @Override
     SpecificDamage (SpecificDamage dano) {
         super (dano.getNShields());
         weapons = dano.weapons;
@@ -24,6 +25,22 @@ public class SpecificDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── UTILIDADES ─────
 //
 
+    @Override
+    private int arrayContainsType (ArrayList<Weapon> w, WeaponType t) {
+        for (int i = 0; i < w.size(); i++) {
+            if (w.get(i).getType() == t)
+                return i;
+        }
+
+        return -1;
+    }
+
+    @Override
+    SpecificDamage copy (SpecificDamage dano) {
+        return new SpecificDamage(dano);
+    }
+
+    @Override
     public void discardWeapon (Weapon w) {
         weapons.remove( w.getType() );
     }
@@ -34,6 +51,7 @@ public class SpecificDamage extends Damage {
         return super.hasNoEffect() && weapons.isEmpty();
     }
 
+    @Override
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
         ArrayList<WeaponType> armas_ajustadas = new ArrayList<>();
 
@@ -48,13 +66,14 @@ public class SpecificDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── INTERFACES ─────
 //
 
+    @Override
     public ArrayList<WeaponType> getWeapons () {
         return weapons;
     }
 
     @Override
     public String toString () {
-        return super.toString() + "Tamaño del array de armas: " + weapons.size() + "\n";
+        return super.toString() + "weapons" + weapons + "\n";
     }
 
     DamageToUI getUIversion() {

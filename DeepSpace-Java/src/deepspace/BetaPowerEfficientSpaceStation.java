@@ -22,6 +22,6 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
     }
 
     public String toString() {
-        return getUIversion.toString;
+        return "Beta "+super.toString
     }
 }

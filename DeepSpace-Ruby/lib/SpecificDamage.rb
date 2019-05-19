@@ -9,7 +9,7 @@ module Deepspace
         public_class_method :new
         
         def initialize(w,s)
-            super(-1,s,w)
+            super(s)
             @weapons = w
         end
 

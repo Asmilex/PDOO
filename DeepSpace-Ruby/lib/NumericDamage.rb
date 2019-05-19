@@ -9,7 +9,7 @@ module Deepspace
         public_class_method :new
         
         def initialize(w,s)
-            super(w,s,[])
+            super(s)
             @nWeapons = w
         end
 
