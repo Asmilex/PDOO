@@ -1,11 +1,13 @@
 # encoding: utf-8
 
+require_relative "SpaceCityToUI"
+
 module Deepspace
 class SpaceCity < SpaceStation
     attr_reader :base, :collaborators
 
     def initialize (base, rest) # base: SpaceStation, rest: Array<SpaceStation>
-        super
+        createStation(base)
         @collaborators = rest
         @base          = base
     end
@@ -29,6 +31,10 @@ class SpaceCity < SpaceStation
     def setLoot (loot)
         super
         Transformation::NOTRANSFORM
+    end
+
+    def getUIversion
+        SpaceCityToUI.new(Self)
     end
 
     def to_s

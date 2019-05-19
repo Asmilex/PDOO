@@ -8,6 +8,7 @@ require_relative "Loot"
 require_relative "ShieldBooster"
 require_relative "CardDealer"
 require_relative "SpaceStationToUI"
+require_relative "Transformation"
 
 
 module Deepspace

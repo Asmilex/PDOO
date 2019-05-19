@@ -30,7 +30,7 @@ module Deepspace
         end
 
         def to_s
-            getUIversion.to_s
+            "Power Efficient Station Space Station"+super
         end
     end
 

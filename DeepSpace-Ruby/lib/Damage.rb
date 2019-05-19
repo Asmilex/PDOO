@@ -53,6 +53,9 @@ class Damage
     def discardWeapon(w) # discardWeapon (w: Weapon) : void
     end
 
+    def copy
+    end
+
     def discardShieldBooster
         if(@nShields > 0)
             @nShields -= 1

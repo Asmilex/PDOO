@@ -14,7 +14,7 @@ module Deepspace
         end
 
         def copy
-            NumericDamage.new(@nWeapons, @nShields)
+            SpecificDamage.new(@weapons, @nShields)
         end
 
         attr_reader :weapons
@@ -51,7 +51,7 @@ module Deepspace
         end
         
         def to_s
-            getUIversion.to_s
+            super+getUIversion.getWeaponInfo
         end
 
     end
