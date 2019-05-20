@@ -17,11 +17,11 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
             :   super.fire();
     }
 
-    public BetaPowerSpaceStationToUI getUIversion () {
-        return new BetaPowerSpaceStationToUI(this);
+    public BetaPowerEfficientSpaceStationToUI getUIversion () {
+        return new BetaPowerEfficientSpaceStationToUI(this);
     }
 
     public String toString() {
-        return "Beta "+super.toString
+        return "Beta " + super.toString();
     }
 }

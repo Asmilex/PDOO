@@ -91,6 +91,6 @@ class Hangar implements Copyable <Hangar> {
     }
 
     public String toString() {
-        return getUIversion.toString;;
+        return getUIversion().toString();
     }
 }

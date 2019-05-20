@@ -317,6 +317,6 @@ class SpaceStation implements SpaceFighter{
 
     @Override
     public String toString() {
-        return getUIversion.toString;
+        return getUIversion().toString();
     }
 }

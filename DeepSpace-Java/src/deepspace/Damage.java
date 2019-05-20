@@ -21,8 +21,6 @@ public abstract class Damage {
 // ─────────────────────────────────────────────────────────────────── UTILES ─────
 //
 
-    abstract Damage copy();
-
     abstract public void discardWeapon(Weapon w);
 
     public void discardShieldBooster () {

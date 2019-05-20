@@ -36,8 +36,9 @@ class SuppliesPackage implements Copyable <SuppliesPackage> {
 
    @Override
    public String toString() {
-      return getUIversion.toString;
-
+      return    "-> Gasolina: " + fuelUnits
+                + "\n\t-> Potencia: " + ammoPower
+                + "\n\t-> Escudos: " + shieldPower;
    }
 
 }

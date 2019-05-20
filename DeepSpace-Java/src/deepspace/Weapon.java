@@ -56,6 +56,6 @@ class Weapon implements Copyable <Weapon>, CombatElement {
 
     @Override
     public String toString() {
-        return getUIversion.toString;
+        return getUIversion().toString();
     }
 }

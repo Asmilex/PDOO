@@ -50,6 +50,6 @@ class ShieldBooster implements Copyable <ShieldBooster>, CombatElement {
     }
 
     public String toString() {
-        return getUIversion.toString;
+        return getUIversion().toString();
     }
 }

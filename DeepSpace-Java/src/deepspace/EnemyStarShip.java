@@ -77,7 +77,7 @@ class EnemyStarShip implements Copyable <EnemyStarShip>, SpaceFighter {
     }
 
     public String toString () {
-        return getUIversion(this).toString;
+        return getUIversion().toString();
 
     }
 }

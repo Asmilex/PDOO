@@ -71,6 +71,6 @@ package deepspace;
 
         @Override
         public String toString() {
-            return getUIversion.toString;
+            return getUIversion().toString();
         }
     }

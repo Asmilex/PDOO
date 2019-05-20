@@ -234,6 +234,6 @@ public class GameUniverse {
     }
 
     public String toString () {
-        return getUIversion.toString;
+        return getUIversion().toString();
     }
 }

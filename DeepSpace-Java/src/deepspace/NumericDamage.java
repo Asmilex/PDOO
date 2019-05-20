@@ -9,13 +9,11 @@ public class NumericDamage extends Damage {
 // ──────────────────────────────────────────────────────────── CONSTRUCTORES ─────
 //
 
-    @Override
     NumericDamage (int w, int s) {
         super(s);
         nWeapons = w;
     }
 
-    @Override
     NumericDamage (NumericDamage dano) {
         super( dano.getNShields() );
         nWeapons = dano.getNWeapons();
@@ -25,12 +23,11 @@ public class NumericDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── UTILIDADES ─────
 //
 
-    @Override
+
     NumericDamage copy (NumericDamage dano) {
         return new NumericDamage(dano);
     }
 
-    @Override
     public void discardWeapon () {
         if (nWeapons > 0)
             nWeapons--;
@@ -52,7 +49,6 @@ public class NumericDamage extends Damage {
 // ─────────────────────────────────────────────────────────────── INTERFACES ─────
 //
 
-    @Override
     public int getNWeapons () {
         return nWeapons;
     }
