@@ -67,7 +67,7 @@ class Dice
 
    def extraEfficiency
       @generator = rand
-      @generator < @EXTRAEFFICIENCYPROB
+      @generator <= @EXTRAEFFICIENCYPROB
    end
 end
 
