@@ -22,7 +22,7 @@ module Deepspace
 
         def setLoot(s)
             super
-            if s.getefficient
+            if s.efficient
                 Transformation::GETEFFICIENT
             else
                 Transformation::NOTRANSFORM

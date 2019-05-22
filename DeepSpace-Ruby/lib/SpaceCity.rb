@@ -34,7 +34,7 @@ class SpaceCity < SpaceStation
     end
 
     def getUIversion
-        SpaceCityToUI.new(Self)
+        SpaceCityToUI.new(self)
     end
 
     def to_s
