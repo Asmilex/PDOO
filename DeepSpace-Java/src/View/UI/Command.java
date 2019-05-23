@@ -15,12 +15,12 @@ enum Command {
   DISCARDHANGAR          (69, "Descartar del Hangar: Hangar Completo"),
   COMBAT                 ( 1, "¡¡¡ C O M B A T I R !!!"),
   SHOWSTATION            ( 4, "  Mostrar Información de la Estación Espacial"),
-  NEXTTURNALLOWED       (-10, ""),
+  NEXTTURNALLOWED        (-10, ""),
   ERRORINPUT             (-2, "Entrada errónea");
-  
+
   public final int menu;
   public final String text;
-  
+
   private Command (int aValue, String aText) {
     this.menu = aValue;
     this.text = aText;
