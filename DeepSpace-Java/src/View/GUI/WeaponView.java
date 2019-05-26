@@ -27,6 +27,10 @@ public class WeaponView extends javax.swing.JPanel {
         return selected;
     }
     
+    public boolean isWeapon(){
+        return true;
+    }
+    
     void setWeapon(WeaponToUI weap){
         jldisplayusos.setText(Integer.toString(weap.getUses()));
         jldisplaypotencia.setText(Float.toString(weap.getPower()));
@@ -55,6 +59,7 @@ public class WeaponView extends javax.swing.JPanel {
         jldisplaypotencia = new javax.swing.JLabel();
         jldisplayusos = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 242, 0));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);

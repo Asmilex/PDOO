@@ -5,6 +5,12 @@
  */
 package View.GUI;
 
+import deepspace.HangarToUI;
+import deepspace.WeaponToUI;
+import deepspace.ShieldToUI;
+import java.awt.Component;
+import java.util.ArrayList;
+
 /**
  *
  * @author ana
@@ -17,6 +23,36 @@ public class HangarView extends javax.swing.JPanel {
     public HangarView() {
         initComponents();
     }
+    
+    public void setHangar(HangarToUI h){
+     // String titulo = "Hangar de " + Integer.toString(h.getMaxElements()) + " espacios";
+     // setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), titulo));
+        //lEspacio.setText("Espacio de " + Integer.toString(h.getMaxElements()));
+     pHangar.removeAll();
+        for(ShieldToUI s: h.getShieldBoosters()){
+            ShieldBoosterView sw = new ShieldBoosterView();
+            sw.setShieldBooster(s);
+            pHangar.add(sw);
+        }
+        
+        for(WeaponToUI w: h.getWeapons()){
+            WeaponView wv = new WeaponView();
+            wv.setWeapon(w);
+            pHangar.add(wv);
+        }
+    }
+    
+    public ArrayList<Integer> getSelected(){
+        ArrayList<Integer> selected = new ArrayList();
+        int i = 0;
+        for (Component c : pHangar.getComponents()) {
+            if (((CombatElementView) c).isSelected()) {
+                selected.add(i);
+            }
+            i++;
+        }
+        return selected;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,19 +63,32 @@ public class HangarView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollHangar = new javax.swing.JScrollPane();
+        pHangar = new javax.swing.JPanel();
+
+        jScrollHangar.setViewportView(pHangar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(jScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollHangar;
+    private javax.swing.JPanel pHangar;
     // End of variables declaration//GEN-END:variables
 }

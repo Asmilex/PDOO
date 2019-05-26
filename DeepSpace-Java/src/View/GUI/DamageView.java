@@ -5,6 +5,7 @@
  */
 package View.GUI;
 
+import deepspace.DamageToUI;
 /**
  *
  * @author ana
@@ -14,8 +15,16 @@ public class DamageView extends javax.swing.JPanel {
     /**
      * Creates new form DamageView
      */
+    
+    
     public DamageView() {
         initComponents();
+    }
+    
+    public void setDamage(DamageToUI d){
+         jlnumescudos.setText(Integer.toString(d.getNShields()));
+         jtInfoArmas.setText(d.getWeaponInfo());
+         repaint();
     }
 
     /**
@@ -27,19 +36,56 @@ public class DamageView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlnumescudos = new javax.swing.JLabel();
+        jlShownumEscudos = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollArmas = new javax.swing.JScrollPane();
+        jtInfoArmas = new javax.swing.JTextField();
+
+        jlnumescudos.setText("Número de escudos:");
+
+        jlShownumEscudos.setText("jLabel2");
+
+        jLabel3.setText("Armas:");
+
+        jScrollArmas.setViewportView(jtInfoArmas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlnumescudos)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlShownumEscudos))
+                    .addComponent(jScrollArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlnumescudos)
+                    .addComponent(jlShownumEscudos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollArmas, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollArmas;
+    private javax.swing.JLabel jlShownumEscudos;
+    private javax.swing.JLabel jlnumescudos;
+    private javax.swing.JTextField jtInfoArmas;
     // End of variables declaration//GEN-END:variables
 }
