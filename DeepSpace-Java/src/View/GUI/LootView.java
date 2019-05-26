@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View.GUI;
+import deepspace.LootToUI;
 
 /**
  *
@@ -27,19 +28,115 @@ public class LootView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        armasText = new javax.swing.JLabel();
+        escudosText = new javax.swing.JLabel();
+        hangarText = new javax.swing.JLabel();
+        fuelText = new javax.swing.JLabel();
+        medalsText = new javax.swing.JLabel();
+        weapons = new javax.swing.JLabel();
+        fuel_units = new javax.swing.JLabel();
+        medals = new javax.swing.JLabel();
+        hangars = new javax.swing.JLabel();
+        escudos = new javax.swing.JLabel();
+
+        armasText.setText("Armas:");
+
+        escudosText.setText("Escudos:");
+
+        hangarText.setText("Tamaño del hangar:");
+
+        fuelText.setText("Combustible:");
+
+        medalsText.setText("Medallas:");
+
+        weapons.setText("jLabel6");
+
+        fuel_units.setText("jLabel7");
+
+        medals.setText("jLabel8");
+
+        hangars.setText("jLabel1");
+
+        escudos.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(hangarText)
+                        .addGap(40, 40, 40)
+                        .addComponent(hangars)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(armasText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(weapons))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(escudosText)
+                                .addGap(36, 36, 36)
+                                .addComponent(escudos)))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(medalsText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(medals))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(fuelText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                                .addComponent(fuel_units)))))
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(armasText)
+                    .addComponent(fuelText)
+                    .addComponent(weapons)
+                    .addComponent(fuel_units))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(escudosText)
+                    .addComponent(medalsText)
+                    .addComponent(medals)
+                    .addComponent(escudos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hangarText)
+                    .addComponent(hangars))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    void setLoot (LootToUI loot) {
+        weapons.setText(Integer.toString(loot.getNWeapons()));
+        fuel_units.setText(Integer.toString(loot.getNSupplies()));
+        escudos.setText(Integer.toString(loot.getnShields()));
+        hangar.setText(Integer.toString(loot.getnHangars()));
+        medals.setText(Integer.toString(loot.getnMedals()));
+
+        repaint();
+        revalidate();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel armasText;
+    private javax.swing.JLabel escudos;
+    private javax.swing.JLabel escudosText;
+    private javax.swing.JLabel fuelText;
+    private javax.swing.JLabel fuel_units;
+    private javax.swing.JLabel hangarText;
+    private javax.swing.JLabel hangars;
+    private javax.swing.JLabel medals;
+    private javax.swing.JLabel medalsText;
+    private javax.swing.JLabel weapons;
     // End of variables declaration//GEN-END:variables
 }
