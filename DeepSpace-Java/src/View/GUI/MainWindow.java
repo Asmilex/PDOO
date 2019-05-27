@@ -211,7 +211,9 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
 
     private void jbCombatirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCombatirActionPerformed
         // TODO add your handling code here:
-        controller.combat(); 
+        controller.combat();
+        updateView();
+        validate();
     }//GEN-LAST:event_jbCombatirActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
