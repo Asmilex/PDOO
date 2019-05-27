@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
 
+    static ControllerGrafico controller;
     
     private static MainWindow instance = null;
     private String appName = "DeepSpace";

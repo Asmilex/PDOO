@@ -6,7 +6,9 @@
 package View.GUI;
 
 import static View.GUI.MainWindow.controller;
-import deepspace.SpaceStationToUI;
+import deepspace.*;
+import java.util.ArrayList;
+import java.awt.Component;
 
 /**
  *
@@ -39,7 +41,68 @@ public class StationView extends javax.swing.JPanel {
             d.setDamage(station.getPendingDamage());
             jpPendingDamage.add(d);
         }
+        
+        jpWeapons.removeAll();
+        jpShields.removeAll();
+        if(station.getHangar() == null){
+            jpHangar.setVisible(false);
+            jbDescartarHangar.setEnabled(false);
+        }else {
+            hangar.setHangar(station.getHangar());
+            //lHayHangar.setVisible(false);
+            jbDescartarHangar.setEnabled(true);
+        }
+        
+        for(WeaponToUI w : station.getWeapons()){
+            WeaponView wv = new WeaponView();
+            wv.setWeapon(w);
+            jpWeapons.add(wv);
+        }
+        
+        for(ShieldToUI s : station.getShieldBoosters()){
+            ShieldBoosterView sv = new ShieldBoosterView();
+            sv.setShieldBooster(s);
+            jpShields.add(sv);
+        }
+
+        GameState gs = controller.getState();
+        if(gs == GameState.INIT){
+            jbMontar.setEnabled(true);
+        }
+        else if(gs == GameState.BEFORECOMBAT){
+            jbMontar.setEnabled(false);
+        }
+        else if (gs== GameState.AFTERCOMBAT){
+            jbMontar.setEnabled(true);
+        }
+        
+        repaint();
+        revalidate();
     }
+    
+    public ArrayList<Integer> getSelectedWeapons(){
+        ArrayList<Integer> selected = new ArrayList();
+        int i = 0;
+        for (Component c : jpWeapons.getComponents()) {
+            if (((CombatElementView) c).isSelected()) {
+                selected.add(i);
+            }
+            i++;
+        }
+        return selected;
+    }
+    
+    public ArrayList<Integer> getSelectedShields(){
+        ArrayList<Integer> selected = new ArrayList();
+        int i = 0;
+        for (Component c : jpShields.getComponents()) {
+            if (((CombatElementView) c).isSelected()) {
+                selected.add(i);
+            }
+            i++;
+        }
+        return selected;
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,8 +171,18 @@ public class StationView extends javax.swing.JPanel {
         });
 
         jbDescartar.setText("Descartar");
+        jbDescartar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDescartarActionPerformed(evt);
+            }
+        });
 
         jbDescartarHangar.setText("Descartar hangar");
+        jbDescartarHangar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDescartarHangarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -197,6 +270,16 @@ public class StationView extends javax.swing.JPanel {
         // TODO add your handling code here:
         MainWindow.controller.mountCombatElements(hangar.getSelected());
     }//GEN-LAST:event_jbMontarActionPerformed
+
+    private void jbDescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDescartarActionPerformed
+        // TODO add your handling code here:
+        MainWindow.controller.discardCombatElements(hangar.getSelected(), getSelectedWeapons(), getSelectedShields());
+    }//GEN-LAST:event_jbDescartarActionPerformed
+
+    private void jbDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDescartarHangarActionPerformed
+        // TODO add your handling code here:
+        MainWindow.controller.discardHangar();
+    }//GEN-LAST:event_jbDescartarHangarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
