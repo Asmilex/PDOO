@@ -151,7 +151,7 @@ public class ControllerGrafico {
               game.mountWeapon(i-w);
        }
        view.updateView();
-   }    
+   }
 
    public void discardCombatElements(ArrayList<Integer> vh, ArrayList<Integer> vw, ArrayList<Integer> vs){
       if(vh.size()!=0){ //El hangar, aunque lo descartemos, no está nulo, está vacío. Entonces el vh, el vector de posiciones en el hangar, llega vacío
@@ -173,11 +173,11 @@ public class ControllerGrafico {
 
        view.updateView();
        }
-   
+
    public SpaceStationToUI currentStation(){
       return game.getUIversion().getCurrentStation();
    }
-   
+
    public EnemyToUI currentEnemy(){
       return game.getUIversion().getCurrentEnemy();
    }

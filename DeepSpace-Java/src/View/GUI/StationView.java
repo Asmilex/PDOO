@@ -17,18 +17,18 @@ import java.awt.Component;
 public class StationView extends javax.swing.JPanel {
 
     HangarView hangar;
-    
+
     /**
      * Creates new form StationView
      */
     public StationView() {
         initComponents();
         hangar = new HangarView();
-        jpHangar.add(hangar); 
+        jpHangar.add(hangar);
         repaint();
         revalidate();
     }
-    
+
     public void setStationView(SpaceStationToUI station){
         jlShowName.setText(station.getName());
         jlShowFire.setText(Double.toString(station.getAmmoPower()));
@@ -41,45 +41,45 @@ public class StationView extends javax.swing.JPanel {
             d.setDamage(station.getPendingDamage());
             jpPendingDamage.add(d);
         }
-        
+
         jpWeapons.removeAll();
         jpShields.removeAll();
+
         if(station.getHangar() == null){
             jpHangar.setVisible(false);
             jbDescartarHangar.setEnabled(false);
-        }else {
+        } else {
             hangar.setHangar(station.getHangar());
-            //lHayHangar.setVisible(false);
             jbDescartarHangar.setEnabled(true);
         }
-        
-        for(WeaponToUI w : station.getWeapons()){
+
+        for (WeaponToUI w : station.getWeapons()){
             WeaponView wv = new WeaponView();
             wv.setWeapon(w);
             jpWeapons.add(wv);
         }
-        
-        for(ShieldToUI s : station.getShieldBoosters()){
+
+        for (ShieldToUI s : station.getShieldBoosters()){
             ShieldBoosterView sv = new ShieldBoosterView();
             sv.setShieldBooster(s);
             jpShields.add(sv);
         }
 
         GameState gs = controller.getState();
-        if(gs == GameState.INIT){
+        if (gs == GameState.INIT){
             jbMontar.setEnabled(true);
         }
-        else if(gs == GameState.BEFORECOMBAT){
+        else if (gs == GameState.BEFORECOMBAT){
             jbMontar.setEnabled(false);
         }
         else if (gs== GameState.AFTERCOMBAT){
             jbMontar.setEnabled(true);
         }
-        
+
         repaint();
         revalidate();
     }
-    
+
     public ArrayList<Integer> getSelectedWeapons(){
         ArrayList<Integer> selected = new ArrayList();
         int i = 0;
@@ -91,7 +91,7 @@ public class StationView extends javax.swing.JPanel {
         }
         return selected;
     }
-    
+
     public ArrayList<Integer> getSelectedShields(){
         ArrayList<Integer> selected = new ArrayList();
         int i = 0;
@@ -102,7 +102,7 @@ public class StationView extends javax.swing.JPanel {
             i++;
         }
         return selected;
-    } 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -278,7 +278,7 @@ public class StationView extends javax.swing.JPanel {
 
     private void jbDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDescartarHangarActionPerformed
         // TODO add your handling code here:
-        MainWindow.controller.getInstance().discardHangar();
+        MainWindow.controller.discardHangar();
     }//GEN-LAST:event_jbDescartarHangarActionPerformed
 
 

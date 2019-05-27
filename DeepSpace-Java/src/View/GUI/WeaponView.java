@@ -11,8 +11,8 @@ import deepspace.WeaponToUI;
  *
  * @author ana
  */
-public class WeaponView extends javax.swing.JPanel {
-    
+public class WeaponView extends javax.swing.JPanel implements CombatElementView{
+
     private boolean selected = false;
 
     /**
@@ -22,15 +22,15 @@ public class WeaponView extends javax.swing.JPanel {
         initComponents();
         setOpaque(selected);
     }
-    
+
     public boolean isSelected(){
         return selected;
     }
-    
+
     public boolean isWeapon(){
         return true;
     }
-    
+
     void setWeapon(WeaponToUI weap){
         jldisplayusos.setText(Integer.toString(weap.getUses()));
         jldisplaypotencia.setText(Float.toString(weap.getPower()));

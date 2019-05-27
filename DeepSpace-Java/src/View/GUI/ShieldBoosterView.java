@@ -11,8 +11,8 @@ import deepspace.ShieldToUI;
  *
  * @author ana
  */
-public class ShieldBoosterView extends javax.swing.JPanel {
-    
+public class ShieldBoosterView extends javax.swing.JPanel implements CombatElementView {
+
     private boolean selected = false;
 
     /**
@@ -22,19 +22,19 @@ public class ShieldBoosterView extends javax.swing.JPanel {
         initComponents();
         setOpaque(selected);
     }
-    
+
     public boolean isSelected(){
         return selected;
     }
-    
+
     public boolean isWeapon(){
         return false;
     }
-    
+
     void setShieldBooster(ShieldToUI sb){
         jlShowUsos.setText(Integer.toString(sb.getUses()));
         jlShowBoost.setText(Float.toString(sb.getBoost()));
-        repaint();      
+        repaint();
     }
 
     /**
