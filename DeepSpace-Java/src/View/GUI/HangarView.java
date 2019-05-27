@@ -25,34 +25,31 @@ public class HangarView extends javax.swing.JPanel {
     }
     
     public void setHangar(HangarToUI h){
-     // String titulo = "Hangar de " + Integer.toString(h.getMaxElements()) + " espacios";
-     // setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), titulo));
-        //lEspacio.setText("Espacio de " + Integer.toString(h.getMaxElements()));
-     pHangar.removeAll();
-        for(ShieldToUI s: h.getShieldBoosters()){
-            ShieldBoosterView sw = new ShieldBoosterView();
-            sw.setShieldBooster(s);
-            pHangar.add(sw);
-        }
-        
-        for(WeaponToUI w: h.getWeapons()){
-            WeaponView wv = new WeaponView();
-            wv.setWeapon(w);
-            pHangar.add(wv);
-        }
-    }
-    
-    public ArrayList<Integer> getSelected(){
-        ArrayList<Integer> selected = new ArrayList();
-        int i = 0;
-        for (Component c : pHangar.getComponents()) {
-            if (((CombatElementView) c).isSelected()) {
-                selected.add(i);
-            }
-            i++;
-        }
-        return selected;
-    }
+        pHangar.removeAll();
+           for(ShieldToUI s: h.getShieldBoosters()){
+               ShieldBoosterView sw = new ShieldBoosterView();
+               sw.setShieldBooster(s);
+               pHangar.add(sw);
+           }
+
+           for(WeaponToUI w: h.getWeapons()){
+               WeaponView wv = new WeaponView();
+               wv.setWeapon(w);
+               pHangar.add(wv);
+           }
+       }
+
+       public ArrayList<Integer> getSelected(){
+           ArrayList<Integer> selected = new ArrayList();
+           int i = 0;
+           for (Component c : pHangar.getComponents()) {
+               if (((CombatElementView) c).isSelected()) {
+                   selected.add(i);
+               }
+               i++;
+           }
+           return selected;
+       }
 
     /**
      * This method is called from within the constructor to initialize the form.
