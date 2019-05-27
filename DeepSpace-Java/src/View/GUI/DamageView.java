@@ -22,7 +22,7 @@ public class DamageView extends javax.swing.JPanel {
     }
     
     public void setDamage(DamageToUI d){
-         jlnumescudos.setText(Integer.toString(d.getNShields()));
+         jlShownumEscudos.setText(Integer.toString(d.getNShields()));
          jtInfoArmas.setText(d.getWeaponInfo());
          repaint();
     }
