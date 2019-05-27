@@ -5,19 +5,41 @@
  */
 package View.GUI;
 
+import deepspace.EnemyToUI;
+
 /**
  *
  * @author ana
  */
 public class EnemyView extends javax.swing.JPanel {
+    LootView lootView;
+    DamageView damageView;
 
     /**
      * Creates new form EnemyView
      */
     public EnemyView() {
         initComponents();
+        lootView = new LootView();
+        damageView = new DamageView();
+
+        LootPanel.add(lootView);
+        DamagePanel.add(damageView);
+
+        repaint();
+        revalidate();
     }
 
+    public void setEnemy(deepspace.EnemyToUI enemigo) {
+        enemyName.setText(enemigo.getName());
+        power.setText(Float.toString(enemigo.getAmmoPower()));
+        shields.setText(Float.toString(enemigo.getShieldPower()));
+
+        lootView.setLoot(enemigo.getLoot());
+        damageView.setDamage(enemigo.getDamage());
+
+        repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +49,109 @@ public class EnemyView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        enemyText = new javax.swing.JLabel();
+        powerText = new javax.swing.JLabel();
+        shieldText = new javax.swing.JLabel();
+        enemyName = new javax.swing.JLabel();
+        power = new javax.swing.JLabel();
+        shields = new javax.swing.JLabel();
+        LootPanel = new javax.swing.JPanel();
+        DamagePanel = new javax.swing.JPanel();
+
+        enemyText.setText("Enemigo:");
+
+        powerText.setText("Pontecia de fuego:");
+
+        shieldText.setText("Capacidad defensiva:");
+
+        enemyName.setText("jLabel1");
+
+        power.setText("jLabel2");
+
+        shields.setText("jLabel3");
+
+        javax.swing.GroupLayout LootPanelLayout = new javax.swing.GroupLayout(LootPanel);
+        LootPanel.setLayout(LootPanelLayout);
+        LootPanelLayout.setHorizontalGroup(
+            LootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 389, Short.MAX_VALUE)
+        );
+        LootPanelLayout.setVerticalGroup(
+            LootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 135, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout DamagePanelLayout = new javax.swing.GroupLayout(DamagePanel);
+        DamagePanel.setLayout(DamagePanelLayout);
+        DamagePanelLayout.setHorizontalGroup(
+            DamagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 389, Short.MAX_VALUE)
+        );
+        DamagePanelLayout.setVerticalGroup(
+            DamagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 143, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(enemyText)
+                                .addGap(18, 18, 18)
+                                .addComponent(enemyName))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(powerText)
+                                    .addComponent(shieldText))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(shields)
+                                    .addComponent(power)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DamagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(enemyText)
+                    .addComponent(enemyName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(powerText)
+                    .addComponent(power))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(shieldText)
+                    .addComponent(shields))
+                .addGap(110, 110, 110)
+                .addComponent(LootPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(DamagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel DamagePanel;
+    private javax.swing.JPanel LootPanel;
+    private javax.swing.JLabel enemyName;
+    private javax.swing.JLabel enemyText;
+    private javax.swing.JLabel power;
+    private javax.swing.JLabel powerText;
+    private javax.swing.JLabel shieldText;
+    private javax.swing.JLabel shields;
     // End of variables declaration//GEN-END:variables
 }

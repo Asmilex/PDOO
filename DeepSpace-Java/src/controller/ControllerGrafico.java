@@ -139,8 +139,8 @@ public class ControllerGrafico {
     public void discardHangar () {
         game.discardHangar();
     }
-    
-    public void mountCombatElements(ArrayList<Integer> v){
+
+    public void mountCombatElements(ArrayList<Integer> v) {
        int w = game.getUIversion().getCurrentStation().getHangar().getShieldBoosters().size();
        for(int i=v.size()-1; i>=0; i--){
            if(i < w )
@@ -150,8 +150,8 @@ public class ControllerGrafico {
        }
        view.updateView();
    }    
-   
-   public void discardCombatElements(ArrayList<Integer> vh, ArrayList<Integer> vw, ArrayList<Integer> vs){       
+
+   public void discardCombatElements(ArrayList<Integer> vh, ArrayList<Integer> vw, ArrayList<Integer> vs){
       if(vh.size()!=0){ //El hangar, aunque lo descartemos, no está nulo, está vacío. Entonces el vh, el vector de posiciones en el hangar, llega vacío
        int w = game.getUIversion().getCurrentStation().getHangar().getShieldBoosters().size();
        for(int i=vh.size()-1; i>=0; i--){
@@ -161,14 +161,14 @@ public class ControllerGrafico {
               game.discardWeaponInHangar(i-w);
        }
       }
-       
+
        for(int i=vw.size()-1; i>=0; i--)
               game.discardWeapon(i);
-       
+
        for(int i=vs.size()-1; i>=0; i--)
               game.discardShieldBooster(i);
 
-       
+
        view.updateView();
        }
 }
