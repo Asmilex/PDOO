@@ -140,6 +140,7 @@ public class ControllerGrafico {
 
     public void discardHangar () {
         game.discardHangar();
+        view.updateView();
     }
 
     public void mountCombatElements(ArrayList<Integer> v) {
