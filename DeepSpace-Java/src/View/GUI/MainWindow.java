@@ -196,12 +196,12 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpStation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jpEnemy, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbNextTurn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                        .addGap(83, 83, 83)
                         .addComponent(jbSalir)))
                 .addContainerGap())
         );
@@ -224,6 +224,8 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     private void jbNextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextTurnActionPerformed
         // TODO add your handling code here:
        controller.nextTurn();
+       updateView();
+       validate();
     }//GEN-LAST:event_jbNextTurnActionPerformed
 
     /**
