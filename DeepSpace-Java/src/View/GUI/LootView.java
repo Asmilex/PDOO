@@ -117,10 +117,10 @@ public class LootView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     void setLoot (LootToUI loot) {
-        weapons.setText(Integer.toString(loot.getNWeapons()));
-        fuel_units.setText(Integer.toString(loot.getNSupplies()));
+        weapons.setText(Integer.toString(loot.getnWeapons()));
+        fuel_units.setText(Integer.toString(loot.getnSupplies()));
         escudos.setText(Integer.toString(loot.getnShields()));
-        hangar.setText(Integer.toString(loot.getnHangars()));
+        hangars.setText(Integer.toString(loot.getnHangars()));
         medals.setText(Integer.toString(loot.getnMedals()));
 
         repaint();

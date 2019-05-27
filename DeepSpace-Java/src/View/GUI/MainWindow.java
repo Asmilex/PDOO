@@ -7,7 +7,7 @@ package View.GUI;
 
 import java.util.ArrayList;
 import View.DeepSpaceView;
-import controller.Controller;
+import controller.ControllerGrafico;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,7 +37,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                Controller.getInstance().finish(0);
+                ControllerGrafico.getInstance().finish(0);
             }
         });
     }
