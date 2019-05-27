@@ -10,6 +10,8 @@ import deepspace.CombatResult;
 import deepspace.GameState;
 import deepspace.GameUniverse;
 import deepspace.GameUniverseToUI;
+import deepspace.SpaceStationToUI;
+import deepspace.EnemyToUI;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -171,4 +173,12 @@ public class ControllerGrafico {
 
        view.updateView();
        }
+   
+   public SpaceStationToUI currentStation(){
+      return game.getUIversion().getCurrentStation();
+   }
+   
+   public EnemyToUI currentEnemy(){
+      return game.getUIversion().getCurrentEnemy();
+   }
 }
