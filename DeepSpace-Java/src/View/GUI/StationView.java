@@ -127,11 +127,12 @@ public class StationView extends javax.swing.JPanel {
         jpWeapons = new javax.swing.JPanel();
         jScrollShields = new javax.swing.JScrollPane();
         jpShields = new javax.swing.JPanel();
-        jpHangar = new javax.swing.JPanel();
         jpPendingDamage = new javax.swing.JPanel();
         jbMontar = new javax.swing.JButton();
         jbDescartar = new javax.swing.JButton();
         jbDescartarHangar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jpHangar = new javax.swing.JPanel();
 
         jlname.setText("Nombre: ");
 
@@ -159,8 +160,6 @@ public class StationView extends javax.swing.JPanel {
         jpShields.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollShields.setViewportView(jpShields);
 
-        jpHangar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jpPendingDamage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jbMontar.setText("Montar");
@@ -184,56 +183,56 @@ public class StationView extends javax.swing.JPanel {
             }
         });
 
+        jpHangar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(jpHangar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollWeapons)
+            .addComponent(jScrollShields, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jpPendingDamage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
+                .addComponent(jbMontar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbDescartar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbDescartarHangar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpPendingDamage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollShields, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollWeapons)
-                    .addComponent(jpHangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlname)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlShowName))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlname)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jlShowName))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlfire)
-                                            .addComponent(jlshields))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlShowShields)
-                                            .addComponent(jlShowFire))))
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlFuel)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jlShowFuel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlMedals)
-                                        .addGap(48, 48, 48)
-                                        .addComponent(jlShowMedals))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbMontar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbDescartar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbDescartarHangar)))
-                        .addGap(0, 62, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jlfire)
+                            .addComponent(jlshields))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlShowShields)
+                            .addComponent(jlShowFire))))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlFuel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlShowFuel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlMedals)
+                        .addGap(48, 48, 48)
+                        .addComponent(jlShowMedals)))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlname)
                     .addComponent(jlShowName))
@@ -249,40 +248,47 @@ public class StationView extends javax.swing.JPanel {
                     .addComponent(jlShowShields)
                     .addComponent(jlFuel)
                     .addComponent(jlShowFuel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollShields, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollShields, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpPendingDamage, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpPendingDamage, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbMontar)
                     .addComponent(jbDescartar)
                     .addComponent(jbDescartarHangar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbMontarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMontarActionPerformed
         // TODO add your handling code here:
         MainWindow.controller.mountCombatElements(hangar.getSelected());
+        repaint();
+        revalidate();
     }//GEN-LAST:event_jbMontarActionPerformed
 
     private void jbDescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDescartarActionPerformed
         // TODO add your handling code here:
         MainWindow.controller.discardCombatElements(hangar.getSelected(), getSelectedWeapons(), getSelectedShields());
+        repaint();
+        revalidate();
     }//GEN-LAST:event_jbDescartarActionPerformed
 
     private void jbDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDescartarHangarActionPerformed
         // TODO add your handling code here:
         MainWindow.controller.discardHangar();
+        repaint();
+        revalidate();
     }//GEN-LAST:event_jbDescartarHangarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollShields;
     private javax.swing.JScrollPane jScrollWeapons;
     private javax.swing.JButton jbDescartar;
