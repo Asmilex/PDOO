@@ -223,8 +223,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
 
     private void jbNextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextTurnActionPerformed
         // TODO add your handling code here:
-        if(!controller.nextTurn())
-            nextTurnNotAllowedMessage();
+       controller.nextTurn();
     }//GEN-LAST:event_jbNextTurnActionPerformed
 
     /**
