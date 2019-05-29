@@ -27,10 +27,6 @@ public class ShieldBoosterView extends javax.swing.JPanel implements CombatEleme
         return selected;
     }
 
-    public boolean isWeapon(){
-        return false;
-    }
-
     void setShieldBooster(ShieldToUI sb){
         jlShowUsos.setText(Integer.toString(sb.getUses()));
         jlShowBoost.setText(Float.toString(sb.getBoost()));

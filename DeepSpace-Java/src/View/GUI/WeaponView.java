@@ -27,10 +27,6 @@ public class WeaponView extends javax.swing.JPanel implements CombatElementView{
         return selected;
     }
 
-    public boolean isWeapon(){
-        return true;
-    }
-
     void setWeapon(WeaponToUI weap){
         jldisplayusos.setText(Integer.toString(weap.getUses()));
         jldisplaypotencia.setText(Float.toString(weap.getPower()));
