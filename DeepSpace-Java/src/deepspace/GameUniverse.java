@@ -169,7 +169,7 @@ public class GameUniverse {
     }
 
     public boolean haveAWinner(){
-        return currentStation.getNMedals() == WIN;
+        return currentStation.getNMedals() >= WIN;
     }
 
     public CombatResult combat () {

@@ -18,30 +18,30 @@ import deepspace.*;
 public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
 
     static ControllerGrafico controller = ControllerGrafico.getInstance();
-    
+
     StationView station;
     EnemyView enemy;
-    
+
     private static MainWindow instance = null;
     private String appName = "DeepSpace";
     /**
      * Creates new form MainWindow
      */
-    
+
     public static MainWindow getInstance () {
         if (instance == null) {
             instance = new MainWindow();
         }
         return instance;
     }
-    
+
     public MainWindow() {
         initComponents();
         station = new StationView();
         jpStation.add(station);
         enemy = new EnemyView();
-        jpEnemy.add(enemy); 
-        
+        jpEnemy.add(enemy);
+
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -50,16 +50,16 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
             }
         });
     }
-    
+
     public String getAppName(){
         return appName;
     }
-    
+
     @Override
     public boolean confirmExitMessage() {
         return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", getAppName(), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
 }
-    
+
     @Override
     public void updateView(){
     station.setStationView(controller.currentStation());
@@ -83,18 +83,18 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
         }
         repaint();
     }
-    
+
     @Override
     public void showView(){
         setVisible(true);
     }
-    
+
     @Override
     public ArrayList<String> readNamePlayers(){
         NamesCapture namesCapt = new NamesCapture(this);
         return namesCapt.getNames();
     }
-    
+
     @Override
     public void nextTurnNotAllowedMessage(){
         JOptionPane.showMessageDialog(this, "No puedes avanzar de turno, no has cumplido tu castigo" , "Deepspace message" , JOptionPane.INFORMATION_MESSAGE);
@@ -110,7 +110,6 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     @Override
     public void wonCombatMessage(){
         JOptionPane.showMessageDialog(this, "Has GANADO el combate. Disfruta de tu botín." , "Deepspace message" , JOptionPane.INFORMATION_MESSAGE);
-    
     }
     @Override
     public void wonGameMessage(){
@@ -120,16 +119,16 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     public void conversionMessage(){
         JOptionPane.showMessageDialog(this, "Has GANADO el combate. Además te has CONVERTIDO. Disfruta de tu botín" , "Deepspace message" , JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     @Override
     public void noCombatMessage(){
         JOptionPane.showMessageDialog(this, "No puedes combatir en este momento." , "Deepspace message" , JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     @Override
     public void wonCombatAndConvertMessage(){
         JOptionPane.showMessageDialog(this, "Has GANADO el combate. Además te has CONVERTIDO. Disfruta de tu botín" , "Deepspace message" , JOptionPane.INFORMATION_MESSAGE);
-    
+
     }
 
     /**
@@ -231,7 +230,7 @@ public class MainWindow extends javax.swing.JFrame implements DeepSpaceView{
     /**
      * @param args the command line arguments
      */
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCombatir;
     private javax.swing.JButton jbNextTurn;
