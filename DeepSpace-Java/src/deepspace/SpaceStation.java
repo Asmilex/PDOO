@@ -15,7 +15,7 @@ class SpaceStation implements SpaceFighter{
     private float shieldPower;
 
     private Hangar hangar;
-    private Damage pendingDamage = new NumericDamage(0, 0);
+    private Damage pendingDamage;
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<ShieldBooster> shieldBoosters = new ArrayList<>();
 
